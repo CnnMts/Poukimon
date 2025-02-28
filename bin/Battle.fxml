@@ -13,13 +13,39 @@
 <?import javafx.scene.image.Image?>
 
 <BorderPane fx:id="backgroundBattle" xmlns:fx="http://javafx.com/fxml"
-		fx:controller="Controllers.BattleControllerView" stylesheets="battleStyles.css">
-	<right>
-	    <VBox fx:id="colRight" >
-    	</VBox>
-  	</right>
+        fx:controller="Controllers.BattleControllerView" stylesheets="battleStyles.css">
+        <!-- Colonne de droite avec affichage de l'equipe adverse et mon equipe-->
+    <right>
+        <VBox fx:id="colRight">
+        </VBox>
+    </right>
+    
+    <!--Barre du bas avec compétence et sac -->
+    
     <bottom>
-    	<HBox fx:id="rowLeft" >
-    	</HBox>
+        <HBox fx:id="rowLeft" alignment="CENTER" spacing="30">
+            <VBox fx:id="boxattack" alignment="CENTER" spacing="15">
+                <StackPane fx:id="attackOne">
+                    <Button text="Queue bleu2"></Button>
+                </StackPane>
+                <StackPane fx:id="attackTwo">
+                    <Button text="Queue bleu2"></Button>
+                </StackPane>
+            </VBox>
+            <VBox fx:id="boxattack" alignment="CENTER" spacing="15">
+                <StackPane fx:id="attackOne">
+                    <Button text="Queue bleu2"></Button>
+                </StackPane>
+                <StackPane fx:id="attackTwo">
+                    <Button text="Queue bleu2"></Button>
+                </StackPane>
+            </VBox>
+        </HBox>
     </bottom>
+    
+    <!--Image combat affichage pokemon et des pokéballs -->
+    <left>
+        <HBox fx:id="imgBack">
+        </HBox>
+    </left>
 </BorderPane>

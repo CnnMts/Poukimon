@@ -1,0 +1,25 @@
+#container{
+	
+}
+
+#stackpane{
+	
+}
+
+#exit{
+	
+}
+
+#battle{
+	-fx-padding:50;
+}
+
+#buttonMenu{
+	
+	-fx-padding:300;
+}
+}
+
+#textbattle{
+	-fx-color:red;
+}

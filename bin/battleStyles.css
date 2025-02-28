@@ -1,0 +1,13 @@
+#backgroundBattle{
+    -fx-background-image: url("fondBattle.png");
+    
+}
+#colRight{
+    -fx-border-color: red;
+    -fx-border-width: 150;
+}
+
+#rowLeft{
+    -fx-border-color: blue;
+    -fx-border-width: 200;
+}

@@ -5,13 +5,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
-<HBox alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
-		fx:controller="Controllers.BattleControllerView" stylesheets="styles.css">
-     <Text fx:id="textbattle" text='battle'/>
-</HBox>
+<BorderPane fx:id="backgroundBattle" xmlns:fx="http://javafx.com/fxml"
+		fx:controller="Controllers.BattleControllerView" stylesheets="battleStyles.css">
+	<right>
+	    <VBox fx:id="colRight" >
+    	</VBox>
+  	</right>
+    <bottom>
+    	<HBox fx:id="rowLeft" >
+    	</HBox>
+    </bottom>
+</BorderPane>

@@ -8,6 +8,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="Assets"/>
 	<classpathentry kind="src" path="Fxml"/>
+	<classpathentry kind="src" path="Styles"/>
 	<classpathentry kind="lib" path="C:/Users/matis/Desktop/javaPath/openjfx-23.0.2_windows-x64_bin-sdk (1)/javafx-sdk-23.0.2/lib/javafx.base.jar">
 		<attributes>
 			<attribute name="module" value="true"/>

@@ -11,6 +11,8 @@ module Pokemon {
 	requires javafx.media;
 	requires java.desktop;
 
+	opens Controllers to javafx.fxml; 
+	
     exports Controllers;
     exports Models;
     exports Views;

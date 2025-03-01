@@ -1,7 +1,6 @@
 
 
 #colRight {
-    -fx-border-color: red;
     -fx-border-width: 5px;
     -fx-pref-width: 250px; /* Largeur du rouge */
     -fx-max-width: 300px; /* Ne pas dépasser */
@@ -23,15 +22,11 @@
 }
 
 #boxattack{
-	-fx-border-color: blue;
 	-fx-padding: 15px;
 }
 
 #attackOne{
-	-fx-border-color: purple;
-	
 }
 #attackTwo{
--fx-border-color: yellow;
-	
+
 }

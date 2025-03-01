@@ -14,38 +14,40 @@
 
 <BorderPane fx:id="backgroundBattle" xmlns:fx="http://javafx.com/fxml"
         fx:controller="Controllers.BattleControllerView" stylesheets="battleStyles.css">
-        <!-- Colonne de droite avec affichage de l'equipe adverse et mon equipe-->
+    <!-- Colonne de droite avec affichage de l'equipe adverse et mon equipe-->
     <right>
         <VBox fx:id="colRight">
+            <Text fx:id='statusText'/>
+            <!-- Affichage de l'équipe Pokémon, pourrait être un autre VBox ou ListView -->
         </VBox>
     </right>
     
-    <!--Barre du bas avec compétence et sac -->
-    
+    <!-- Barre du bas avec compétence et sac -->
     <bottom>
         <HBox fx:id="rowLeft" alignment="CENTER" spacing="30">
-            <VBox fx:id="boxattack" alignment="CENTER" spacing="15">
+            <VBox fx:id="boxAttack" alignment="CENTER" spacing="15">
                 <StackPane fx:id="attackOne">
-                    <Button text="Queue bleu2"></Button>
+                    <Button fx:id="attackButton1" />
                 </StackPane>
                 <StackPane fx:id="attackTwo">
-                    <Button text="Queue bleu2"></Button>
+                    <Button fx:id="attackButton2" />
                 </StackPane>
             </VBox>
-            <VBox fx:id="boxattack" alignment="CENTER" spacing="15">
-                <StackPane fx:id="attackOne">
-                    <Button text="Queue bleu2"></Button>
+            <VBox fx:id="boxDefense" alignment="CENTER" spacing="15">
+                <StackPane fx:id="defenseOne">
+                    <Button fx:id="defenseButton1" />
                 </StackPane>
-                <StackPane fx:id="attackTwo">
-                    <Button text="Queue bleu2"></Button>
+                <StackPane fx:id="defenseTwo">
+                    <Button fx:id="defenseButton2" />
                 </StackPane>
             </VBox>
         </HBox>
     </bottom>
     
-    <!--Image combat affichage pokemon et des pokéballs -->
+    <!-- Image combat affichage Pokémon et des Pokéballs -->
     <left>
         <HBox fx:id="imgBack">
+            <!-- Affichage de l'image des Pokémon -->
         </HBox>
     </left>
 </BorderPane>

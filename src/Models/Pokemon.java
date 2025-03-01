@@ -3,12 +3,14 @@ package Models;
 public class Pokemon {
     private String name;
     private int hp;
+    private int maxhp;
     private String[] attacks;
     private String[] defends;
 
     public Pokemon(String name, int hp, String[] attacks, String[] defends) {
         this.name = name;
         this.hp = hp;
+        this.maxhp = maxhp;
         this.attacks = attacks;
         this.defends = defends;
     }
@@ -17,6 +19,9 @@ public class Pokemon {
         return name;
     }
 
+    public int getMaxHp() {
+        return maxhp;
+    }
     public int getHp() {
         return hp;
     }

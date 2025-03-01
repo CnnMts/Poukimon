@@ -10,7 +10,7 @@
 #rowLeft {
     -fx-border-width: 5px;
     -fx-pref-width: 50px; /* Réduit la largeur */
-    -fx-pref-height: 300px; /* Garde la hauteur */
+    -fx-pref-height: 200px; /* Garde la hauteur */
 }
 
 #imgBack {
@@ -29,4 +29,8 @@
 }
 #attackTwo{
 
+}
+
+#testpokemon{
+	-fx-pref-width: 800px;
 }

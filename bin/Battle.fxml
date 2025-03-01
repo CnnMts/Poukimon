@@ -7,10 +7,12 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+
 
 <BorderPane fx:id="backgroundBattle" xmlns:fx="http://javafx.com/fxml"
         fx:controller="Controllers.BattleControllerView" stylesheets="battleStyles.css">
@@ -27,18 +29,18 @@
         <HBox fx:id="rowLeft" alignment="CENTER" spacing="30">
             <VBox fx:id="boxAttack" alignment="CENTER" spacing="15">
                 <StackPane fx:id="attackOne">
-                    <Button fx:id="attackButton1" />
+                    <Button fx:id="attackButton1"  prefWidth="100" prefHeight="55"/>
                 </StackPane>
                 <StackPane fx:id="attackTwo">
-                    <Button fx:id="attackButton2" />
+                    <Button fx:id="attackButton2"  prefWidth="100" prefHeight="55"/>
                 </StackPane>
             </VBox>
             <VBox fx:id="boxDefense" alignment="CENTER" spacing="15">
                 <StackPane fx:id="defenseOne">
-                    <Button fx:id="defenseButton1" />
+                   <Button fx:id="defenseButton1" prefWidth="100" prefHeight="55" />
                 </StackPane>
                 <StackPane fx:id="defenseTwo">
-                    <Button fx:id="defenseButton2" />
+                    <Button fx:id="defenseButton2"  prefWidth="100" prefHeight="55"/>
                 </StackPane>
             </VBox>
         </HBox>
@@ -47,7 +49,18 @@
     <!-- Image combat affichage Pokémon et des Pokéballs -->
     <left>
         <HBox fx:id="imgBack">
-            <!-- Affichage de l'image des Pokémon -->
+        	<HBox fx:id="testpokemon" alignment="BOTTOM_CENTER">
+        	<ProgressBar fx:id="playerHealthBar" layoutX="50" layoutY="350" prefWidth="300" />
+            	<ImageView fx:id="pokemon" fitHeight="250" fitWidth="250"
+               	pickOnBounds="true" preserveRatio="true">
+    			</ImageView>
+    		</HBox>
+    		<HBox fx:id="testpokemon" alignment="CENTER">
+    		<ProgressBar fx:id="enemyHealthBar" layoutX="400" layoutY="350" prefWidth="300" />
+            	<ImageView fx:id="pokemon2" fitHeight="170" fitWidth="170"
+               	pickOnBounds="true" preserveRatio="true">
+    			</ImageView>
+    		</HBox>
         </HBox>
     </left>
 </BorderPane>

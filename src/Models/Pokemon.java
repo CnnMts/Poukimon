@@ -1,16 +1,21 @@
 package Models;
 
+import Competences.BouleElec;
+import Competences.ToileEleck;
+
 public class Pokemon {
     private String name;
-    private int hp;
+    protected int hp;
+    protected int speed;
     private int maxhp;
-    private String[] attacks;
-    private String[] defends;
+    private Attackable[] attacks;
+    private Defendable[] defends;
 
-    public Pokemon(String name, int hp, String[] attacks, String[] defends) {
+    public Pokemon(String name, int hp,int speed, Attackable[] attacks, Defendable[] defends) {
         this.name = name;
         this.hp = hp;
-        this.maxhp = maxhp;
+        this.speed = speed;
+        this.maxhp = hp;
         this.attacks = attacks;
         this.defends = defends;
     }
@@ -25,15 +30,23 @@ public class Pokemon {
     public int getHp() {
         return hp;
     }
+    public int getSpeed() {
+        return speed;
+    }
+    public int setSpeed(int speed) {
+        this.speed = speed;
+        return speed;
+    }
+    
 
-    public String[] getAttacks() {
+    public Attackable[] getAttacks() {
         return attacks;
     }
-    public String[] getDefends() {
+    public Defendable[] getDefends() {
         return defends;
     }
 
-    public void takeDamage(int damage) {
+    public void takeDamage(double damage) {
         this.hp -= damage;
     }
 
@@ -44,5 +57,6 @@ public class Pokemon {
     @Override
     public String toString() {
         return name + " (" + hp + " HP)";
-    }
+    }    
+    
 }

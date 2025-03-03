@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.text.Text?>
@@ -48,19 +49,30 @@
     
     <!-- Image combat affichage Pokémon et des Pokéballs -->
     <left>
-        <HBox fx:id="imgBack">
-        	<HBox fx:id="testpokemon" alignment="BOTTOM_CENTER">
-        	<ProgressBar fx:id="playerHealthBar" layoutX="50" layoutY="350" prefWidth="300" />
-            	<ImageView fx:id="pokemon" fitHeight="250" fitWidth="250"
-               	pickOnBounds="true" preserveRatio="true">
-    			</ImageView>
-    		</HBox>
-    		<HBox fx:id="testpokemon" alignment="CENTER">
-    		<ProgressBar fx:id="enemyHealthBar" layoutX="400" layoutY="350" prefWidth="300" />
-            	<ImageView fx:id="pokemon2" fitHeight="170" fitWidth="170"
-               	pickOnBounds="true" preserveRatio="true">
-    			</ImageView>
-    		</HBox>
+        <HBox fx:id="imgBack" alignment='CENTER'>
+        	<VBox fx:id="" alignment='BOTTOM_LEFT'>
+        	<TilePane fx:id="imgBackPokemonEmplacement" alignment="CENTER" >
+        		<HBox fx:id="testpokemon" alignment="CENTER">
+        		
+        		<ImageView fx:id="pokemon" fitHeight="250" fitWidth="250"
+               		pickOnBounds="true" preserveRatio="true">
+    				</ImageView>
+    				</HBox>
+        		<HBox fx:id="containerHealthPlayer" alignment="CENTER" >
+        		<ProgressBar fx:id="playerHealthBar" layoutX="50" layoutY="350" prefWidth="300"/>
+        		</HBox>
+    		</TilePane>
+    		</VBox>
+    		<VBox fx:id="" alignment='TOP_RIGHT'>
+    		<TilePane fx:id="imgBackPokemonEmplacement2" alignment="CENTER" >
+    			<HBox fx:id="testpokemon" alignment="CENTER">
+    			<ProgressBar fx:id="enemyHealthBar" layoutX="400" layoutY="350" prefWidth="300" />
+            		<ImageView fx:id="pokemon2" fitHeight="170" fitWidth="170"
+               		pickOnBounds="true" preserveRatio="true">
+    				</ImageView>
+    			</HBox>
+    		</TilePane>
+    		</VBox>
         </HBox>
     </left>
 </BorderPane>

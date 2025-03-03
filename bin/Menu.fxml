@@ -13,23 +13,23 @@
 
 <HBox alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
       fx:controller="Controllers.MenuControllerView" stylesheets="styles.css">
-    	<VBox fx:id='container' alignment="TOP_CENTER" >
-    	<StackPane fx:id="stackpane">
-    		<ImageView fitHeight="200" fitWidth="350"
-               pickOnBounds="true" preserveRatio="true">
-        	<Image url="PokemonLogo.png"/>
-    		</ImageView>
-    	</StackPane >
-    	<HBox alignment="CENTER">
-    		<VBox fx:id="buttonMenu">
-    			<StackPane fx:id="battle">
-    			<Button text="Battle" onAction="#switchSceneBattle"/>
-    			</StackPane>
-    			<StackPane fx:id="exit">
-    			<Button text="Exit"/>
-    			</StackPane>
-    		</VBox>	
-    	</HBox>	
+    	<VBox fx:id='container' alignment="CENTER" >
+    		<VBox fx:id="VboxPokemon" alignment="CENTER">
+    			<ImageView fitHeight="200" fitWidth="350"
+               	pickOnBounds="true" preserveRatio="true">
+        			<Image url="PokemonLogo.png"/>
+    			</ImageView>
+    		</VBox >
+    		<HBox alignment="CENTER">
+    			<VBox fx:id="buttonMenu" spacing = "10">
+    				<StackPane fx:id="battle">
+    					<Button text="Battle" onAction="#switchSceneBattle"/>
+    				</StackPane>
+    				<StackPane fx:id="exit">
+    					<Button text="Exit"/>
+    				</StackPane> 
+    			</VBox>	
+    		</HBox>	
     	</VBox>
   
 </HBox>

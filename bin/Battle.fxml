@@ -26,7 +26,7 @@
     
     <!-- Barre du bas avec compétence et sac -->
     <bottom>
-        <HBox fx:id="rowLeft" alignment="CENTER" spacing="30">
+        <HBox fx:id="rowBottom" alignment="CENTER" spacing="30">
             <VBox fx:id="boxAttack" alignment="CENTER" spacing="15">
                 <StackPane fx:id="attackOne">
                     <Button fx:id="attackButton1"  prefWidth="100" prefHeight="55"/>

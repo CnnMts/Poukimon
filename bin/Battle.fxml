@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.text.Text?>
@@ -28,6 +29,7 @@
     <bottom>
         <HBox fx:id="rowBottom" alignment="CENTER">
             <VBox fx:id="boxAttackAndPoke" alignment="CENTER">
+<<<<<<< HEAD
 	            	<HBox fx:id="HboxAtk" alignment="CENTER" spacing="30">
 		                <StackPane fx:id="attackOne">
 		                    <Button fx:id="attackButton1"  prefWidth="100" prefHeight="55"/>
@@ -45,6 +47,25 @@
            </VBox>
            <VBox fx:id="boxBag" alignment="CENTER">
 	            	
+=======
+                    <HBox fx:id="HboxAtk" alignment="CENTER" spacing="30">
+                        <StackPane fx:id="attackOne">
+                            <Button fx:id="attackButton1"  prefWidth="100" prefHeight="55"/>
+                        </StackPane>
+                        <StackPane fx:id="attackTwo">
+                            <Button fx:id="attackButton2"  prefWidth="100" prefHeight="55"/>
+                        </StackPane>
+                        <StackPane fx:id="defenseOne">
+                           <Button fx:id="defenseButton1" prefWidth="100" prefHeight="55" />
+                        </StackPane>
+                        <StackPane fx:id="defenseTwo">
+                            <Button fx:id="defenseButton2"  prefWidth="100" prefHeight="55"/>
+                        </StackPane>
+                    </HBox>
+           </VBox>
+           <VBox fx:id="boxBag" alignment="CENTER">
+
+>>>>>>> main
            </VBox>
         </HBox>
     </bottom>
@@ -52,6 +73,7 @@
     <!-- Image combat affichage Pokémon et des Pokéballs -->
     <left>
         <HBox fx:id="imgBack">
+<<<<<<< HEAD
         	<VBox fx:id="testpokemon" alignment="BOTTOM_CENTER">
         		<HBox alignment = "CENTER" spacing="50">
         			<Label fx:id="PokemonName" text="NomPokemon" />
@@ -82,6 +104,20 @@
     				</ImageView>
     			</VBox>
     		</VBox>
+=======
+            <HBox fx:id="testpokemon" alignment="BOTTOM_CENTER">
+            <ProgressBar fx:id="playerHealthBar" layoutX="50" layoutY="350" prefWidth="300" />
+                <ImageView fx:id="pokemon" fitHeight="250" fitWidth="250"
+                   pickOnBounds="true" preserveRatio="true">
+                </ImageView>
+            </HBox>
+            <HBox fx:id="testpokemon" alignment="CENTER">
+            <ProgressBar fx:id="enemyHealthBar" layoutX="400" layoutY="350" prefWidth="300" />
+                <ImageView fx:id="pokemon2" fitHeight="170" fitWidth="170"
+                   pickOnBounds="true" preserveRatio="true">
+                </ImageView>
+            </HBox>
+>>>>>>> main
         </HBox>
     </left>
 </BorderPane>

@@ -2,15 +2,19 @@ package Models;
 
 public class Pokemon {
     private String name;
-    private int hp;
+    protected int hp;
+    protected int speed;
     private int maxhp;
-    private String[] attacks;
-    private String[] defends;
+    private Type[] types;
+    private Attackable[] attacks;
+    private Defendable[] defends;
 
-    public Pokemon(String name, int hp, String[] attacks, String[] defends) {
+    public Pokemon(String name, Type[] types, int hp, int speed, Attackable[] attacks, Defendable[] defends) {
         this.name = name;
+        this.types = types;
         this.hp = hp;
-        this.maxhp = maxhp;
+        this.speed = speed;
+        this.maxhp = hp;
         this.attacks = attacks;
         this.defends = defends;
     }
@@ -22,27 +26,46 @@ public class Pokemon {
     public int getMaxHp() {
         return maxhp;
     }
+
     public int getHp() {
         return hp;
     }
 
-    public String[] getAttacks() {
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public Type[] getTypes() {
+        return types;
+    }
+
+    public Attackable[] getAttacks() {
         return attacks;
     }
-    public String[] getDefends() {
+
+    public Defendable[] getDefends() {
         return defends;
     }
 
-    public void takeDamage(int damage) {
+    public void takeDamage(double damage) {
         this.hp -= damage;
     }
 
     public void heal(int healing) {
-        this.hp += healing;
+        this.hp = Math.min(maxhp, this.hp + healing);
     }
 
     @Override
     public String toString() {
-        return name + " (" + hp + " HP)";
+        return name + " (" + hp + " HP, Types: " + java.util.Arrays.toString(types) + ")";
     }
+    public Type[] getDefensiveTypes() {
+        return types;
+    }
+
+
 }

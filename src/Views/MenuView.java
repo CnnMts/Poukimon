@@ -31,9 +31,9 @@ public class MenuView extends Application {
         	
         	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Menu.fxml"));
             Parent root = fxmlLoader.load();
-            Scene sceneMenu = new Scene(root, 900, 900);
-            primaryStage.setMaxHeight(1080);
-            primaryStage.setMaxWidth(1920);
+            Scene sceneMenu = new Scene(root, 1500, 800);
+            primaryStage.setMaxHeight(800);
+            primaryStage.setMaxWidth(1500);
             primaryStage.setScene(sceneMenu);
             audioMenu();
             sceneMenu.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());

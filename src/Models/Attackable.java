@@ -1,6 +1,7 @@
 package Models;
 
 public interface Attackable {
-	public void attack(Pokemon target);
+    Type getType();
+    void attack(Pokemon attacker, Pokemon target);
 }
 

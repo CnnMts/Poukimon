@@ -23,7 +23,7 @@
     	<HBox alignment="CENTER">
     		<VBox fx:id="buttonMenu">
     			<StackPane fx:id="battle">
-    			<Button text="Battle" onAction="#switchSceneBattle"/>
+    			<Button text="Battle" onAction="#switchBattleScene"/>
     			</StackPane>
     			<StackPane fx:id="exit">
     			<Button text="Exit"/>

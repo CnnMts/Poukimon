@@ -1,5 +1,7 @@
 package Controllers;
 
+import Models.Type;
+import Models.TypeTools;
 import Competences.BouleElec;
 import Competences.ToileEleck;
 import Competences.Belier;
@@ -42,40 +44,51 @@ public class BattleControllerView {
     private Pokemon playerPokemon;
     private Pokemon enemyPokemon;
     private boolean playerTurn = true;
+    
+    
 
     public void initialize() {
+    	
+    	TypeTools.initializeTypeRelations();
+        
         BouleElec bouleElec = new BouleElec(null);
         ToileEleck toileEleck = new ToileEleck(null);
-        Belier belier = new Belier(enemyPokemon, playerPokemon);
+        Belier belier = new Belier(playerPokemon, enemyPokemon);
 
-        playerPokemon = new Pokemon("Pikachu", 120, 20, new Attackable[]{toileEleck, bouleElec}, new Defendable[]{belier}) ;
-        enemyPokemon = new Pokemon("Bulbizarre", 140, 30, new Attackable[]{},new Defendable[]{belier});
 
+
+        playerPokemon = new Pokemon("Pikachu", new Type[]{Type.ELECTRIQUE}, 150, 30, new Attackable[]{bouleElec, toileEleck}, new Defendable[]{});
+        enemyPokemon = new Pokemon("Bulbizarre", new Type[]{Type.SOL}, 140, 30, new Attackable[]{}, new Defendable[]{belier});
+
+        
         bouleElec.setTarget(enemyPokemon);
         toileEleck.setTarget(enemyPokemon);
-        belier.setTarget(enemyPokemon, playerPokemon);
+        belier.setTarget(playerPokemon,enemyPokemon);
+       
+        
+       
        
         statusText.setText(playerPokemon.getName() + " vs " + enemyPokemon.getName());
 
         attackButton1.setText(playerPokemon.getAttacks()[0].getClass().getSimpleName());
         attackButton2.setText(playerPokemon.getAttacks()[1].getClass().getSimpleName());
         
-        defenseButton1.setText(playerPokemon.getDefends()[0].getClass().getSimpleName());
+        
 
         pokemon.setImage(new Image(getClass().getResourceAsStream("/pikachu.png")));
         pokemon2.setImage(new Image(getClass().getResourceAsStream("/bulbizarre.png")));
 
         playerHealthBar.setProgress(1.0);
         enemyHealthBar.setProgress(1.0);
-
+        
         attackButton1.setOnAction(event -> {
-            playerPokemon.getAttacks()[0].attack(playerPokemon);
+            playerPokemon.getAttacks()[0].attack(playerPokemon, enemyPokemon);
             updateHealthBarEnemy();
             new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
         });
 
         attackButton2.setOnAction(event -> {
-            playerPokemon.getAttacks()[1].attack(playerPokemon);
+            playerPokemon.getAttacks()[1].attack(playerPokemon, enemyPokemon);
             updateHealthBarEnemy();
             new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
         });
@@ -123,6 +136,7 @@ public class BattleControllerView {
                     updateHealthBarEnemy();
                     statusText.setText(enemyPokemon.getName() + " defends and recovers 10 HP!");
                 }
+                statusText.setText("Player's turn!");
             })).play();
         }
 

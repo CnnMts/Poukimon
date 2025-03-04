@@ -20,18 +20,11 @@ public class BattleView {
     public static void switchBattleScene(String fxmlFile) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(BattleView.class.getResource(fxmlFile));
         Parent newRoot = fxmlLoader.load();
-        Scene newScene = new Scene(newRoot, 1920, 1080);
-        MenuView.getPrimaryStage().setMinHeight(900);
-        MenuView.getPrimaryStage().setMinWidth(900);
+        Scene newScene = new Scene(newRoot, 1500, 800);
+        MenuView.getPrimaryStage().setMinHeight(800);
+        MenuView.getPrimaryStage().setMinWidth(1500);
         MenuView.getPrimaryStage().setScene(newScene);
         
         newScene.getStylesheets().add(BattleView.class.getResource("/battleStyles.css").toExternalForm());
     }
-    
-    public static void stopSoundMenu() throws UnsupportedAudioFileException, LineUnavailableException, URISyntaxException, IOException {
-    	Clip audio =  MenuView.getAudio();
-    	audio.stop();
-    }
-
-   
 }

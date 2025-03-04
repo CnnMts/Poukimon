@@ -27,11 +27,4 @@ public class BattleView {
         
         newScene.getStylesheets().add(BattleView.class.getResource("/battleStyles.css").toExternalForm());
     }
-    
-    public static void stopSoundMenu() throws UnsupportedAudioFileException, LineUnavailableException, URISyntaxException, IOException {
-    	Clip audio =  MenuView.getAudio();
-    	audio.stop();
-    }
-
-   
 }

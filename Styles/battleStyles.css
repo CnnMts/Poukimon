@@ -1,15 +1,13 @@
-
-
 #colRight {
-    
-    -fx-pref-width: 300px; /* Largeur historique */
-	-fx-border-color: transparent transparent black transparent; /* haut, droite, bas, gauche */
-	-fx-border-width: 0 0 2px 0; /* haut, droite, bas, gauche */
+
+    -fx-pref-width: 300px; /* Largeur historique /
+    -fx-border-color: transparent transparent black transparent; / haut, droite, bas, gauche /
+    -fx-border-width: 0 0 2px 0; / haut, droite, bas, gauche /
 
 }
 
 #rowBottom {
-    -fx-pref-height: 200px; /* Garde la hauteur */
+    -fx-pref-height: 200px; / Garde la hauteur */
 }
 
 #imgBack {
@@ -18,8 +16,14 @@
     -fx-pref-width: 1200px;
 }
 
-#boxattack{
-	-fx-padding: 15px;
+#boxAttackAndPoke{
+    -fx-border-color: red;
+    -fx-Min-width: 1000;
+    -fx-Min-height: 200;
+}
+#boxBag{
+    -fx-border-color: red;
+    -fx-Min-width: 500;
 }
 
 #attackOne{
@@ -29,5 +33,5 @@
 }
 
 #testpokemon{
-	-fx-pref-width: 800px;
+    -fx-pref-width: 800px;
 }

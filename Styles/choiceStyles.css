@@ -1,0 +1,19 @@
+#containerBox{
+	-fx-border-color: red;
+}
+
+#containerHbox{
+	-fx-border-color: yellow;
+	-fx-background-color: gray;
+	-fx-Min-width: 500;
+	-fx-Min-height: 200;
+}
+
+#pokemonChoice{
+	
+}
+
+#test{
+	-fx-border-color: blue;
+	
+}

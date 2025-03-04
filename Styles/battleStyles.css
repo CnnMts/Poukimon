@@ -18,16 +18,29 @@
     -fx-pref-width: 1200px;
 }
 
-#boxattack{
-	-fx-padding: 15px;
+#boxAttackAndPoke{
+	-fx-Min-width: 1000;
+}
+#boxBag{
+	-fx-Min-width: 500;
 }
 
 #attackOne{
 }
 #attackTwo{
-
 }
 
 #testpokemon{
 	-fx-pref-width: 800px;
 }
+
+#test{
+}
+#HpPokemon, #PokemonName{
+	-fx-text-fill: red;
+	-fx-font-weight: bold;
+}
+#NameBar, #HpBar{
+	-fx-padding: 0 35 0 0;
+}
+

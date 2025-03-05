@@ -40,6 +40,14 @@ public class BattleControllerView {
     private ProgressBar playerHealthBar;
     @FXML
     private ProgressBar enemyHealthBar;
+    @FXML
+    private Text PokemonName;
+    @FXML
+    private Text PokemonName2;
+    @FXML
+    private Text HpPokemon;
+    @FXML
+    private Text HpPokemon2;
 
     private Pokemon playerPokemon;
     private Pokemon enemyPokemon;
@@ -47,7 +55,7 @@ public class BattleControllerView {
     
     
 
-    public void initialize() {
+   public void initialize() {
     	
     	TypeTools.initializeTypeRelations();
         
@@ -58,7 +66,7 @@ public class BattleControllerView {
 
 
         playerPokemon = new Pokemon("Pikachu", new Type[]{Type.ELECTRIQUE}, 150, 30, new Attackable[]{bouleElec, toileEleck}, new Defendable[]{});
-        enemyPokemon = new Pokemon("Bulbizarre", new Type[]{Type.SOL}, 140, 30, new Attackable[]{}, new Defendable[]{belier});
+        enemyPokemon = new Pokemon("Bulbizarre", new Type[]{Type.PLANTE}, 140, 30, new Attackable[]{}, new Defendable[]{belier});
 
         
         bouleElec.setTarget(enemyPokemon);
@@ -66,7 +74,12 @@ public class BattleControllerView {
         belier.setTarget(playerPokemon,enemyPokemon);
        
         
-       
+        PokemonName.setText(playerPokemon.getName());
+        PokemonName2.setText(enemyPokemon.getName());
+        
+        HpPokemon.setText(getPourcentageHpPlayer());
+        HpPokemon2.setText(getPourcentageEnemy());
+        
        
         statusText.setText(playerPokemon.getName() + " vs " + enemyPokemon.getName());
 
@@ -74,7 +87,6 @@ public class BattleControllerView {
         attackButton2.setText(playerPokemon.getAttacks()[1].getClass().getSimpleName());
         
         
-
         pokemon.setImage(new Image(getClass().getResourceAsStream("/pikachu.png")));
         pokemon2.setImage(new Image(getClass().getResourceAsStream("/bulbizarre.png")));
 
@@ -103,17 +115,43 @@ public class BattleControllerView {
         
     }
 
-    private void updateHealthBarPlayer() {
-        double playerHealthPercentage = (double) playerPokemon.getHp() / playerPokemon.getMaxHp();
+   public String getPourcentageHpPlayer() {
+        double percentage = (playerPokemon.getHp() / (double) playerPokemon.getMaxHp()) * 100;
+        System.out.println(playerPokemon.getHp());
+        return String.format("%.2f%%", percentage);
+    }
+    
+   public String getPourcentageEnemy() {
+        double percentage = (enemyPokemon.getHp() / (double) enemyPokemon.getMaxHp()) * 100;
+        return String.format("%.2f%%", percentage);
+    
+    }
+    
+   private void updateHealthBarPlayer() {
+        double playerHealthPercentage = (double) playerPokemon.getHp() 
+        		/ playerPokemon.getMaxHp();
         animateHealthBar(playerHealthBar, playerHealthPercentage);
+        if (playerPokemon.getHp() <= 0) {
+            HpPokemon.setText("0%");
+        } else {
+            HpPokemon.setText(getPourcentageHpPlayer());
+        }
+
     }
 
-    private void updateHealthBarEnemy() {
+   private void updateHealthBarEnemy() {
         double enemyHealthPercentage = (double) enemyPokemon.getHp() / enemyPokemon.getMaxHp();
         animateHealthBar(enemyHealthBar, enemyHealthPercentage);
+        if (enemyPokemon.getHp() <= 0) {
+            HpPokemon2.setText("0%");
+        } else {
+            HpPokemon2.setText(getPourcentageEnemy());
+        }
+
+        
     }
 
-    private void animateHealthBar(ProgressBar healthBar, double targetProgress) {
+   private void animateHealthBar(ProgressBar healthBar, double targetProgress){
         Timeline timeline = new Timeline();
         KeyValue kv = new KeyValue(healthBar.progressProperty(), targetProgress, Interpolator.EASE_BOTH);
         KeyFrame kf = new KeyFrame(Duration.millis(500), kv);

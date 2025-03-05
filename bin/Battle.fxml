@@ -24,7 +24,7 @@
             <!-- Affichage de l'équipe Pokémon, pourrait être un autre VBox ou ListView -->
         </VBox>
     </right>
-    
+
     <!-- Barre du bas avec compétence et sac -->
     <bottom>
         <HBox fx:id="rowBottom" alignment="CENTER">
@@ -54,6 +54,7 @@
     <left>
         <HBox fx:id="imgBack">
 
+<<<<<<< HEAD
         	<VBox fx:id="testpokemon" alignment="BOTTOM_CENTER">
         		<HBox alignment = "CENTER" spacing="50">
         			<Label fx:id="PokemonName" text="NomPokemon" />
@@ -84,6 +85,38 @@
     				</ImageView>
     			</VBox>
     		</VBox>
+=======
+            <VBox fx:id="testpokemon" alignment="BOTTOM_CENTER">
+                <HBox alignment = "CENTER" spacing="50">
+                    <Text fx:id="PokemonName"/>
+                    <Text fx:id="HpPokemon" text="Hp du pokemon" />
+                </HBox>
+                <HBox fx:id="test" alignment = "CENTER">
+                    <ProgressBar fx:id="playerHealthBar" layoutX="50" layoutY="350" prefWidth="300"/>
+                </HBox>
+                <VBox fx:id="test" alignment = "CENTER">
+                    <ImageView fx:id="pokemon" fitHeight="250" fitWidth="250"
+                       pickOnBounds="true" preserveRatio="true">
+                    </ImageView>
+                </VBox>
+            </VBox>
+            <VBox fx:id="testpokemon" alignment="CENTER" spacing="20">
+                <VBox>
+                    <HBox fx:id="NameBar" alignment="CENTER_RIGHT" spacing="50">
+                        <Text fx:id="PokemonName2"/>
+                        <Text fx:id="HpPokemon2" text="Hp du pokemon" />
+                    </HBox>
+                    <HBox fx:id="HpBar" alignment="CENTER_RIGHT">
+                        <ProgressBar fx:id="enemyHealthBar" layoutX="400" layoutY="350" prefWidth="300" />
+                    </HBox>
+                </VBox>
+                <VBox fx:id="test" alignment = "CENTER">
+                    <ImageView fx:id="pokemon2" fitHeight="120" fitWidth="120"
+                           pickOnBounds="true" preserveRatio="true">
+                    </ImageView>
+                </VBox>
+            </VBox>
+>>>>>>> f9c2298 (Change type Pokemon)
 
         </HBox>
     </left>

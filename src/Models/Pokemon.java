@@ -30,7 +30,7 @@ public class Pokemon {
     public int getHp() {
         return hp;
     }
-
+    
     public int getSpeed() {
         return speed;
     }

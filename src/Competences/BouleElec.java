@@ -8,6 +8,7 @@ import Models.TypeTools;
 public class BouleElec implements Attackable {
     private Type type = Type.ELECTRIQUE;
     private Pokemon enemyPokemon;
+    
 
     public BouleElec(Pokemon enemyPokemon) {
         this.enemyPokemon = enemyPokemon;
@@ -35,3 +36,6 @@ public class BouleElec implements Attackable {
         
     }
 }
+
+
+

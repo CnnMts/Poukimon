@@ -4,6 +4,8 @@ import Models.Type;
 import Models.TypeTools;
 import Competences.BouleElec;
 import Competences.ToileEleck;
+import Animation.PokemonAnimation;
+import Animation.BouleElecktAnimation;
 import Competences.Belier;
 import Models.Pokemon;
 import Models.Attackable;
@@ -53,7 +55,7 @@ public class BattleControllerView {
     private Pokemon enemyPokemon;
     private boolean playerTurn = true;
     
-    
+    PokemonAnimation itPlayers = new PokemonAnimation();
 
    public void initialize() {
     	
@@ -63,7 +65,7 @@ public class BattleControllerView {
         ToileEleck toileEleck = new ToileEleck(null);
         Belier belier = new Belier(playerPokemon, enemyPokemon);
 
-
+       
 
         playerPokemon = new Pokemon("Pikachu", new Type[]{Type.ELECTRIQUE}, 150, 30, new Attackable[]{bouleElec, toileEleck}, new Defendable[]{});
         enemyPokemon = new Pokemon("Bulbizarre", new Type[]{Type.PLANTE}, 140, 30, new Attackable[]{}, new Defendable[]{belier});
@@ -96,6 +98,7 @@ public class BattleControllerView {
         attackButton1.setOnAction(event -> {
             playerPokemon.getAttacks()[0].attack(playerPokemon, enemyPokemon);
             updateHealthBarEnemy();
+            itPlayers.start(pokemon);
             new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
         });
 
@@ -117,7 +120,6 @@ public class BattleControllerView {
 
    public String getPourcentageHpPlayer() {
         double percentage = (playerPokemon.getHp() / (double) playerPokemon.getMaxHp()) * 100;
-        System.out.println(playerPokemon.getHp());
         return String.format("%.2f%%", percentage);
     }
     
@@ -168,6 +170,7 @@ public class BattleControllerView {
                     int damage = 20;
                     playerPokemon.takeDamage(damage);
                     updateHealthBarPlayer();
+                    itPlayers.start(pokemon);
                     statusText.setText(enemyPokemon.getName() + " attacks! " + playerPokemon.getName() + " has " + playerPokemon.getHp() + " HP left");
                 } else {
                     enemyPokemon.heal(10);
@@ -190,4 +193,6 @@ public class BattleControllerView {
             new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
         }
     }
+    
+    
 }

@@ -1,19 +1,44 @@
-#containerBox{
-	-fx-border-color: red;
+#VBoxMain{
+	-fx-alignment: center;
 }
 
-#containerHbox{
-	-fx-border-color: yellow;
-	-fx-background-color: gray;
-	-fx-Min-width: 500;
-	-fx-Min-height: 200;
+#HBoxMain{
+	-fx-alignment: center;
 }
 
-#pokemonChoice{
+#BorderPaneMain{
+	-fx-border-color: black;
+	-fx-background-color: lightgrey;
+	-fx-border-width: 5;
+	-fx-pref-height: 400;
+	-fx-pref-width: 1000;
+}
+
+#ImgPoke{
+	-fx-border-color:red;
+	-fx-pref-width: 550;
+	-fx-pref-height: 300;
 	
 }
+#StatsAtk{
+	-fx-border-color:blue;
+	-fx-pref-width: 450;
+	-fx-pref-height: 400;
+}
+#Bot{
+	-fx-border-color:green;
+	-fx-pref-width: 550;
+	-fx-pref-height: 100;
+	-fx-alignment: center;
+}
 
-#test{
-	-fx-border-color: blue;
-	
+#listBot, #listAtk{
+	-fx-pref-width: 125;
+}
+
+#Atk, Stats{
+	-fx-pref-width: 225;
+	-fx-pref-height:400;
+	-fx-border-color: green;
+	-fx-alignment: center;
 }

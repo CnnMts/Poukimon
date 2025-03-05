@@ -17,6 +17,8 @@ public class MenuChoicePokemon {
         FXMLLoader fxmlLoader = new FXMLLoader(MenuChoicePokemon.class.getResource(fxmlFile));
         Parent newRoot = fxmlLoader.load();
         Scene newScene = new Scene(newRoot, 1500, 800);
+        MenuView.getPrimaryStage().setMinHeight(800);
+        MenuView.getPrimaryStage().setMinWidth(1500);
         MenuView.getPrimaryStage().setScene(newScene);
         
         newScene.getStylesheets().add(MenuChoicePokemon.class.getResource("/choiceStyles.css").toExternalForm());

@@ -10,11 +10,57 @@
 
 <VBox fx:id="VBoxMain" xmlns:fx="http://javafx.com/fxml"
       fx:controller="Controllers.MenuControllerView" stylesheets="styles.css">
+
 	<HBox fx:id="HBoxMain">
+	    <HBox fx:id="TeamPoke">
+    		<VBox fx:id= "VBoxTeam">
+    			<HBox fx:id ="NameTeam">
+    				<Text text="Équipe:"></Text>
+    			</HBox>
+    			<VBox fx:id ="Team" spacing ="10">
+    				<HBox fx:id="Pokemon1">
+    				
+    				</HBox>
+    				<HBox fx:id="Pokemon2">
+    				
+    				</HBox>
+    				<HBox fx:id="Pokemon3">
+    				
+    				</HBox>
+    				<HBox fx:id="Pokemon4">
+    				
+    				</HBox>
+    				<HBox fx:id="Pokemon5">
+    				
+    				</HBox>
+    				<HBox fx:id="Pokemon6">
+    				
+    				</HBox>
+    			</VBox>
+    		</VBox>
+    	</HBox>
 		<HBox fx:id="BorderPaneMain">
 			<VBox>
-				<VBox fx:id="ImgPoke">
-				</VBox>
+				<HBox fx:id="ImgPoke">
+					<VBox fx:id="ImgPokeLeft">
+						<HBox fx:id="ImgPokeName">
+							<Text text="Pokemon Name"></Text>
+						</HBox>
+						<HBox fx:id="Img">
+							<ImageView fx:id="LePokeMon" fitHeight="250" fitWidth="250"
+                               pickOnBounds="true" preserveRatio="true">
+                    		</ImageView>
+						</HBox>
+					</VBox>
+					<VBox fx:id="ImgPokeRight" spacing="30">
+						<HBox fx:id="Types">
+							<Text text="Types"></Text>
+						</HBox>
+						<HBox fx:id="ButtonAdd">
+							<Button fx:id="Add" text="Ajouter le pokemon"/>
+						</HBox>
+					</VBox>
+				</HBox>
 				<HBox fx:id="Bot" spacing ="40">
 					<ComboBox fx:id="listBot" value="Liste Pokémon">
 	    				<items>
@@ -86,12 +132,50 @@
 							    </items>
 							</ComboBox>
 						</VBox>
-						<VBox fx:id="Stats"></VBox>
+						<VBox fx:id="Stats">   
+				    		<VBox fx:id= "VBoxTeam">
+				    			<HBox fx:id ="NameTeam">
+				    				<Text text="Stats:"></Text>
+				    			</HBox>
+				    			<VBox fx:id ="Team">
+				    				<HBox fx:id="HP" spacing ="10">
+				    					<VBox fx:id="VboxText">
+				    						<Text text="HP:" fx:id="TextStats"></Text>
+				    					</VBox>
+				    					<VBox fx:id="VboxProgress">
+				    						<ProgressBar fx:id="HpBar" progress="0"/>
+				    					</VBox>
+				    				</HBox>
+				    				<HBox fx:id="Speed" spacing ="10">
+				    					<VBox fx:id="VboxText">
+				    						<Text text="Speed:" fx:id="TextStats"></Text>
+				    					</VBox>
+				    					<VBox fx:id="VboxProgress">
+				    						<ProgressBar fx:id="SpeedBar" progress="0"/>
+				    					</VBox>
+				    				</HBox>
+				    				<HBox fx:id="Attack" spacing ="10">
+				    					<VBox fx:id="VboxText">
+				    						<Text text="Attaque:" fx:id="TextStats"></Text>
+				    					</VBox>
+				    					<VBox fx:id="VboxProgress">
+				    						<ProgressBar fx:id="AttackBar" progress="0"/>
+				    					</VBox>
+				    				</HBox>
+				    				<HBox fx:id="Defends" spacing ="10">
+				    					<VBox fx:id="VboxText">
+				    						<Text text="Défense:" fx:id="TextStats"></Text>
+				    					</VBox>
+				    					<VBox fx:id="VboxProgress">
+				    						<ProgressBar fx:id="DefendsBar" progress="0"/>
+				    					</VBox>
+				    				</HBox>
+				    			</VBox>
+				    		</VBox>
+						</VBox>
 					</HBox>
 				</VBox>
-				
 			</VBox>
 		</HBox>
 	</HBox>
-
 </VBox>

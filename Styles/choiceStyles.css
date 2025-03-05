@@ -1,5 +1,7 @@
 #VBoxMain{
 	-fx-alignment: center;
+	-fx-background-image: url("fond_choix.jpeg");
+	-fx-background-size: cover;
 }
 
 #HBoxMain{
@@ -8,25 +10,25 @@
 
 #BorderPaneMain{
 	-fx-border-color: black;
-	-fx-background-color: lightgrey;
+	-fx-background-color: rgba(255, 255, 255, 0.9);
 	-fx-border-width: 5;
 	-fx-pref-height: 400;
 	-fx-pref-width: 1000;
 }
 
 #ImgPoke{
-	-fx-border-color:red;
+	-fx-border-color:black;
 	-fx-pref-width: 550;
 	-fx-pref-height: 300;
 	
 }
 #StatsAtk{
-	-fx-border-color:blue;
+	-fx-border-color:black;
 	-fx-pref-width: 450;
 	-fx-pref-height: 400;
 }
 #Bot{
-	-fx-border-color:green;
+	-fx-border-color:black;
 	-fx-pref-width: 550;
 	-fx-pref-height: 100;
 	-fx-alignment: center;
@@ -36,9 +38,68 @@
 	-fx-pref-width: 125;
 }
 
-#Atk, Stats{
+#Atk, #Stats{
 	-fx-pref-width: 225;
 	-fx-pref-height:400;
-	-fx-border-color: green;
+	-fx-border-color: black;
 	-fx-alignment: center;
 }
+
+#TeamPoke{
+	-fx-border-color: black;
+	-fx-background-color: rgba(255, 255, 255, 0.9);
+	-fx-border-width: 5;
+	-fx-pref-width: 175;
+	-fx-pref-height: 100;
+	-fx-alignment: center;
+}
+
+#VBoxTeam{
+
+	-fx-pref-width: 150
+}
+
+#NameTeam{
+	-fx-pref-height: 50;
+	-fx-alignment: center;
+}
+
+
+#Pokemon1, #Pokemon2, #Pokemon3, #Pokemon4, #Pokemon5, #Pokemon6 {
+	-fx-border-color: red;
+	-fx-pref-height: 50;
+}
+
+#HP, #Speed, #Attack, #Defends{
+	-fx-pref-height: 75;
+}
+
+#VboxText{
+	-fx-alignment:center;
+	-fx-pref-width: 60;
+}
+
+#VboxProgress, #Types, #ButtonAdd{
+	-fx-alignment: center;
+}
+
+#ImgPokeLeft{
+	-fx-pref-width: 400;
+}
+
+#ImgPokeName{
+	-fx-border-color: black;
+	-fx-pref-height: 100;
+	-fx-alignment: center;
+}
+
+#Img{
+	-fx-border-color: black;
+}
+
+#ImgPokeRight{
+	-fx-border-color: black;
+	-fx-alignment:center;
+	-fx-pref-width: 150;
+}
+

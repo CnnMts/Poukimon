@@ -11,23 +11,23 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 
-<HBox alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
+<HBox fx:id="MaxBox" alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
       fx:controller="Controllers.MenuControllerView" stylesheets="styles.css">
-    	<VBox fx:id='container' alignment="TOP_CENTER" >
+    	<VBox fx:id='container' alignment="CENTER">
     	<StackPane fx:id="stackpane">
     		<ImageView fitHeight="200" fitWidth="350"
                pickOnBounds="true" preserveRatio="true">
         	<Image url="PokemonLogo.png"/>
     		</ImageView>
-    	</StackPane >
-    	<HBox alignment="CENTER">
-    		<VBox fx:id="buttonMenu">
+    	</StackPane>
+    	<HBox fx:id="HboxButton" alignment="CENTER">
+    		<VBox fx:id="buttonMenu" spacing="20">
     			<StackPane fx:id="battle">
-    			<Button text="Battle" onAction="#switchBattleScene"/>
+    			<Button fx:id="ButtonMenu" text="Battle" onAction="#switchBattleScene"/>
     			</StackPane>
-    			<Button text="Choice" onAction="#switchSceneChoice"/>
+    			<Button fx:id="ButtonMenu" text="Choice" onAction="#switchSceneChoice"/>
     			<StackPane fx:id="exit">
-    			<Button text="Exit"/>
+    			<Button fx:id="ButtonMenu" text="Exit"/>
     			</StackPane>
     		</VBox>	
     	</HBox>	

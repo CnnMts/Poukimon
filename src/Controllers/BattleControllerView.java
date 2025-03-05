@@ -100,7 +100,7 @@ public class BattleControllerView {
             playerPokemon.getAttacks()[0].attack(playerPokemon, enemyPokemon);
             updateHealthBarEnemy();
 
-            itPlayers.start(pokemon);
+            itPlayers.start(pokemon2);
 
             new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
         });

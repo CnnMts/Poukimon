@@ -30,7 +30,11 @@ public class Pokemon {
     public int getHp() {
         return hp;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> developM
     public int getSpeed() {
         return speed;
     }
@@ -68,4 +72,8 @@ public class Pokemon {
     }
 
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> developM

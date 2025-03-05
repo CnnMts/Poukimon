@@ -24,7 +24,6 @@
     		<VBox fx:id="buttonMenu">
     			<StackPane fx:id="battle">
     			<Button text="Battle" onAction="#switchBattleScene"/>
-    			
     			</StackPane>
     			<Button text="Choice" onAction="#switchSceneChoice"/>
     			<StackPane fx:id="exit">

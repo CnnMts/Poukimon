@@ -16,13 +16,19 @@ public class TypeTools {
     }
 
     public static double getEffectiveness(Type attacker, Type... defenders) {
-        double multiplier = 1.0;
-        for (Type defender : defenders) {
-            multiplier *= typeChart.getOrDefault(attacker, new HashMap<>())
-            		.getOrDefault(defender, 1.0);
+      double totalEffectiveness = 1.0;
+      for (Type defender : defenders) {
+        Map<Type, Double> relations = typeChart.
+        		getOrDefault(attacker, new HashMap<>());
+        double typeEffectiveness = relations.getOrDefault(defender, 1.0);
+        totalEffectiveness *= typeEffectiveness;
+            System.out.println("Efficacité contre " + defender + ": " + typeEffectiveness);
         }
-        return multiplier;
+        System.out.println("Efficacité totale: " + totalEffectiveness);
+        return totalEffectiveness;
     }
+
+
 
     public static void initializeTypeRelations() {
       addRelations(Type.ACIER, new Object[][] {

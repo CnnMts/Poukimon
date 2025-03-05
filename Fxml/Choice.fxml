@@ -122,7 +122,7 @@
 							        </FXCollections>
 							    </items>
 							</ComboBox>
-							<ComboBox fx:id="listAtk" value="Attaque 4">
+							<ComboBox fx:id="listAtk" promptText="Attaque 4">
 			    				<items>
 			        				<FXCollections fx:factory="observableArrayList">
 							            <Text text="lala" />
@@ -176,6 +176,6 @@
 					</HBox>
 				</VBox>
 			</VBox>
-		</HBox>
+		</HBox>   
 	</HBox>
 </VBox>

@@ -2,29 +2,32 @@ package Competences;
 
 import Models.Attackable;
 import Models.Pokemon;
+import Models.Type;
+import Models.TypeTools;
 
 public class ToileEleck implements Attackable {
-    private Pokemon enemyPokemon;
-
-    public ToileEleck(Pokemon enemyPokemon) {
-        this.enemyPokemon = enemyPokemon;
-    }
-
-    public void setTarget(Pokemon target) {
-        this.enemyPokemon = target;
-    }
-
+	private Type type = Type.ELECTRIQUE;
     @Override
-    public void attack(Pokemon target) {
-        double damage = 15;
-        enemyPokemon.takeDamage(damage);
-        weakness();
+    public void attack(Pokemon attacker, Pokemon target) {
+        double baseDamage = 15;
+        double effectiveness = TypeTools.getEffectiveness(this.type, target.getDefensiveTypes());
+        double finalDamage = baseDamage * effectiveness;
+
+        target.takeDamage(finalDamage);
+        applyWeakness(target);
+
+        System.out.println(attacker.getName() + " utilise Toile Éleck et inflige " + finalDamage + " dégâts à " + target.getName() + " !");
     }
 
-    public int weakness() {
+    private void applyWeakness(Pokemon target) {
         if (Math.random() < 0.3) {
-            enemyPokemon.setSpeed(enemyPokemon.getSpeed() - 5);
+            target.setSpeed(target.getSpeed() - 5);
+            System.out.println(target.getName() + "'s speed has been reduced!");
         }
-        return enemyPokemon.getSpeed();
     }
+
+	@Override
+	public Type getType() {
+		return type;
+	}
 }

@@ -2,14 +2,15 @@ package Controllers;
 
 import Models.Type;
 import Models.TypeTools;
+import Pokemon.Bulbizarre;
+import Pokemon.Evoli;
+import Pokemon.Pikachu;
 import Competences.BouleElec;
 import Competences.ToileEleck;
-import Animation.PokemonAnimation;
-import Animation.BouleElecktAnimation;
 import Competences.Belier;
+import Animation.PokemonAnimation;
 import Models.Pokemon;
 import Models.Attackable;
-import Models.Defendable;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
@@ -57,108 +58,103 @@ public class BattleControllerView {
 
     PokemonAnimation itPlayers = new PokemonAnimation();
 
-
-   public void initialize() {
-    	
-    	TypeTools.initializeTypeRelations();
-        
-        BouleElec bouleElec = new BouleElec(null);
-        ToileEleck toileEleck = new ToileEleck(null);
-        Belier belier = new Belier(playerPokemon, enemyPokemon);
-
-       
-
-        playerPokemon = new Pokemon("Pikachu", new Type[]{Type.ELECTRIQUE}, 150, 30, new Attackable[]{bouleElec, toileEleck}, new Defendable[]{});
-        enemyPokemon = new Pokemon("Bulbizarre", new Type[]{Type.PLANTE}, 140, 30, new Attackable[]{}, new Defendable[]{belier});
+    public void initialize() {
+        TypeTools.initializeTypeRelations();
 
         
-        bouleElec.setTarget(enemyPokemon);
-        toileEleck.setTarget(enemyPokemon);
-        belier.setTarget(playerPokemon,enemyPokemon);
-       
+        playerPokemon = new Pikachu();
+        enemyPokemon = new Evoli();
+
+        
+
         
         PokemonName.setText(playerPokemon.getName());
         PokemonName2.setText(enemyPokemon.getName());
-        
+
         HpPokemon.setText(getPourcentageHpPlayer());
         HpPokemon2.setText(getPourcentageEnemy());
-        
-       
+
         statusText.setText(playerPokemon.getName() + " vs " + enemyPokemon.getName());
 
-        attackButton1.setText(playerPokemon.getAttacks()[0].getClass().getSimpleName());
-        attackButton2.setText(playerPokemon.getAttacks()[1].getClass().getSimpleName());
         
+        if (playerPokemon.getAttacks().length > 0) {
+            attackButton1.setText(playerPokemon.getAttacks()[0].getClass().getSimpleName());
+        }
+        if (playerPokemon.getAttacks().length > 1) {
+            attackButton2.setText(playerPokemon.getAttacks()[1].getClass().getSimpleName());
+        }
+
         
-        pokemon.setImage(new Image(getClass().getResourceAsStream("/pikachu.png")));
-        pokemon2.setImage(new Image(getClass().getResourceAsStream("/bulbizarre.png")));
+        pokemon.setImage(((Pikachu) playerPokemon).getImage());
+        pokemon2.setImage(((Evoli) enemyPokemon).getImage());
 
         playerHealthBar.setProgress(1.0);
         enemyHealthBar.setProgress(1.0);
-        
-        attackButton1.setOnAction(event -> {
-            playerPokemon.getAttacks()[0].attack(playerPokemon, enemyPokemon);
-            updateHealthBarEnemy();
 
-            itPlayers.start(pokemon2);
-
-            new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
-        });
-
-        attackButton2.setOnAction(event -> {
-            playerPokemon.getAttacks()[1].attack(playerPokemon, enemyPokemon);
-            updateHealthBarEnemy();
-            new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
-        });
-
-        defenseButton1.setOnAction(event -> {
-        	playerPokemon.getDefends()[0].defend(playerPokemon);
-            updateHealthBarPlayer();
-            updateHealthBarEnemy();
-            new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
-        });
-
-        
+       
+        configureAttackButtons();
+        configureDefendsButtons();
     }
 
-   public String getPourcentageHpPlayer() {
+  private void configureAttackButtons() {
+    attackButton1.setOnAction(event -> {
+     if (playerPokemon.getAttacks().length > 0) {
+     playerPokemon.getAttacks()[0].attack(playerPokemon, enemyPokemon);
+     updateHealthBarEnemy();
+     itPlayers.start(pokemon2);
+     new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
+     }});
+     attackButton2.setOnAction(event -> {
+     if (playerPokemon.getAttacks().length > 1) {
+     playerPokemon.getAttacks()[1].attack(playerPokemon, enemyPokemon);
+     updateHealthBarEnemy();
+     new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
+     }});
+    }
+
+  private void configureDefendsButtons() {
+	  defenseButton1.setOnAction(event -> {
+	  if (playerPokemon.getDefends().length > 0) {
+	  playerPokemon.getDefends()[0].defend(playerPokemon);
+	  updateHealthBarPlayer();
+	  }
+	  new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
+	  });
+  	  defenseButton2.setOnAction(event -> {
+	  if (playerPokemon.getDefends().length > 1) {
+	  playerPokemon.getDefends()[0].defend(playerPokemon);
+	  updateHealthBarPlayer();
+	  }
+	  new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
+	  });
+  	 }
+  
+    public String getPourcentageHpPlayer() {
         double percentage = (playerPokemon.getHp() / (double) playerPokemon.getMaxHp()) * 100;
         return String.format("%.2f%%", percentage);
     }
-    
-   public String getPourcentageEnemy() {
+
+    public String getPourcentageEnemy() {
         double percentage = (enemyPokemon.getHp() / (double) enemyPokemon.getMaxHp()) * 100;
         return String.format("%.2f%%", percentage);
-    
     }
-    
-   private void updateHealthBarPlayer() {
-        double playerHealthPercentage = (double) playerPokemon.getHp() 
-        		/ playerPokemon.getMaxHp();
+
+    private void updateHealthBarPlayer() {
+        double playerHealthPercentage = (double) playerPokemon.getHp() / playerPokemon.getMaxHp();
         animateHealthBar(playerHealthBar, playerHealthPercentage);
-        if (playerPokemon.getHp() <= 0) {
-            HpPokemon.setText("0%");
-        } else {
-            HpPokemon.setText(getPourcentageHpPlayer());
-        }
-
+        HpPokemon.setText(playerPokemon.getHp() > 0 ? getPourcentageHpPlayer() : "0%");
     }
 
-   private void updateHealthBarEnemy() {
+    private void updateHealthBarEnemy() {
         double enemyHealthPercentage = (double) enemyPokemon.getHp() / enemyPokemon.getMaxHp();
         animateHealthBar(enemyHealthBar, enemyHealthPercentage);
-        if (enemyPokemon.getHp() <= 0) {
-            HpPokemon2.setText("0%");
-        } else {
-            HpPokemon2.setText(getPourcentageEnemy());
-        }
-
-        
+        HpPokemon2.setText(enemyPokemon.getHp() > 0 ? getPourcentageEnemy() : "0%");
     }
 
-   private void animateHealthBar(ProgressBar healthBar, double targetProgress){
+    private void animateHealthBar(ProgressBar healthBar, double targetProgress) {
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(healthBar.progressProperty(), targetProgress, Interpolator.EASE_BOTH);
+        KeyValue kv = new KeyValue(healthBar.progressProperty(),
+        		targetProgress, Interpolator.EASE_BOTH);
         KeyFrame kf = new KeyFrame(Duration.millis(500), kv);
         timeline.getKeyFrames().add(kf);
         timeline.play();
@@ -169,13 +165,13 @@ public class BattleControllerView {
             statusText.setText("Enemy's turn!");
 
             new Timeline(new KeyFrame(Duration.seconds(1), e -> {
-                if (Math.random() < 1) {
-                    int damage = 20;
-                    playerPokemon.takeDamage(damage);
-                    updateHealthBarPlayer();                    
-                    itPlayers.start(pokemon);
-
-                    statusText.setText(enemyPokemon.getName() + " attacks! " + playerPokemon.getName() + " has " + playerPokemon.getHp() + " HP left");
+                if (Math.random() < 0.7) { // 70% chance d'attaquer
+                    if (enemyPokemon.getAttacks().length > 0) {
+                        enemyPokemon.getAttacks()[0].attack(enemyPokemon, playerPokemon);
+                        updateHealthBarPlayer();
+                        itPlayers.start(pokemon);
+                        statusText.setText(enemyPokemon.getName() + " attacks! " + playerPokemon.getName() + " has " + playerPokemon.getHp() + " HP left");
+                    }
                 } else {
                     enemyPokemon.heal(10);
                     updateHealthBarEnemy();
@@ -187,14 +183,14 @@ public class BattleControllerView {
 
         playerTurn = !playerTurn;
 
-        if (playerPokemon.getHp() <= 1) {
+        if (playerPokemon.getHp() <= 0) {
             statusText.setText(playerPokemon.getName() + " is KO! Enemy wins!");
             pokemon.setVisible(false);
-        } else if (enemyPokemon.getHp() <= 1) {
+        } else if (enemyPokemon.getHp() <= 0) {
             statusText.setText(enemyPokemon.getName() + " is KO! Player wins!");
             pokemon2.setVisible(false);
         } else if (!playerTurn) {
             new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
         }
     }
-    }
+}

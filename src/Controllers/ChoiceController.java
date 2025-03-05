@@ -10,6 +10,6 @@ public class ChoiceController {
 
     @FXML
     private void initialize() {
-            pokemonChoice.setImage(new Image(getClass().getResourceAsStream("/pikachu.png"))); 
+          
     }
 }

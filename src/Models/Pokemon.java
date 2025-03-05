@@ -1,6 +1,6 @@
 package Models;
 
-public class Pokemon {
+public abstract class Pokemon {
     private String name;
     protected int hp;
     protected int speed;
@@ -30,7 +30,7 @@ public class Pokemon {
     public int getHp() {
         return hp;
     }
-    
+
     public int getSpeed() {
         return speed;
     }
@@ -63,9 +63,11 @@ public class Pokemon {
     public String toString() {
         return name + " (" + hp + " HP, Types: " + java.util.Arrays.toString(types) + ")";
     }
+
     public Type[] getDefensiveTypes() {
         return types;
     }
 
-
+   
+    public abstract void useSpecialAbility();
 }

@@ -9,6 +9,8 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
@@ -19,32 +21,47 @@
         fx:controller="Controllers.BattleControllerView" stylesheets="battleStyles.css">
     <!-- Colonne de droite avec affichage de l'equipe adverse et mon equipe-->
     <right>
-        <VBox fx:id="colRight">
-            <Text fx:id='statusText'/>
-            <!-- Affichage de l'équipe Pokémon, pourrait être un autre VBox ou ListView -->
+        <VBox fx:id="colRight" spacing="10">
+            
+            <ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="ALWAYS">
+                <VBox fx:id="roundsContainer" spacing="10">
+                	<Text fx:id="statusText" text="Statut du combat"/> <!-- Recuperer -->
+                    <Label text="Round 1 - Début du combat !" style="-fx-background-color: lightgray; -fx-padding: 5px;"/>
+                    <Label text="Round 2 - Attaque spéciale !" style="-fx-background-color: lightgray; -fx-padding: 5px;"/>
+
+                </VBox>
+            </ScrollPane>
         </VBox>
     </right>
     
     <!-- Barre du bas avec compétence et sac -->
     <bottom>
-        <HBox fx:id="rowBottom" alignment="CENTER">
-            <VBox fx:id="boxAttackAndPoke" alignment="CENTER">
-	            	<HBox fx:id="HboxAtk" alignment="CENTER" spacing="30">
-		                <StackPane fx:id="attackOne">
-		                    <Button fx:id="attackButton1"  prefWidth="100" prefHeight="55"/>
-		                </StackPane>
-		                <StackPane fx:id="attackTwo">
-		                    <Button fx:id="attackButton2"  prefWidth="100" prefHeight="55"/>
-		                </StackPane>
-		                <StackPane fx:id="defenseOne">
-		                   <Button fx:id="defenseButton1" prefWidth="100" prefHeight="55" />
-		                </StackPane>
-		                <StackPane fx:id="defenseTwo">
-		                    <Button fx:id="defenseButton2"  prefWidth="100" prefHeight="55"/>
-		                </StackPane>
+        <HBox fx:id="rowBottom">
+            <VBox fx:id="boxAttackAndPoke">
+	            	<HBox fx:id="HboxAtk"  spacing="30">
+		                <VBox fx:id="attackOne">
+		                    <Button fx:id="attackButton1"/>
+		                </VBox>
+		                <VBox fx:id="attackTwo">
+		                    <Button fx:id="attackButton2"/>
+		                </VBox>
+		                <VBox fx:id="defenseOne">
+		                   <Button fx:id="defenseButton1"/>
+		                </VBox>
+		                <VBox fx:id="defenseTwo">
+		                    <Button fx:id="defenseButton2"/>
+		                </VBox>
+	                </HBox>
+	                <HBox fx:id="HboxTeam">
+	                	<StackPane fx:id="PokemonInTeam"></StackPane >
+	                	<StackPane fx:id="PokemonInTeam"></StackPane >
+	                	<StackPane fx:id="PokemonInTeam"></StackPane >
+	                	<StackPane fx:id="PokemonInTeam"></StackPane >
+	                	<StackPane fx:id="PokemonInTeam"></StackPane >
+	                	<StackPane fx:id="PokemonInTeam"></StackPane >
 	                </HBox>
            </VBox>
-           <VBox fx:id="boxBag" alignment="CENTER">
+           <VBox fx:id="boxBag">
 
            </VBox>
         </HBox>
@@ -54,28 +71,28 @@
     <left>
         <HBox fx:id="imgBack">
 
-        	<VBox fx:id="testpokemon" alignment="BOTTOM_CENTER">
-        		<HBox alignment = "CENTER" spacing="50">
-        			<Label fx:id="PokemonName" text="NomPokemon" />
-        			<Label fx:id="HpPokemon" text="Hp du pokemon" />
+        	<VBox fx:id="VBoxPokemon">
+        		<HBox fx:id="Bar" spacing="50">
+        			<Text fx:id="PokemonName" text="NomPokemon" />
+        			<Text fx:id="HpPokemon" text="Hp du pokemon" />
         		</HBox>
-	        	<HBox fx:id="test" alignment = "CENTER">
-	        		<ProgressBar fx:id="playerHealthBar" layoutX="50" layoutY="350" prefWidth="300"/>
+	        	<HBox fx:id="Bar">
+	        		<ProgressBar fx:id="playerHealthBar" layoutX="50" layoutY="350"/>
 	        	</HBox>
-	        	<VBox fx:id="test" alignment = "CENTER">
+	        	<VBox fx:id="VboxImgPokemon">
 	            	<ImageView fx:id="pokemon" fitHeight="250" fitWidth="250"
 	               	pickOnBounds="true" preserveRatio="true">
 	    			</ImageView>
 	    		</VBox>
     		</VBox>
-    		<VBox fx:id="testpokemon" alignment="CENTER" spacing="20">
-				<VBox>
-			    	<HBox fx:id="NameBar" alignment="CENTER_RIGHT" spacing="50">
-			        	<Label fx:id="PokemonName" text="NomPokemon" />
-			        	<Label fx:id="HpPokemon" text="Hp du pokemon" />
+    		<VBox fx:id="VBoxPokemon2" spacing="20">
+    		<VBox>
+			    	<HBox fx:id="NameBar" spacing="50">
+			        	<Text fx:id="PokemonName2" text="NomPokemon" />
+			        	<Text fx:id="HpPokemon2" text="Hp du pokemon" />
 			    	</HBox>
 			    	<HBox fx:id="HpBar" alignment="CENTER_RIGHT">
-			        	<ProgressBar fx:id="enemyHealthBar" layoutX="400" layoutY="350" prefWidth="300" />
+			        	<ProgressBar fx:id="enemyHealthBar" layoutX="400" layoutY="350"/>
 			    	</HBox>
 				</VBox>
 	        	<VBox fx:id="test" alignment = "CENTER">
@@ -84,7 +101,6 @@
     				</ImageView>
     			</VBox>
     		</VBox>
-
         </HBox>
     </left>
 </BorderPane>

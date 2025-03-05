@@ -8,6 +8,8 @@
 
 #rowBottom {
     -fx-pref-height: 200px; /* Garde la hauteur */
+	-fx-border-color: blue;
+	-fx-alignment: center;
 }
 
 #imgBack {
@@ -17,30 +19,60 @@
 }
 
 #boxAttackAndPoke{
-
 	-fx-Min-width: 1000;
 }
+
+#attackButton1, #attackButton2, #defenseButton1, #defenseButton2{
+	-fx-pref-width: 100;
+	-fx-pref-height: 35;
+}
+#HboxAtk{
+	-fx-padding: 20;
+	-fx-border-color: blue;
+	-fx-alignment: top-center;
+}
+#PokemonInTeam{
+	-fx-border-color: yellow;
+	-fx-pref-width: 200;
+}
+
 #boxBag{
 	-fx-Min-width: 500;
-
+	-fx-border-color: green;
+	-fx-alignment: center;
 }
-
-#attackOne{
-}
-#attackTwo{
-}
-
-#testpokemon{
+#VBoxPokemon, #VBoxPokemon2{
 	-fx-pref-width: 800px;
 }
 
-#test{
+#VBoxPokemon{
+	-fx-alignment: bottom-center;
 }
-#HpPokemon, #PokemonName{
-	-fx-text-fill: red;
+
+#VBoxPokemon2{
+	-fx-alignment: center;
+}
+
+#HboxTeam{
+	-fx-border-color: red;
+	-fx-pref-height: 125;
+}
+
+#PokemonName, #HpPokemon, #PokemonName2, #HpPokemon2{
+	-fx-fill: red;
 	-fx-font-weight: bold;
 }
+
 #NameBar, #HpBar{
 	-fx-padding: 0 35 0 0;
+	-fx-alignment: center;
+}
+
+#Bar, #VboxImgPokemon{
+	-fx-alignment: center
+}
+
+#playerHealthBar, #enemyHealthBar{
+	-fx-pref-width: 300
 }
 

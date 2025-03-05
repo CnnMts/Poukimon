@@ -4,6 +4,8 @@ import Models.Type;
 import Models.TypeTools;
 import Competences.BouleElec;
 import Competences.ToileEleck;
+import Animation.PokemonAnimation;
+import Animation.BouleElecktAnimation;
 import Competences.Belier;
 import Models.Pokemon;
 import Models.Attackable;
@@ -52,8 +54,10 @@ public class BattleControllerView {
     private Pokemon playerPokemon;
     private Pokemon enemyPokemon;
     private boolean playerTurn = true;
-    
-   
+
+    PokemonAnimation itPlayers = new PokemonAnimation();
+
+
    public void initialize() {
     	
     	TypeTools.initializeTypeRelations();
@@ -95,7 +99,9 @@ public class BattleControllerView {
         attackButton1.setOnAction(event -> {
             playerPokemon.getAttacks()[0].attack(playerPokemon, enemyPokemon);
             updateHealthBarEnemy();
-            
+
+            itPlayers.start(pokemon);
+
             new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
         });
 
@@ -166,8 +172,9 @@ public class BattleControllerView {
                 if (Math.random() < 1) {
                     int damage = 20;
                     playerPokemon.takeDamage(damage);
-                    updateHealthBarPlayer();
-                    
+                    updateHealthBarPlayer();                    
+                    itPlayers.start(pokemon);
+
                     statusText.setText(enemyPokemon.getName() + " attacks! " + playerPokemon.getName() + " has " + playerPokemon.getHp() + " HP left");
                 } else {
                     enemyPokemon.heal(10);
@@ -190,6 +197,4 @@ public class BattleControllerView {
             new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
         }
     }
-    
-    
-}
+    }

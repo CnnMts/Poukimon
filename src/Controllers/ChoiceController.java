@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -47,10 +48,12 @@ public class ChoiceController {
   @FXML private Button Add;
     
 
-    private List<Pokemon> team = new ArrayList<>();
+    protected List<Pokemon> team = new ArrayList<>();
     private ObservableList<String> pokemonList;
     private String selectedAttack;
     private HBox[] pokemonBoxes;
+    private HashMap<Pokemon, List<Attackable>> pokemonAttacks = new HashMap<>();
+
 
     @FXML
     private void initialize() {
@@ -82,6 +85,7 @@ public class ChoiceController {
             if (newPokemon != null) {
              currentPokemonData.add(newPokemon);
              Pokemon1.setUserData(currentPokemonData);
+             
                 }viewPokemon(newPokemon);
             }});    
     }
@@ -121,28 +125,50 @@ public class ChoiceController {
 
     @FXML
     public void switchBattleScene() throws IOException {
-        String selectedAttackName = listAtk.getValue();
+        String selectedAttackName1 = listAtk.getValue();
         String selectedAttackName2 = listAtk2.getValue();
-        Attackable selectedAttack1 = getAttackByName(selectedAttackName);
-        Attackable selectedAttack2 = getAttackByName(selectedAttackName2);
-        Attackable[] selectedAttacks = {selectedAttack1, selectedAttack2};
-        BattleView.switchBattleScene("/Battle.fxml", selectedAttacks,team);
+        
+        if (selectedAttackName1 != null && selectedAttackName2 != null) {
+            Attackable selectedAttack1 = getAttackByName(selectedAttackName1);
+            Attackable selectedAttack2 = getAttackByName(selectedAttackName2);
+            
+            Pokemon currentPokemon = team.get(team.size() - 1);
+            List<Attackable> attacks = pokemonAttacks.getOrDefault(currentPokemon, new ArrayList<>());
+            attacks.clear();
+            attacks.add(selectedAttack1);
+            attacks.add(selectedAttack2);
+            pokemonAttacks.put(currentPokemon, attacks);
+            System.out.println("🔄 Pokémon ajouté : " + currentPokemon.getName() + " → " + pokemonAttacks.get(currentPokemon));
+
+
+        }
+        BattleView.switchBattleScene("/Battle.fxml", team, pokemonAttacks);
     }
 
+
     private Attackable getAttackByName(String attackName) {
-        switch (attackName) {
-            case "Boule Eleckt":
-                return new BouleElec();
-            case "Toile Eleckt":
-                return new ToileEleck();
-            case "Tonnerre":
-                return new Tonnerre();
-            default:
-                return null;
+        if (attackName == null) return null;
+
+        // Liste des attaques possibles
+        HashMap<String, Attackable> attacks = new HashMap<>();
+        attacks.put("Boule Eleckt", new BouleElec()); // Corrige l'orthographe
+        attacks.put("Toile Eleckt", new ToileEleck());
+        attacks.put("Tonnerre", new Tonnerre());
+
+        if (!attacks.containsKey(attackName)) {
+            System.out.println("⚠️ Attaque inconnue : " + attackName);
+            System.out.println("📜 Attaques disponibles : " + attacks.keySet());
+            return null;
         }
+        
+        return attacks.get(attackName);
     }
+
+
+    
     private void getImgPokemon(Pokemon pokemon) {
     	 ImgPokemon.setImage(pokemon.getImage());
+    	 
     }
     private void getHpForProgress(Pokemon pokemon) {
         if (pokemon != null) {
@@ -160,12 +186,14 @@ public class ChoiceController {
         Pokemon newPokemon = getPokemonByName(selectedPokemonName);
         if (newPokemon != null && !team.contains(newPokemon)) {
             team.add(newPokemon);
+            pokemonAttacks.put(newPokemon, new ArrayList<>());
             int teamSize = team.size();
             if (teamSize <= 6) { 
                 addPokemonToHBox(teamSize - 1, newPokemon); 
             }
         }
     }
+
 
     
     private void getSpeedPokemon(Pokemon pokemon) {

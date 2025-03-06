@@ -49,12 +49,17 @@
                     </VBox>
                 </HBox>
                 <HBox fx:id="HboxTeam">
-                    <StackPane fx:id="PokemonInTeam1"></StackPane>
-                    <StackPane fx:id="PokemonInTeam2"></StackPane>
-                    <StackPane fx:id="PokemonInTeam3"></StackPane>
-                    <StackPane fx:id="PokemonInTeam4"></StackPane>
-                    <StackPane fx:id="PokemonInTeam5"></StackPane>
-                    <StackPane fx:id="PokemonInTeam6"></StackPane>
+                	
+                    <VBox fx:id="PokemonInTeam1">
+                    	<StackPane fx:id=""></StackPane>
+                    	<StackPane fx:id=""></StackPane>
+                    	
+                    </VBox>
+                    <VBox fx:id="PokemonInTeam2"></VBox>
+                    <VBox fx:id="PokemonInTeam3"></VBox>
+                    <VBox fx:id="PokemonInTeam4"></VBox>
+                    <VBox fx:id="PokemonInTeam5"></VBox>
+                    <VBox fx:id="PokemonInTeam6"></VBox>
                 </HBox>
             </VBox>
             <VBox fx:id="boxBag">

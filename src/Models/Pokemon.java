@@ -67,12 +67,19 @@ public abstract class Pokemon {
     }
 
     public String[] getAttackNames() {
+        if (attacks == null || attacks.length == 0) return new String[]{"Aucune attaque"};
         String[] names = new String[attacks.length];
         for (int i = 0; i < attacks.length; i++) {
             names[i] = attacks[i].getName();
         }
         return names;
     }
+    
+    public String getAttackNamesAsString() {
+        return String.join(", ", getAttackNames()); // Convertit le tableau en une seule chaîne lisible
+    }
+
+
     
     public String[] getDefendsNames() {
         String[] names = new String[defends.length];

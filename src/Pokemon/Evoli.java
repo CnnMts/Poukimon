@@ -1,6 +1,7 @@
 package Pokemon;
 
  
+import Competences.BouleElec;
 import Models.Attackable;
 import Models.Defendable;
 import Models.Pokemon;
@@ -11,7 +12,7 @@ public class Evoli extends Pokemon {
 
     public Evoli() {
         super("Evoli", new Type[]{Type.NORMAL}, 45, 45,
-              new Attackable[]{}, 
+              new Attackable[]{new BouleElec()}, 
               new Defendable[]{});
     }
 

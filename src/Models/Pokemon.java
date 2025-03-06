@@ -29,6 +29,18 @@ public abstract class Pokemon {
         return new Text(name);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Pokemon pokemon = (Pokemon) obj;
+        return name != null && name.equals(pokemon.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return name != null ? name.hashCode() : 0;
+    }
 
     public int getMaxHp() {
         return maxhp;

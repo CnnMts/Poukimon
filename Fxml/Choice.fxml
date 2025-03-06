@@ -57,7 +57,7 @@
 							<Text text="Types"></Text>
 						</HBox>
 						<HBox fx:id="ButtonAdd">
-							<Button fx:id="Add" text="Ajouter le pokemon"/>
+							<Button fx:id="Add" text="Ajouter le pokemon" onAction="#addPokemonToTeam"/>
 						</HBox>
 					</VBox>
 				</HBox>

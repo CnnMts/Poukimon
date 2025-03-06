@@ -5,9 +5,15 @@ import Models.TypeTools;
 import Pokemon.Bulbizarre;
 import Pokemon.Evoli;
 import Pokemon.Pikachu;
+import Views.BattleView;
 import Competences.BouleElec;
 import Competences.ToileEleck;
 import Competences.Belier;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import Animation.PokemonAnimation;
 import Models.Pokemon;
 import Models.Attackable;
@@ -21,37 +27,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 
 public class BattleControllerView {
+  @FXML private Button attackButton1, attackButton2, defenseButton1 ,
+  					   defenseButton2;
+  @FXML private ImageView pokemon, pokemon2;
+  @FXML private ProgressBar playerHealthBar, enemyHealthBar;
+  @FXML private Text PokemonName,PokemonName2, statusText,HpPokemon,
+  					 HpPokemon2;
+  @FXML StackPane PokemonInTeam1, PokemonInTeam2, PokemonInTeam3,
+  				  PokemonInTeam4, PokemonInTeam5, PokemonInTeam6 ;
 
-    @FXML
-    private Button attackButton1;
-    @FXML
-    private Button attackButton2;
-    @FXML
-    private Button defenseButton1;
-    @FXML
-    private Button defenseButton2;
-    @FXML
-    private Text statusText;
-    @FXML
-    private ImageView pokemon;
-    @FXML
-    private ImageView pokemon2;
-    @FXML
-    private ProgressBar playerHealthBar;
-    @FXML
-    private ProgressBar enemyHealthBar;
-    @FXML
-    private Text PokemonName;
-    @FXML
-    private Text PokemonName2;
-    @FXML
-    private Text HpPokemon;
-    @FXML
-    private Text HpPokemon2;
-
+    private List<Pokemon> teams = new ArrayList<>();
     private Pokemon playerPokemon;
     private Pokemon enemyPokemon;
     private boolean playerTurn = true;
@@ -69,24 +58,33 @@ public class BattleControllerView {
     public void setSelectedAttacks(Attackable[] selectedAttacks) {
         if (selectedAttacks.length > 0) {
             this.selectedAttack1 = selectedAttacks[0];
-            attackButton1.setText(selectedAttacks[0] != null ? selectedAttacks[0].getName() : "None");
+            attackButton1.setText(selectedAttacks[0] != null ? 
+            		selectedAttacks[0].getName() : "None");
         }
         if (selectedAttacks.length > 1) {
             this.selectedAttack2 = selectedAttacks[1];
-            attackButton2.setText(selectedAttacks[1] != null ? selectedAttacks[1].getName() : "None");
+            attackButton2.setText(selectedAttacks[1] != null ? 
+            		selectedAttacks[1].getName() : "None");
         }
     }
 
 
-
+    public void setTeam(List<Pokemon> team) {
+        this.teams = team;
+        if (!team.isEmpty()) {
+            playerPokemon = team.get(0);
+            PokemonName.setText(playerPokemon.getName());
+            pokemon.setImage(playerPokemon.getImage());
+            System.out.println("Team set: " + teams);  
+            showTeamOnBattle(); 
+        }
+    }
 
 
     public void initialize() {
         TypeTools.initializeTypeRelations();
-        
         playerPokemon = new Pikachu();
         enemyPokemon = new Evoli();
-
         PokemonName.setText(playerPokemon.getName());
         PokemonName2.setText(enemyPokemon.getName());
 
@@ -100,9 +98,11 @@ public class BattleControllerView {
 
         playerHealthBar.setProgress(1.0);
         enemyHealthBar.setProgress(1.0);
-
+        setTeam(teams);
+        showTeamOnBattle();
         configureAttackButtons();
         configureDefendsButtons();
+        showTeamOnBattle();
     }
 
     
@@ -173,6 +173,41 @@ public class BattleControllerView {
         timeline.getKeyFrames().add(kf);
         timeline.play();
     }
+    
+    private void showTeamOnBattle() {
+        if (teams.isEmpty()) {
+            return;
+        }
+        HashMap<Integer, StackPane> teamPositions = new HashMap<>();
+        teamPositions.put(0, PokemonInTeam1);
+        teamPositions.put(1, PokemonInTeam2);
+        teamPositions.put(2, PokemonInTeam3);
+        teamPositions.put(3, PokemonInTeam4);
+        teamPositions.put(4, PokemonInTeam5);
+        teamPositions.put(5, PokemonInTeam6);
+        for (int i = 0; i < teams.size(); i++) {
+            Pokemon currentPokemon = teams.get(i);
+            Image pokemonImage = currentPokemon.getImage();
+            ImageView pokemonImageView = new ImageView(pokemonImage);
+            pokemonImageView.setFitWidth(50);
+            pokemonImageView.setFitHeight(50);
+            pokemonImageView.setPreserveRatio(true);
+
+            StackPane currentPane = teamPositions.get(i);
+            if (currentPane != null) {
+                currentPane.getChildren().clear();
+                currentPane.getChildren().add(pokemonImageView);
+            }
+
+            Text pokemonName = new Text(currentPokemon.getName());
+            if (currentPane != null) {
+                currentPane.getChildren().add(pokemonName);
+            }
+        }
+    }
+
+
+
 
     private void round() {
         if (!playerTurn) {

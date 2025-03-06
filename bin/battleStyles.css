@@ -13,11 +13,16 @@
 }
 
 #imgBack {
-    -fx-background-image: url("fondBattletest.png");
+    -fx-background-image: url("fondTest.jpg");
     -fx-background-size: cover;
     -fx-pref-width: 1200px;
 }
 
+#MiniHpBar1, #MiniHpBar2, #MiniHpBar3, #MiniHpBar4, #MiniHpBar5, #MiniHpBar6 {
+	-fx-border-color: red;
+	-fx-pref-width: 50;
+	-fx-pref-height: 15;
+}
 #boxAttackAndPoke{
 	-fx-Min-width: 1000;
 }
@@ -56,6 +61,7 @@
 #HboxTeam{
 	-fx-border-color: red;
 	-fx-pref-height: 125;
+	-fx-alignment: center;
 }
 
 #PokemonName, #HpPokemon, #PokemonName2, #HpPokemon2{
@@ -69,9 +75,14 @@
 }
 
 #Bar, #VboxImgPokemon{
-	-fx-alignment: center
+	-fx-alignment: center;
 }
 
 #playerHealthBar, #enemyHealthBar{
-	-fx-pref-width: 300
+	-fx-pref-width: 300;
+	-fx-pref-height: 20;
+}
+
+#PokemonInTeam1, #PokemonInTeam2, #PokemonInTeam3, #PokemonInTeam4, #PokemonInTeam5, #PokemonInTeam6, {
+	-fx-pref-height: 50;
 }

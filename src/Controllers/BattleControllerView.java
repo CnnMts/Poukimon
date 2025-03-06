@@ -199,7 +199,7 @@ public class BattleControllerView {
                 currentPane.getChildren().add(pokemonImageView);
             }
 
-            Text pokemonName = new Text(currentPokemon.getName());
+            ProgressBar pokemonName = new ProgressBar(currentPokemon.getHp());
             if (currentPane != null) {
                 currentPane.getChildren().add(pokemonName);
             }

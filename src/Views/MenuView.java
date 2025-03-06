@@ -35,7 +35,7 @@ public class MenuView extends Application {
             primaryStage.setMaxHeight(800);
             primaryStage.setMaxWidth(1500);
             primaryStage.setScene(sceneMenu);
-            audioMenu();
+            //audioMenu();
             sceneMenu.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
             primaryStage.setTitle("Poukimon");
             primaryStage.show();

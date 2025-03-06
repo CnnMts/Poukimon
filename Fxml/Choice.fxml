@@ -9,7 +9,7 @@
 
 
 <VBox fx:id="VBoxMain" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="Controllers.ChoiceController" stylesheets="styles.css">
+      fx:controller="Controllers.ChoiceController" stylesheets="styles.css" spacing="50">
 
 	<HBox fx:id="HBoxMain">
 	    <HBox fx:id="TeamPoke">
@@ -17,23 +17,23 @@
     			<HBox fx:id ="NameTeam">
     				<Text text="Équipe:"></Text>
     			</HBox>
-    			<VBox fx:id ="Team" spacing ="10">
-    				<HBox fx:id="Pokemon1">
+    			<VBox fx:id ="Team" spacing ="5">
+    				<HBox fx:id="Pokemon1" spacing ="20">
     				
     				</HBox>
-    				<HBox fx:id="Pokemon2">
+    				<HBox fx:id="Pokemon2" spacing ="20">
     				
     				</HBox>
-    				<HBox fx:id="Pokemon3">
+    				<HBox fx:id="Pokemon3" spacing ="20">
     				
     				</HBox>
-    				<HBox fx:id="Pokemon4">
+    				<HBox fx:id="Pokemon4" spacing ="20">
     				
     				</HBox>
-    				<HBox fx:id="Pokemon5">
+    				<HBox fx:id="Pokemon5" spacing ="20">
     				
     				</HBox>
-    				<HBox fx:id="Pokemon6">
+    				<HBox fx:id="Pokemon6" spacing ="20">
     				
     				</HBox>
     			</VBox>
@@ -166,7 +166,7 @@
 				    					<VBox fx:id="VboxProgress">
 				    						<ProgressBar fx:id="DefendsBar" progress="0"/>
 				    					</VBox>
-				    					<Button text="play" onAction = "#switchBattleScene"/>
+				    					
 				    				</HBox>
 				    			</VBox>
 				    		</VBox>
@@ -176,4 +176,5 @@
 			</VBox>
 		</HBox>   
 	</HBox>
+	<Button fx:id="PlayButton" text="Play" onAction = "#switchBattleScene"/>
 </VBox>

@@ -48,13 +48,44 @@
                         <Button fx:id="defenseButton2"/>
                     </VBox>
                 </HBox>
-                <HBox fx:id="HboxTeam">
-                    <StackPane fx:id="PokemonInTeam1"></StackPane>
-                    <StackPane fx:id="PokemonInTeam2"></StackPane>
-                    <StackPane fx:id="PokemonInTeam3"></StackPane>
-                    <StackPane fx:id="PokemonInTeam4"></StackPane>
-                    <StackPane fx:id="PokemonInTeam5"></StackPane>
-                    <StackPane fx:id="PokemonInTeam6"></StackPane>
+                <HBox fx:id="HboxTeam" spacing="50">
+                    <VBox >
+                    	<StackPane fx:id="PokemonInTeam1"></StackPane>
+                    	<VBox fx:id="MiniHpBar1">
+                    		<ProgressBar fx:id="HpBar1" progress="1"/>
+                    	</VBox>
+                    </VBox>
+                    <VBox>
+                    	<StackPane fx:id="PokemonInTeam2"></StackPane>
+                    	<VBox fx:id="MiniHpBar2">
+                    		<ProgressBar fx:id="HpBar2" progress="1"/>
+                    	</VBox>
+                    </VBox>
+                    <VBox >
+                    	<StackPane fx:id="PokemonInTeam3"></StackPane>
+                    	<VBox fx:id="MiniHpBar3">
+                    		<ProgressBar fx:id="HpBar3" progress="1"/>
+                    	</VBox>
+                    	
+                    </VBox>
+                    <VBox >
+                    	<StackPane fx:id="PokemonInTeam4"></StackPane>
+                    	<VBox fx:id="MiniHpBar4">
+                    		<ProgressBar fx:id="HpBar4" progress="1"/>
+                    	</VBox>
+                    </VBox>
+                    <VBox >
+                    	<StackPane fx:id="PokemonInTeam5"></StackPane>
+                    	<VBox fx:id="MiniHpBar5">
+                    		<ProgressBar fx:id="HpBar5" progress="1"/>
+                    	</VBox>
+                    </VBox>
+                    <VBox >
+                    	<StackPane fx:id="PokemonInTeam6"></StackPane>
+                    	<VBox fx:id="MiniHpBar6">
+                    		<ProgressBar fx:id="HpBar6" progress="1"/>
+                    	</VBox>
+                    </VBox>
                 </HBox>
             </VBox>
             <VBox fx:id="boxBag">
@@ -72,7 +103,7 @@
                     <Text fx:id="HpPokemon" text="Hp du pokemon" />
                 </HBox>
                 <HBox fx:id="Bar2">
-                    <ProgressBar fx:id="playerHealthBar" layoutX="50" layoutY="350"/>
+                    <ProgressBar fx:id="playerHealthBar"/>
                 </HBox>
                 <VBox fx:id="VboxImgPokemon">
                     <ImageView fx:id="pokemon" fitHeight="250" fitWidth="250"

@@ -56,18 +56,37 @@ public class BattleControllerView {
     private Pokemon enemyPokemon;
     private boolean playerTurn = true;
 
+    // Ajout du champ pour l'attaque choisie
+    private Attackable selectedAttack;
+
     PokemonAnimation itPlayers = new PokemonAnimation();
+
+ // Champs pour les attaques sélectionnées
+    private Attackable selectedAttack1;
+    private Attackable selectedAttack2;
+
+    // Méthode setter pour définir l'attaque sélectionnée pour chaque bouton
+    public void setSelectedAttacks(Attackable[] selectedAttacks) {
+        if (selectedAttacks.length > 0) {
+            this.selectedAttack1 = selectedAttacks[0];
+            attackButton1.setText(selectedAttacks[0] != null ? selectedAttacks[0].getName() : "None");
+        }
+        if (selectedAttacks.length > 1) {
+            this.selectedAttack2 = selectedAttacks[1];
+            attackButton2.setText(selectedAttacks[1] != null ? selectedAttacks[1].getName() : "None");
+        }
+    }
+
+
+
+
 
     public void initialize() {
         TypeTools.initializeTypeRelations();
-
         
         playerPokemon = new Pikachu();
         enemyPokemon = new Evoli();
 
-        
-
-        
         PokemonName.setText(playerPokemon.getName());
         PokemonName2.setText(enemyPokemon.getName());
 
@@ -76,59 +95,55 @@ public class BattleControllerView {
 
         statusText.setText(playerPokemon.getName() + " vs " + enemyPokemon.getName());
 
-        
-        if (playerPokemon.getAttacks().length > 0) {
-            attackButton1.setText(playerPokemon.getAttacks()[0].getClass().getSimpleName());
-        }
-        if (playerPokemon.getAttacks().length > 1) {
-            attackButton2.setText(playerPokemon.getAttacks()[1].getClass().getSimpleName());
-        }
-
-        
         pokemon.setImage(((Pikachu) playerPokemon).getImage());
         pokemon2.setImage(((Evoli) enemyPokemon).getImage());
 
         playerHealthBar.setProgress(1.0);
         enemyHealthBar.setProgress(1.0);
 
-       
         configureAttackButtons();
         configureDefendsButtons();
     }
 
-  private void configureAttackButtons() {
-    attackButton1.setOnAction(event -> {
-     if (playerPokemon.getAttacks().length > 0) {
-     playerPokemon.getAttacks()[0].attack(playerPokemon, enemyPokemon);
-     updateHealthBarEnemy();
-     itPlayers.start(pokemon2);
-     new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
-     }});
-     attackButton2.setOnAction(event -> {
-     if (playerPokemon.getAttacks().length > 1) {
-     playerPokemon.getAttacks()[1].attack(playerPokemon, enemyPokemon);
-     updateHealthBarEnemy();
-     new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
-     }});
+    // Méthode pour configurer les boutons d'attaque
+    private void configureAttackButtons() {
+        attackButton1.setOnAction(event -> {
+            if (selectedAttack1 != null) {
+                selectedAttack1.attack(playerPokemon, enemyPokemon); 
+                updateHealthBarEnemy();
+                itPlayers.start(pokemon2);
+                new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
+            }
+        });
+
+        attackButton2.setOnAction(event -> {
+            if (selectedAttack2 != null) {
+                selectedAttack2.attack(playerPokemon, enemyPokemon);
+                updateHealthBarEnemy();
+                new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
+            }
+        });
     }
 
-  private void configureDefendsButtons() {
-	  defenseButton1.setOnAction(event -> {
-	  if (playerPokemon.getDefends().length > 0) {
-	  playerPokemon.getDefends()[0].defend(playerPokemon);
-	  updateHealthBarPlayer();
-	  }
-	  new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
-	  });
-  	  defenseButton2.setOnAction(event -> {
-	  if (playerPokemon.getDefends().length > 1) {
-	  playerPokemon.getDefends()[0].defend(playerPokemon);
-	  updateHealthBarPlayer();
-	  }
-	  new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
-	  });
-  	 }
-  
+
+    private void configureDefendsButtons() {
+        defenseButton1.setOnAction(event -> {
+            if (playerPokemon.getDefends().length > 0) {
+                playerPokemon.getDefends()[0].defend(playerPokemon);
+                updateHealthBarPlayer();
+            }
+            new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
+        });
+
+        defenseButton2.setOnAction(event -> {
+            if (playerPokemon.getDefends().length > 1) {
+                playerPokemon.getDefends()[0].defend(playerPokemon);
+                updateHealthBarPlayer();
+            }
+            new Timeline(new KeyFrame(Duration.seconds(1), e -> round())).play();
+        });
+    }
+
     public String getPourcentageHpPlayer() {
         double percentage = (playerPokemon.getHp() / (double) playerPokemon.getMaxHp()) * 100;
         return String.format("%.2f%%", percentage);
@@ -153,8 +168,7 @@ public class BattleControllerView {
 
     private void animateHealthBar(ProgressBar healthBar, double targetProgress) {
         Timeline timeline = new Timeline();
-        KeyValue kv = new KeyValue(healthBar.progressProperty(),
-        		targetProgress, Interpolator.EASE_BOTH);
+        KeyValue kv = new KeyValue(healthBar.progressProperty(), targetProgress, Interpolator.EASE_BOTH);
         KeyFrame kf = new KeyFrame(Duration.millis(500), kv);
         timeline.getKeyFrames().add(kf);
         timeline.play();

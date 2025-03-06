@@ -5,7 +5,7 @@ import Models.Pokemon;
 import Models.Type;
 import Models.TypeTools;
 
-public class BouleElec implements Attackable {
+public class Tonnerre implements Attackable {
     private Type type = Type.ELECTRIQUE;
 
     @Override
@@ -16,17 +16,17 @@ public class BouleElec implements Attackable {
     @Override
     public void attack(Pokemon attacker, Pokemon target) {
         double speed = attacker.getSpeed();
-        double baseDamage = 25 * (speed / 100) + 25;
+        double baseDamage = 40;
         double effectiveness = TypeTools.getEffectiveness(this.type, target.getDefensiveTypes());
-        System.out.println(effectiveness);
+        System.out.println("Efficacité de l'attaque : " + effectiveness);
         double finalDamage = baseDamage * effectiveness;
         target.takeDamage(finalDamage);
 
-        System.out.println(attacker.getName() + " utilise Boule Élec et inflige " + finalDamage + " dégâts à " + target.getName() + " !");
+        System.out.println(attacker.getName() + " utilise Tonnerre et inflige " + finalDamage + " dégâts à " + target.getName() + " !");
     }
 
-	@Override
-	public String getName() {
-		return "Boule Eleckt";
-	}
+    @Override
+    public String getName() {
+        return "Tonnerre";
+    }
 }

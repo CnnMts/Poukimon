@@ -1,5 +1,8 @@
 package Models;
 
+import javafx.scene.image.Image;
+import javafx.scene.text.Text;
+
 public abstract class Pokemon {
     private String name;
     protected int hp;
@@ -15,13 +18,17 @@ public abstract class Pokemon {
         this.hp = hp;
         this.speed = speed;
         this.maxhp = hp;
-        this.attacks = attacks;
-        this.defends = defends;
+        this.attacks = (attacks != null) ? attacks : new Attackable[0];
+        this.defends = (defends != null) ? defends : new Defendable[0];
     }
 
     public String getName() {
         return name;
     }
+    public Text getNameText() {
+        return new Text(name);
+    }
+
 
     public int getMaxHp() {
         return maxhp;
@@ -47,27 +54,47 @@ public abstract class Pokemon {
         return attacks;
     }
 
+    public String[] getAttackNames() {
+        String[] names = new String[attacks.length];
+        for (int i = 0; i < attacks.length; i++) {
+            names[i] = attacks[i].getName();
+        }
+        return names;
+    }
+    
+    public String[] getDefendsNames() {
+        String[] names = new String[defends.length];
+        for (int i = 0; i < defends.length; i++) {
+            names[i] = defends[i].getName();
+        }
+        return names;
+    }
+
     public Defendable[] getDefends() {
         return defends;
     }
 
     public void takeDamage(double damage) {
         this.hp -= damage;
+        if (this.hp < 0) {
+            this.hp = 0;
+        }
     }
 
     public void heal(int healing) {
         this.hp = Math.min(maxhp, this.hp + healing);
     }
 
-    @Override
-    public String toString() {
-        return name + " (" + hp + " HP, Types: " + java.util.Arrays.toString(types) + ")";
-    }
-
     public Type[] getDefensiveTypes() {
         return types;
     }
 
-   
     public abstract void useSpecialAbility();
+
+    public abstract Image getImage();
+
+    @Override
+    public String toString() {
+        return name + " (" + hp + " HP, Types: " + java.util.Arrays.toString(types) + ")";
+    }
 }

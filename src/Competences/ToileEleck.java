@@ -30,4 +30,9 @@ public class ToileEleck implements Attackable {
 	public Type getType() {
 		return type;
 	}
+
+	@Override
+	public String getName() {
+		return "Toile Eleckt";
+	}
 }

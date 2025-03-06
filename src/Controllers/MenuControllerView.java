@@ -16,18 +16,15 @@ import javafx.scene.text.Text;
 
 public class MenuControllerView{
     
-	public void switchSceneChoice() throws IOException, UnsupportedAudioFileException, LineUnavailableException, URISyntaxException {
-		MenuChoicePokemon.switchChoiceScene("/Choice.fxml");
-		callStopSound();
+	public void switchSceneChoice() {
+	    try {
+	        MenuChoicePokemon.switchChoiceScene("/Choice.fxml");
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        System.out.println("Erreur lors du changement de scène : " + e.getMessage());
+	    }
 	}
-	
-	public void callStopSound() throws UnsupportedAudioFileException, LineUnavailableException, URISyntaxException, IOException {
-		MenuChoicePokemon.stopSoundMenu();
-	}
-	
-	public void switchBattleScene() throws IOException, UnsupportedAudioFileException, LineUnavailableException, URISyntaxException {
-		BattleView.switchBattleScene("/Battle.fxml");
-		callStopSound();
-	}
+
+
 		
 }

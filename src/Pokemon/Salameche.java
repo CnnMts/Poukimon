@@ -1,26 +1,24 @@
 package Pokemon;
 
-import Competences.Belier;
 import Competences.BouleElec;
 import Competences.ToileEleck;
-import Competences.Tonnerre;
 import Models.Attackable;
 import Models.Defendable;
 import Models.Pokemon;
 import Models.Type;
 import javafx.scene.image.Image;
 
-public class Pikachu extends Pokemon {
+public class Salameche extends Pokemon {
 
-    public Pikachu() {
-        super("Pikachu", new Type[]{Type.ELECTRIQUE}, 35, 90,
-              new Attackable[]{new BouleElec(), new ToileEleck(),new Tonnerre()},
-              new Defendable[]{new Belier()});
+    public Salameche() {
+        super("Salameche", new Type[]{Type.FEU}, 35, 90,
+              new Attackable[]{new BouleElec(), new ToileEleck()},
+              new Defendable[]{});
     }
 
     @Override
     public void useSpecialAbility() {
-        System.out.println("Pikachu utilise Éclair Fou !");
+        System.out.println("Salamèche utilise Éclair Fou !");
     }
 
     public void useAttack(int attackIndex, Pokemon target) {
@@ -33,6 +31,6 @@ public class Pikachu extends Pokemon {
     }
 
     public Image getImage() {
-        return new Image(getClass().getResourceAsStream("/pikachu.png"));
+        return new Image(getClass().getResourceAsStream("/salameche.png"));
     }
 }

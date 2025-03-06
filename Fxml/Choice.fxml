@@ -9,7 +9,7 @@
 
 
 <VBox fx:id="VBoxMain" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="Controllers.MenuControllerView" stylesheets="styles.css">
+      fx:controller="Controllers.ChoiceController" stylesheets="styles.css">
 
 	<HBox fx:id="HBoxMain">
 	    <HBox fx:id="TeamPoke">
@@ -43,11 +43,11 @@
 			<VBox>
 				<HBox fx:id="ImgPoke">
 					<VBox fx:id="ImgPokeLeft">
-						<HBox fx:id="ImgPokeName">
-							<Text text="Pokemon Name"></Text>
+						<HBox fx:id="PokeName">
+							<Text fx:id="PokemonNameTitle"></Text>
 						</HBox>
 						<HBox fx:id="Img">
-							<ImageView fx:id="LePokeMon" fitHeight="250" fitWidth="250"
+							<ImageView fx:id="ImgPokemon" fitHeight="250" fitWidth="250"
                                pickOnBounds="true" preserveRatio="true">
                     		</ImageView>
 						</HBox>
@@ -62,25 +62,22 @@
 					</VBox>
 				</HBox>
 				<HBox fx:id="Bot" spacing ="40">
-					<ComboBox fx:id="listBot" value="Liste Pokémon">
+					<ComboBox fx:id="listPokemon" value="ListePokémon">
 	    				<items>
 	        				<FXCollections fx:factory="observableArrayList" >
-					            <Text text="lala" />
-					            <Text text="mama" />
-					            <Text text="nana" />
 					        </FXCollections>
 					    </items>
 					</ComboBox>
-					<ComboBox fx:id="listBot" value="Items">
+					<ComboBox fx:id="listItems" value="Items">
 	    				<items>
 	        				<FXCollections fx:factory="observableArrayList">
-					            <Text text="lala" />
+					            <Text text="" />
 					            <Text text="mama" />
 					            <Text text="nana" />
 					        </FXCollections>
 					    </items>
 					</ComboBox>
-					<ComboBox fx:id="listBot" value="Abilitée">
+					<ComboBox fx:id="listAbilities" value="Abilitée">
 	    				<items>
 	        				<FXCollections fx:factory="observableArrayList">
 					            <Text text="lala" />
@@ -104,7 +101,7 @@
 							        </FXCollections>
 							    </items>
 							</ComboBox>
-							<ComboBox fx:id="listAtk" value="Attaque 2">
+							<ComboBox fx:id="listAtk2" value="Attaque 2">
 			    				<items>
 			        				<FXCollections fx:factory="observableArrayList">
 							            <Text text="lala" />
@@ -113,7 +110,7 @@
 							        </FXCollections>
 							    </items>
 							</ComboBox>
-							<ComboBox fx:id="listAtk" value="Attaque 3">
+							<ComboBox fx:id="listAtk3" value="Attaque 3">
 			    				<items>
 			        				<FXCollections fx:factory="observableArrayList">
 							            <Text text="lala" />
@@ -122,7 +119,7 @@
 							        </FXCollections>
 							    </items>
 							</ComboBox>
-							<ComboBox fx:id="listAtk" promptText="Attaque 4">
+							<ComboBox fx:id="listAtk4" promptText="Attaque 4">
 			    				<items>
 			        				<FXCollections fx:factory="observableArrayList">
 							            <Text text="lala" />
@@ -169,6 +166,7 @@
 				    					<VBox fx:id="VboxProgress">
 				    						<ProgressBar fx:id="DefendsBar" progress="0"/>
 				    					</VBox>
+				    					<Button text="play" onAction = "#switchBattleScene"/>
 				    				</HBox>
 				    			</VBox>
 				    		</VBox>

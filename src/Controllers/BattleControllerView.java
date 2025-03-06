@@ -56,16 +56,16 @@ public class BattleControllerView {
     private Pokemon enemyPokemon;
     private boolean playerTurn = true;
 
-    // Ajout du champ pour l'attaque choisie
+   
     private Attackable selectedAttack;
 
     PokemonAnimation itPlayers = new PokemonAnimation();
 
- // Champs pour les attaques sélectionnées
+ 
     private Attackable selectedAttack1;
     private Attackable selectedAttack2;
 
-    // Méthode setter pour définir l'attaque sélectionnée pour chaque bouton
+    
     public void setSelectedAttacks(Attackable[] selectedAttacks) {
         if (selectedAttacks.length > 0) {
             this.selectedAttack1 = selectedAttacks[0];
@@ -105,7 +105,7 @@ public class BattleControllerView {
         configureDefendsButtons();
     }
 
-    // Méthode pour configurer les boutons d'attaque
+    
     private void configureAttackButtons() {
         attackButton1.setOnAction(event -> {
             if (selectedAttack1 != null) {

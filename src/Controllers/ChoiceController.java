@@ -124,10 +124,10 @@ public class ChoiceController {
         Attackable selectedAttack1 = getAttackByName(selectedAttackName);
         Attackable selectedAttack2 = getAttackByName(selectedAttackName2);
 
-        // Créez un tableau d'attaques
+        
         Attackable[] selectedAttacks = {selectedAttack1, selectedAttack2};
 
-        // Passez le tableau d'attaques à BattleView
+        
         BattleView.switchBattleScene("/Battle.fxml", selectedAttacks);
     }
 

@@ -13,7 +13,6 @@ public class BattleView {
 	    Parent newRoot = fxmlLoader.load();
 	    BattleControllerView controller = fxmlLoader.getController();
 
-	    // Passez le tableau d'attaques au contrôleur
 	    controller.setSelectedAttacks(selectedAttacks);
 
 	    Scene newScene = new Scene(newRoot, 1500, 800);

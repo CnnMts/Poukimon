@@ -3,7 +3,6 @@ package Pokemon;
  
 import Competences.BouleElec;
 import Models.Attackable;
-import Models.Defendable;
 import Models.Pokemon;
 import Models.Type;
 import javafx.scene.image.Image;
@@ -12,8 +11,7 @@ public class Evoli extends Pokemon {
 
     public Evoli() {
         super("Evoli", new Type[]{Type.NORMAL}, 45, 45,
-              new Attackable[]{new BouleElec()}, 
-              new Defendable[]{});
+              new Attackable[]{new BouleElec()});
     }
 
     @Override

@@ -1,8 +1,10 @@
 package Pokemon;
 
  
+import Competences.MegaFouet;
+import Competences.PoudreToxik;
+import Competences.TranchHerbe;
 import Models.Attackable;
-import Models.Defendable;
 import Models.Pokemon;
 import Models.Type;
 import javafx.scene.image.Image;
@@ -11,8 +13,7 @@ public class Bulbizarre extends Pokemon {
 
     public Bulbizarre() {
         super("Bulbizarre", new Type[]{Type.PLANTE, Type.POISON}, 45, 45,
-              new Attackable[]{}, 
-              new Defendable[]{});
+              new Attackable[]{new MegaFouet(), new TranchHerbe(),new PoudreToxik()});
     }
 
     @Override

@@ -5,7 +5,6 @@ import Competences.BouleElec;
 import Competences.ToileEleck;
 import Competences.Tonnerre;
 import Models.Attackable;
-import Models.Defendable;
 import Models.Pokemon;
 import Models.Type;
 import javafx.scene.image.Image;
@@ -14,8 +13,7 @@ public class Pikachu extends Pokemon {
 
     public Pikachu() {
         super("Pikachu", new Type[]{Type.ELECTRIQUE}, 35, 90,
-              new Attackable[]{new BouleElec(), new ToileEleck(),new Tonnerre()},
-              new Defendable[]{new Belier()});
+              new Attackable[]{new BouleElec(), new ToileEleck(),new Tonnerre(), new Belier()});
     }
 
     @Override

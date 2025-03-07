@@ -12,8 +12,11 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import Competences.Belier;
 import Competences.BouleElec;
+import Competences.MegaFouet;
+import Competences.PoudreToxik;
 import Competences.ToileEleck;
 import Competences.Tonnerre;
+import Competences.TranchHerbe;
 import Models.Attackable;
 import Models.Pokemon;
 import Pokemon.Bulbizarre;
@@ -96,11 +99,8 @@ public class ChoiceController {
             PokemonNameTitle.setText(pokemon.getName());
             listPokemon.setPromptText(pokemon.getName());
             String[] attackNamesArray = pokemon.getAttackNames();
-            String[] defendNameArray = pokemon.getDefendsNames();
             List<String> attackNamesList = new ArrayList<>(Arrays.
             		asList(attackNamesArray));
-            List<String> defendNameList = new ArrayList<>(Arrays.
-            		asList(defendNameArray));
             listAtk.getItems().setAll(attackNamesList);
             listAtk2.getItems().setAll(attackNamesList);
             getHpForProgress(pokemon);
@@ -142,24 +142,23 @@ public class ChoiceController {
 
 
         }
-        BattleView.switchBattleScene("/Battle.fxml", team, pokemonAttacks);
+        BattleView.switchBattleScene("/Battle.fxml", team,  pokemonAttacks);
     }
 
 
     private Attackable getAttackByName(String attackName) {
         if (attackName == null) return null;
 
-        // Liste des attaques possibles
+       
         HashMap<String, Attackable> attacks = new HashMap<>();
-        attacks.put("Boule Eleckt", new BouleElec()); // Corrige l'orthographe
+        attacks.put("Boule Eleckt", new BouleElec());
         attacks.put("Toile Eleckt", new ToileEleck());
         attacks.put("Tonnerre", new Tonnerre());
+        attacks.put("Mégafouet", new MegaFouet());
+        attacks.put("Tranch’Herbe", new TranchHerbe());
+        attacks.put("Poudre Toxik", new PoudreToxik());
+        attacks.put("Belier", new Belier());
 
-        if (!attacks.containsKey(attackName)) {
-            System.out.println("⚠️ Attaque inconnue : " + attackName);
-            System.out.println("📜 Attaques disponibles : " + attacks.keySet());
-            return null;
-        }
         
         return attacks.get(attackName);
     }
@@ -185,14 +184,27 @@ public class ChoiceController {
         String selectedPokemonName = listPokemon.getValue();
         Pokemon newPokemon = getPokemonByName(selectedPokemonName);
         if (newPokemon != null && !team.contains(newPokemon)) {
+            String selectedAttackName1 = listAtk.getValue();
+            String selectedAttackName2 = listAtk2.getValue();
+
+            if (selectedAttackName1 != null && selectedAttackName2 != null) {
+                Attackable selectedAttack1 = getAttackByName(selectedAttackName1);
+                Attackable selectedAttack2 = getAttackByName(selectedAttackName2);
+
+                List<Attackable> attacks = new ArrayList<>();
+                attacks.add(selectedAttack1);
+                attacks.add(selectedAttack2);
+                pokemonAttacks.put(newPokemon, attacks);
+            }
+
             team.add(newPokemon);
-            pokemonAttacks.put(newPokemon, new ArrayList<>());
             int teamSize = team.size();
-            if (teamSize <= 6) { 
-                addPokemonToHBox(teamSize - 1, newPokemon); 
+            if (teamSize <= 6) {
+                addPokemonToHBox(teamSize - 1, newPokemon);
             }
         }
     }
+
 
 
     

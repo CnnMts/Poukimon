@@ -10,21 +10,24 @@ public abstract class Pokemon {
     private int maxhp;
     private Type[] types;
     private Attackable[] attacks;
-    private Defendable[] defends;
+    private boolean canAttack = true;
+    private double attack;
+    private double maxAttack;
 
-    public Pokemon(String name, Type[] types, int hp, int speed, Attackable[] attacks, Defendable[] defends) {
+    public Pokemon(String name, Type[] types, int hp, int speed,
+                    Attackable[] attacks) {
         this.name = name;
         this.types = types;
         this.hp = hp;
         this.speed = speed;
         this.maxhp = hp;
         this.attacks = (attacks != null) ? attacks : new Attackable[0];
-        this.defends = (defends != null) ? defends : new Defendable[0];
     }
 
     public String getName() {
         return name;
     }
+
     public Text getNameText() {
         return new Text(name);
     }
@@ -74,24 +77,11 @@ public abstract class Pokemon {
         }
         return names;
     }
-    
+
     public String getAttackNamesAsString() {
-        return String.join(", ", getAttackNames()); // Convertit le tableau en une seule chaîne lisible
+        return String.join(", ", getAttackNames());
     }
 
-
-    
-    public String[] getDefendsNames() {
-        String[] names = new String[defends.length];
-        for (int i = 0; i < defends.length; i++) {
-            names[i] = defends[i].getName();
-        }
-        return names;
-    }
-
-    public Defendable[] getDefends() {
-        return defends;
-    }
 
     public void takeDamage(double damage) {
         this.hp -= damage;
@@ -111,6 +101,26 @@ public abstract class Pokemon {
     public abstract void useSpecialAbility();
 
     public abstract Image getImage();
+
+    public boolean isCanAttack() {
+        return canAttack;
+    }
+
+    public void reduceAttack(double factor) {
+        this.attack = this.maxAttack * factor;
+    }
+
+    public void resetAttack() {
+        this.attack = this.maxAttack;
+    }
+
+    public void setCanAttack(boolean canAttack) {
+        this.canAttack = canAttack;
+    }
+
+    public void applyStatus(StatusEffect status) {
+        status.applyEffect(this);
+    }
 
     @Override
     public String toString() {

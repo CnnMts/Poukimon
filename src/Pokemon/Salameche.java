@@ -3,7 +3,6 @@ package Pokemon;
 import Competences.BouleElec;
 import Competences.ToileEleck;
 import Models.Attackable;
-import Models.Defendable;
 import Models.Pokemon;
 import Models.Type;
 import javafx.scene.image.Image;
@@ -12,8 +11,7 @@ public class Salameche extends Pokemon {
 
     public Salameche() {
         super("Salameche", new Type[]{Type.FEU}, 35, 90,
-              new Attackable[]{new BouleElec(), new ToileEleck()},
-              new Defendable[]{});
+              new Attackable[]{new BouleElec(), new ToileEleck()});
     }
 
     @Override

@@ -22,9 +22,8 @@
         <VBox fx:id="colRight" spacing="10">
             <ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="ALWAYS">
                 <VBox fx:id="roundsContainer" spacing="10">
-                    <Text fx:id="statusText" text="Statut du combat"/> <!-- Recuperer -->
-                    <Label text="Round 1 - Début du combat !" style="-fx-background-color: lightgray; -fx-padding: 5px;"/>
-                    <Label text="Round 2 - Attaque spéciale !" style="-fx-background-color: lightgray; -fx-padding: 5px;"/>
+                    <Text fx:id="statusText" text="Statut du combat"/>
+                    <Label fx:id="roundLabel" text="Round 1 - Début du combat !" style="-fx-background-color: lightgray; -fx-padding: 5px;"/>
                 </VBox>
             </ScrollPane>
         </VBox>
@@ -66,7 +65,7 @@
                     	<VBox fx:id="MiniHpBar3">
                     		<ProgressBar fx:id="HpBar3" progress="1"/>
                     	</VBox>
-                    	
+
                     </VBox>
                     <VBox >
                     	<StackPane fx:id="PokemonInTeam4"></StackPane>

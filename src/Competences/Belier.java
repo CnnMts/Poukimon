@@ -1,33 +1,20 @@
 package Competences;
 
-import Models.Defendable;
+import Models.Attackable;
 import Models.Pokemon;
 import Models.Type;
 
-public class Belier implements Defendable {
-    private Pokemon enemyPokemon;
-    private Pokemon playerPokemon;
+public class Belier implements Attackable {
     private Type type = Type.NORMAL;
-
     
-    public Belier() {
-        this.enemyPokemon = null;
-        this.playerPokemon = null;
-    }
-
-    public void setTarget(Pokemon target, Pokemon attacker) {
-        this.enemyPokemon = target;
-        this.playerPokemon = attacker;
-    }
-
     @Override
-    public void defend(Pokemon target) {
-        if (enemyPokemon == null || playerPokemon == null) {
-            throw new IllegalStateException("Targets are not set.");
-        }
+	public void attack(Pokemon attacker, Pokemon target) {
         double damage = 20;
-        enemyPokemon.takeDamage(damage);
-        playerPokemon.takeDamage(damage - 8);
+       target.takeDamage(damage);
+       System.out.println("cc");
+       System.out.println(target);
+       attacker.takeDamage(damage - 8);
+       System.out.println(attacker);
     }
 
     @Override
@@ -39,4 +26,6 @@ public class Belier implements Defendable {
     public String getName() {
         return "Belier";
     }
+		
 }
+

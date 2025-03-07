@@ -29,6 +29,9 @@ public class Salameche extends Pokemon {
     }
 
     public Image getImage() {
-        return new Image(getClass().getResourceAsStream("/salameche.png"));
+        return new Image(getClass().getResourceAsStream("/charmander_face.png"));
+    }
+    public Image getImageReverse() {
+        return new Image(getClass().getResourceAsStream("/charmander_back.png"));
     }
 }

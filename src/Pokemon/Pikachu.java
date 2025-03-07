@@ -31,6 +31,9 @@ public class Pikachu extends Pokemon {
     }
 
     public Image getImage() {
-        return new Image(getClass().getResourceAsStream("/pikachu.png"));
+        return new Image(getClass().getResourceAsStream("/pikachu_face.png"));
+    }
+    public Image getImageReverse() {
+        return new Image(getClass().getResourceAsStream("/pikachu_back.png"));
     }
 }

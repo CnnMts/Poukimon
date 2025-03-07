@@ -101,6 +101,7 @@ public abstract class Pokemon {
     public abstract void useSpecialAbility();
 
     public abstract Image getImage();
+    public abstract Image getImageReverse();
 
     public boolean isCanAttack() {
         return canAttack;

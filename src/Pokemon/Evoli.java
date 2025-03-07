@@ -28,6 +28,10 @@ public class Evoli extends Pokemon {
         }
     }
     public Image getImage() {
-        return new Image(getClass().getResourceAsStream("/evoli.png"));
+        return new Image(getClass().getResourceAsStream("/eevee_face.png"));
+    }
+    
+    public Image getImageReverse() {
+        return new Image(getClass().getResourceAsStream("/eevee_back.png"));
     }
 }

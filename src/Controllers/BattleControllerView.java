@@ -49,7 +49,7 @@ public class BattleControllerView {
         if (!playerTeam.isEmpty()) {
             playerPokemon = playerTeam.get(0);
             PokemonName.setText(playerPokemon.getName());
-            pokemon.setImage(playerPokemon.getImage());
+            pokemon.setImage(playerPokemon.getImageReverse());
             updateHealthBar(playerHealthBar, playerPokemon, HpPokemon);
             showTeamOnBattle();
         }
@@ -160,7 +160,7 @@ public class BattleControllerView {
         if (newPokemon != playerPokemon) {
             playerPokemon = newPokemon;
             PokemonName.setText(playerPokemon.getName());
-            pokemon.setImage(playerPokemon.getImage());
+            pokemon.setImage(playerPokemon.getImageReverse());
             updateHealthBar(playerHealthBar, playerPokemon, HpPokemon);
             setSelectedAttacks(pokemonAttacksMap.getOrDefault(playerPokemon, new ArrayList<>()));
             nextTurn();

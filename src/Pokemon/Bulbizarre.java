@@ -30,6 +30,10 @@ public class Bulbizarre extends Pokemon {
         }
     }
     public Image getImage() {
-        return new Image(getClass().getResourceAsStream("/bulbizarre.png"));
+        return new Image(getClass().getResourceAsStream("/bulbasaur_face.png"));
+    }
+    
+    public Image getImageReverse() {
+        return new Image(getClass().getResourceAsStream("/bulbasaur_back.png"));
     }
 }

@@ -27,7 +27,8 @@ public class Belier implements Attackable {
     @Override
     public double getDamage(Pokemon attacker, Pokemon target) {
         double baseDamage = 20;
-        double effectiveness = TypeTools.getEffectiveness(this.type, target.getDefensiveTypes());
+        double effectiveness = 
+        		TypeTools.getEffectiveness(this.type, target.getDefensiveTypes());
         return baseDamage * effectiveness;
     }
 

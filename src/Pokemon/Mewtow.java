@@ -14,7 +14,8 @@ public class Mewtow extends Pokemon {
 
     public Mewtow() {
         super("Mewtwo", new Type[]{Type.PSY}, 106, 130,
-              new Attackable[]{new ExtensionTerritoire(), new Belier(),new MitraPoing(), new Plaquage()});
+              new Attackable[]{new ExtensionTerritoire(), 
+              		new Belier(),new MitraPoing(), new Plaquage()});
     }
 
     @Override

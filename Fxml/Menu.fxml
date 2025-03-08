@@ -22,7 +22,8 @@
     	</StackPane>
     	<HBox fx:id="HboxButton" alignment="CENTER">
     		<VBox fx:id="buttonMenu" spacing="20">
-    			<Button fx:id="ButtonMenu" text="Play" onAction="#switchSceneChoice"/>
+    			<Button fx:id="ButtonMenu" text="Play" 
+    			onAction="#switchSceneChoice"/>
     			<StackPane fx:id="exit">
     			<Button fx:id="ButtonMenu" text="Exit"/>
     			</StackPane>

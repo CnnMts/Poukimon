@@ -15,7 +15,8 @@ public class Charmander extends Pokemon {
 
     public Charmander() {
         super("Charmander", new Type[]{Type.FEU}, 39,65,
-              new Attackable[]{new LanceFlamme(), new Flemme(), new Dé20(), new Belier()});
+              new Attackable[]{new LanceFlamme(), new Flemme(), 
+              		new Dé20(), new Belier()});
     }
 
     @Override

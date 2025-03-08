@@ -79,7 +79,8 @@ public abstract class Pokemon {
     }
 
     public String[] getAttackNames() {
-        if (attacks == null || attacks.length == 0) return new String[]{"Aucune attaque"};
+        if (attacks == null || attacks.length == 0) 
+        	return new String[]{"Aucune attaque"};
         String[] names = new String[attacks.length];
         for (int i = 0; i < attacks.length; i++) {
             names[i] = attacks[i].getName();
@@ -145,7 +146,8 @@ public abstract class Pokemon {
 
     @Override
     public String toString() {
-        return name + " (" + hp + " HP, Types: " + java.util.Arrays.toString(types) + ")";
+        return name + " (" + hp + " HP, Types: " 
+    + java.util.Arrays.toString(types) + ")";
     }
 
     public void applyStatus(StatusEffect status) {

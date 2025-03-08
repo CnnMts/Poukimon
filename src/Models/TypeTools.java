@@ -4,13 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TypeTools {
-    private static final Map<Type, Map<Type, Double>> typeChart = new HashMap<>();
+    private static final Map<Type, Map<Type, Double>> typeChart = 
+    		new HashMap<>();
 
     static {
         initializeTypeRelations();
     }
 
-    public static void addTypeRelation(Type attacker, Type defender, double effectiveness) {
+    public static void addTypeRelation(Type attacker, Type defender, 
+    		double effectiveness) {
         typeChart.computeIfAbsent(attacker, k -> new HashMap<>())
         .put(defender, effectiveness);
     }

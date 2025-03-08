@@ -14,7 +14,8 @@ public class Onix extends Pokemon {
 
     public Onix () {
         super("Onix ", new Type[]{Type.ROCHE, Type.SOL}, 35, 70,
-              new Attackable[]{new Dé20(),new Belier(),new Plaquage(), new SpaceCake()});
+              new Attackable[]{new Dé20(),new Belier(),
+              		new Plaquage(), new SpaceCake()});
     }
 
     @Override

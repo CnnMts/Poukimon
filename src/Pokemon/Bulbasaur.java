@@ -15,7 +15,8 @@ public class Bulbasaur extends Pokemon {
 
     public Bulbasaur() {
         super("Bulbizarre", new Type[]{Type.PLANTE, Type.POISON}, 45, 45,
-              new Attackable[]{new MegaFouet(), new TranchHerbe(),new PoudreToxik(), new Plaquage()});
+              new Attackable[]{new MegaFouet(), new TranchHerbe(),
+              		new PoudreToxik(), new Plaquage()});
     }
 
     @Override

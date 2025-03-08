@@ -15,21 +15,7 @@ public class ParalysieAnimation {
     @FXML
     private StackPane test;
 
-    private int numParticules = 20; // Nombre de particules
-
-    public void initialize(ImageView player, StackPane paneParticles) {
-        if (paneParticles != null) {
-            System.out.println("StackPane correctement initialisé");
-        } else {
-            System.out.println("StackPane n'a pas été initialisé.");
-        }
-
-        if (player != null) {
-            System.out.println("ImageView correctement initialisé");
-        } else {
-            System.out.println("ImageView n'a pas été initialisé.");
-        }
-    }
+    private int numParticules = 20;
 
     public void start(ImageView player, StackPane test) {
         TranslateTransition translateTransition = new TranslateTransition();
@@ -48,42 +34,38 @@ public class ParalysieAnimation {
     }
 
     private void createLightning(ImageView player, StackPane test) {
-        Random rand = new Random();
-        Label lightning = new Label("⚡");
-        lightning.setStyle("-fx-font-size: 40px; -fx-text-fill: yellow;");
-        if (test == null) {
-            System.out.println("Le conteneur 'paneParticles' n'est pas initialisé.");
-            return;
-        }
+      Label lightning = createLightningLabel(player);
+      test.getChildren().add(lightning);
+      playLightningTransitions(lightning);
+  }
 
-        double playerCenterX = player.getLayoutX() + player.getFitWidth() / 2;
-        double playerCenterY = player.getLayoutY() + player.getFitHeight() / 2;
-        lightning.setLayoutX(playerCenterX);
-        lightning.setLayoutY(playerCenterY);
-        test.getChildren().add(lightning);
-        TranslateTransition moveTransition = new TranslateTransition();
-        moveTransition.setNode(lightning);
-        moveTransition.setCycleCount(1);
-        moveTransition.setDuration(Duration.millis(800));
+  private Label createLightningLabel(ImageView player) {
+      Label lightning = new Label("⚡");
+      lightning.setStyle("-fx-font-size: 40px; -fx-text-fill: yellow;");
+      double playerCenterX = player.getLayoutX() + player.getFitWidth() / 2;
+      double playerCenterY = player.getLayoutY() + player.getFitHeight() / 2;
+      lightning.setLayoutX(playerCenterX);
+      lightning.setLayoutY(playerCenterY);
+      return lightning;
+  }
 
-      
-        double moveX = rand.nextInt(61) - 30;
-        double moveY = rand.nextInt(61) - 30;
-
-        moveTransition.setByX(moveX);
-        moveTransition.setByY(moveY);
-
-        // Animation de disparition progressive
-        FadeTransition fadeTransition = new FadeTransition(Duration.millis(800), lightning); // Durée d'animation augmentée à 800ms
-        fadeTransition.setFromValue(1.0);
-        fadeTransition.setToValue(0.0);
-
-        // Suppression de l'éclair après disparition
-        fadeTransition.setOnFinished(e -> test.getChildren().remove(lightning));
-
-        // Lancer les animations en même temps
-        moveTransition.play();
-        fadeTransition.play();
-    }
+  private void playLightningTransitions(Label lightning) {
+      Random rand = new Random();
+      TranslateTransition moveTransition = new TranslateTransition();
+      moveTransition.setNode(lightning);
+      moveTransition.setCycleCount(1);
+      moveTransition.setDuration(Duration.millis(800));
+      double moveX = rand.nextInt(61) - 30;
+      double moveY = rand.nextInt(61) - 30;
+      moveTransition.setByX(moveX);
+      moveTransition.setByY(moveY);
+      FadeTransition fadeTransition = 
+      		new FadeTransition(Duration.millis(800), lightning);
+      fadeTransition.setFromValue(1.0);
+      fadeTransition.setToValue(0.0);
+      fadeTransition.setOnFinished(e -> test.getChildren().remove(lightning));
+      moveTransition.play();
+      fadeTransition.play();
+  }
 
 }

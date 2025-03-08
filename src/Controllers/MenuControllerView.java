@@ -21,7 +21,8 @@ public class MenuControllerView{
 	        MenuChoicePokemon.switchChoiceScene("/Choice.fxml");
 	    } catch (IOException e) {
 	        e.printStackTrace();
-	        System.out.println("Erreur lors du changement de scène : " + e.getMessage());
+	        System.out.println("Erreur lors du changement de scène : " 
+	        + e.getMessage());
 	    }
 	}
 

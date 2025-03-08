@@ -14,7 +14,8 @@ public class Suicune extends Pokemon {
 
     public Suicune () {
         super("Suicune ", new Type[]{Type.EAU}, 100, 85,
-              new Attackable[]{new HydroCanon(), new Belier(), new TranchHerbe(), new Plaquage()});
+              new Attackable[]{new HydroCanon(), new Belier(), 
+              		new TranchHerbe(), new Plaquage()});
     }
 
     @Override

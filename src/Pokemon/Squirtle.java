@@ -15,7 +15,8 @@ public class Squirtle extends Pokemon {
 
     public Squirtle () {
         super("Squirtle ", new Type[]{Type.EAU}, 44, 43,
-              new Attackable[]{new HydroCanon(), new Flemme(), new ExtensionTerritoire(), new SpaceCake(), new Belier()});
+              new Attackable[]{new HydroCanon(), new Flemme(), 
+              		new ExtensionTerritoire(), new SpaceCake(), new Belier()});
     }
 
     @Override

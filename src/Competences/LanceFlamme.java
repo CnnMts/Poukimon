@@ -38,7 +38,8 @@ public class LanceFlamme implements Attackable {
     public double getDamage(Pokemon attacker, Pokemon target) {
         double speed = attacker.getSpeed(); 
         double baseDamage = 25 * (speed / 100) + 25; 
-        double effectiveness = TypeTools.getEffectiveness(this.type, target.getDefensiveTypes());
+        double effectiveness = 
+        		TypeTools.getEffectiveness(this.type, target.getDefensiveTypes());
         return baseDamage * effectiveness; 
     }
 }

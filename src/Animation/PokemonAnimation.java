@@ -14,7 +14,6 @@ public class PokemonAnimation {
         translateTransition.setDuration(Duration.millis(100));  
         translateTransition.setFromX(0); 
         translateTransition.setToX(5);   
-        
         translateTransition.play();
     }
 }

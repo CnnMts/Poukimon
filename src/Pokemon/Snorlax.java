@@ -15,7 +15,8 @@ public class Snorlax extends Pokemon {
 
     public Snorlax() {
         super("Ronflex", new Type[]{Type.NORMAL}, 160, 30,
-              new Attackable[]{new SpaceCake(), new Plaquage(), new BouleElec(), new Flemme()});
+              new Attackable[]{new SpaceCake(), new Plaquage(), 
+              		new BouleElec(), new Flemme()});
     }
 
     @Override

@@ -16,14 +16,17 @@
 <?import javafx.scene.image.Image?>
 
 <BorderPane fx:id="backgroundBattle" xmlns:fx="http://javafx.com/fxml"
-        fx:controller="Controllers.BattleControllerView" stylesheets="battleStyles.css">
+        fx:controller="Controllers.BattleControllerView" 
+        stylesheets="battleStyles.css">
     <!-- Colonne de droite avec affichage de l'equipe adverse et mon equipe-->
     <right>
         <VBox fx:id="colRight" spacing="10">
-            <ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="ALWAYS">
+            <ScrollPane fx:id="scrollPane" fitToWidth="true" 
+            hbarPolicy="NEVER" vbarPolicy="ALWAYS">
                 <VBox fx:id="roundsContainer" spacing="10">
                     <Text fx:id="statusText" text="Statut du combat"/>
-                    <Label fx:id="roundLabel" text="Round 1 - Début du combat !" style="-fx-background-color: lightgray; -fx-padding: 5px;"/>
+                    <Label fx:id="roundLabel" text="Round 1 - Début du combat !" 
+                    style="-fx-background-color: lightgray; -fx-padding: 5px;"/>
                 </VBox>
             </ScrollPane>
         </VBox>
@@ -88,16 +91,6 @@
 	                </HBox>
 	            </VBox>
 	            <VBox fx:id="boxBag">
-<<<<<<< HEAD
-	            		<HBox fx:id="HboxUseObject1">
-							<Button fx:id="Object1" text="Objet 1" />
-						</HBox>
-						<HBox fx:id="HboxUseObject2">
-							<Button fx:id="Objetc2" text="Objet 2"/>
-						</HBox>
-	                <!-- Add content for the bag here -->
-	            </VBox>
-=======
                         <HBox fx:id="HboxUseObject1">
                             <Button fx:id="Object1" onAction="#handleUseBaie"/>
                         </HBox>
@@ -106,7 +99,7 @@
                         </HBox>
                     <!-- Add content for the bag here -->
                 </VBox> 
->>>>>>> main
+
 	        </HBox>
 	    </bottom>
 
@@ -134,7 +127,8 @@
                         <Text fx:id="HpPokemon2" text="Hp du pokemon" />
                     </HBox>
                     <HBox fx:id="HpBar" alignment="CENTER_RIGHT">
-                        <ProgressBar fx:id="enemyHealthBar" layoutX="400" layoutY="350"/>
+                        <ProgressBar fx:id="enemyHealthBar" layoutX="400" 
+                        layoutY="350"/>
                     </HBox>
                 </VBox>
 

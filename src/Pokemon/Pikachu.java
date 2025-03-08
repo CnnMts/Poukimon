@@ -13,7 +13,8 @@ public class Pikachu extends Pokemon {
 
     public Pikachu() {
         super("Pikachu", new Type[]{Type.ELECTRIQUE}, 35, 90,
-              new Attackable[]{new BouleElec(), new ToileEleck(),new Tonnerre(), new Belier()});
+              new Attackable[]{new BouleElec(), new ToileEleck(),
+              		new Tonnerre(), new Belier()});
     }
 
     @Override

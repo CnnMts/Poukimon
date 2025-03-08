@@ -15,7 +15,8 @@ public class Evee extends Pokemon {
 
     public Evee() {
         super("Evoli", new Type[]{Type.NORMAL}, 55, 55,
-              new Attackable[]{new Belier(), new Plaquage(), new Flemme(), new MitraPoing()});
+              new Attackable[]{new Belier(), new Plaquage(), 
+              		new Flemme(), new MitraPoing()});
     }
 
     @Override

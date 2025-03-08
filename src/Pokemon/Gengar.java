@@ -14,7 +14,8 @@ public class Gengar extends Pokemon {
 
     public Gengar() {
         super("Gengar", new Type[]{Type.SPECTRE, Type.POISON}, 60, 110,
-              new Attackable[]{new Belier(),new SpaceCake(), new ExtensionTerritoire(), new PoudreToxik()});
+              new Attackable[]{new Belier(),new SpaceCake(), 
+              		new ExtensionTerritoire(), new PoudreToxik()});
     }
 
     @Override

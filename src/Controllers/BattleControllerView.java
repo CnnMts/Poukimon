@@ -1,8 +1,12 @@
 package Controllers;
 
+<<<<<<< Updated upstream
 import Animation.ParalysieAnimation;
 import Animation.PokemonAnimation;
 import Competences.BouleElec;
+=======
+import Animation.*;
+>>>>>>> Stashed changes
 import Models.TypeTools;
 import Pokemon.Charmander;
 import Pokemon.Evee;
@@ -39,19 +43,31 @@ public class BattleControllerView {
     @FXML private StackPane PokemonInTeam1, PokemonInTeam2, PokemonInTeam3,
     	PokemonInTeam4, PokemonInTeam5, PokemonInTeam6, test;
     @FXML private Label roundLabel;
+<<<<<<< Updated upstream
     @FXML private VBox roundsContainer;
     @FXML private ScrollPane scrollPane;
+=======
+    @FXML private StackPane stackPane123;
+>>>>>>> Stashed changes
 
     private List<Pokemon> playerTeam = new ArrayList<>(), enemyTeam = new ArrayList<>();
     private HashMap<Pokemon, List<Attackable>> pokemonAttacksMap = new HashMap<>();
     private Pokemon playerPokemon, enemyPokemon;
     private boolean playerTurn = true;
+<<<<<<< Updated upstream
     private Attackable selectedAttack1, selectedAttack2, selectedAttack3, selectedAttack4;
     private PokemonAnimation pokemonAnimation = new PokemonAnimation();
     private ParalysieAnimation pokemonParalysie = new ParalysieAnimation();
     private List<Round> roundHistory = new ArrayList<>();
     private Round currentRound;
     private int currentRoundNumber = 1;
+=======
+    private Attackable selectedAttack1;
+    private Attackable selectedAttack2;
+    private BrulureAnimation pokemonAnimation = new BrulureAnimation();
+    private int currentRound = 1;
+    private Random random = new Random();
+>>>>>>> Stashed changes
 
     public void setPlayerTeam(List<Pokemon> team) {
         this.playerTeam = new ArrayList<>(team);
@@ -113,8 +129,36 @@ public class BattleControllerView {
         TypeTools.initializeTypeRelations();
         setEnemyTeam();
         configureAttackButtons();
+<<<<<<< Updated upstream
         currentRound = new Round();
   
+=======
+        addPokemonToEnemyTeam(new Pikachu());
+        addPokemonToEnemyTeam(new Evoli());
+    }
+
+    private void configureAttackButtons() {
+        attackButton1.setOnAction(event -> {
+            if (playerTurn) {
+                executeAttack(selectedAttack1);
+            }
+        });
+        attackButton2.setOnAction(event -> {
+            if (playerTurn) {
+                executeAttack(selectedAttack2);
+            }
+        });
+    }
+
+    private void executeAttack(Attackable attack) {
+        if (attack != null && playerTurn) {
+            attack.attack(playerPokemon, enemyPokemon);
+            updateHealthBar(playerHealthBar,playerPokemon, HpPokemon);
+            updateHealthBar(enemyHealthBar, enemyPokemon, HpPokemon2);
+            playerTurn = false;
+            nextTurn();
+        }
+>>>>>>> Stashed changes
     }
     
     private void showTeamOnBattle() {
@@ -259,7 +303,17 @@ public class BattleControllerView {
 
 
     private void enemyAction() {
+<<<<<<< Updated upstream
         if (enemyPokemon.getHp() <= 0) {
+=======
+        if (random.nextBoolean()) {
+            if (enemyPokemon.getAttacks().length > 0) {
+                enemyPokemon.getAttacks()[0].attack(enemyPokemon, playerPokemon);
+                updateHealthBar(playerHealthBar, playerPokemon, HpPokemon);
+                pokemonAnimation.start(pokemon, stackPane123);
+            }
+        } else {
+>>>>>>> Stashed changes
             switchEnemyPokemon();
             if (enemyPokemon != null) {
                 playerTurn = false;

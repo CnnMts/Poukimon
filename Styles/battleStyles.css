@@ -46,17 +46,18 @@
 	-fx-border-color: green;
 	-fx-alignment: center;
 }
-#VBoxPokemon, #VBoxPokemon2{
+#VBoxPokemon{
 	-fx-pref-width: 800px;
+}
+
+#VBoxPokemon2{
+	-fx-border-color: red;
 }
 
 #VBoxPokemon{
 	-fx-alignment: bottom-center;
 }
 
-#VBoxPokemon2{
-	-fx-alignment: center;
-}
 
 #HboxTeam{
 	-fx-border-color: red;

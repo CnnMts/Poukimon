@@ -13,6 +13,7 @@ import java.util.Random;
 
 public class BrulureAnimation {
 
+<<<<<<< Updated upstream
     @FXML
     private StackPane stackPane123;
 
@@ -72,4 +73,47 @@ public class BrulureAnimation {
             fadeTransition.play();
         }
     }
+=======
+	@FXML
+	private StackPane stackPane123;
+
+	private int numParticules = 60;
+
+	public void start(ImageView player, StackPane stackPane123) {
+		createCrepitementEffect(player, stackPane123);
+	}
+
+	private void createCrepitementEffect(ImageView player, StackPane stackPane123) {
+    Random rand = new Random();
+    for (int i = 0; i < numParticules; i++) {
+        Circle particle = createParticle(rand);
+        stackPane123.getChildren().add(particle);
+        animateParticle(particle, rand, stackPane123);
+    }
+}
+
+private Circle createParticle(Random rand) {
+    Circle particle = new Circle(3 + rand.nextInt(3),
+            Color.color(rand.nextDouble() * 0.5 + 0.5, 0, 0));
+    return particle;
+}
+
+private void animateParticle(Circle particle, Random rand, StackPane stackPane123) {
+    TranslateTransition translateTransition = new TranslateTransition();
+    translateTransition.setNode(particle);
+    translateTransition.setCycleCount(1);
+    translateTransition.setDuration(Duration.millis(500 + rand.nextInt(500))); 
+    translateTransition.setByX(rand.nextInt(20) - 10); 
+    translateTransition.setByY(rand.nextInt(20) - 10);
+    FadeTransition fadeTransition = new FadeTransition(Duration.millis(500 
+    		+ rand.nextInt(500)), particle);
+    fadeTransition.setFromValue(1.0);
+    fadeTransition.setToValue(0.0);
+    fadeTransition.setOnFinished(e -> stackPane123.getChildren()
+    		.remove(particle));
+    translateTransition.play();
+    fadeTransition.play();
+}
+
+>>>>>>> Stashed changes
 }

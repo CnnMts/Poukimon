@@ -1,20 +1,17 @@
 package Items;
 
-import javafx.animation.FadeTransition;
-import javafx.animation.TranslateTransition;
-import javafx.fxml.FXML;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.util.Duration;
-
-import java.util.Random;
+import Models.Pokemon;
 
 public class Potion {
-
+	
+	private Integer potion ;
+	
 	public Potion() {
-		
+		this.potion = 50;
+	}
+	
+	public void usePotion(Pokemon pokemon) {
+		pokemon.addHp(potion);
 	}
 
 }

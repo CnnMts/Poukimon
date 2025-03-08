@@ -120,11 +120,9 @@
                         <ProgressBar fx:id="enemyHealthBar" layoutX="400" layoutY="350"/>
                     </HBox>
                 </VBox>
-<<<<<<< Updated upstream
+
                 <StackPane fx:id="test" alignment="CENTER">
-=======
-                <StackPane fx:id="stackPane123">
->>>>>>> Stashed changes
+
                     <ImageView fx:id="pokemon2" fitHeight="120" fitWidth="120"
                                pickOnBounds="true" preserveRatio="true">
                     </ImageView>

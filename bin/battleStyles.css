@@ -8,7 +8,6 @@
 
 #rowBottom {
     -fx-pref-height: 200px; /* Garde la hauteur */
-	-fx-border-color: blue;
 	-fx-alignment: center;
 }
 
@@ -19,7 +18,6 @@
 }
 
 #MiniHpBar1, #MiniHpBar2, #MiniHpBar3, #MiniHpBar4, #MiniHpBar5, #MiniHpBar6 {
-	-fx-border-color: red;
 	-fx-pref-width: 50;
 	-fx-pref-height: 15;
 }
@@ -33,41 +31,38 @@
 }
 #HboxAtk{
 	-fx-padding: 20;
-	-fx-border-color: blue;
 	-fx-alignment: top-center;
 }
 #PokemonInTeam{
-	-fx-border-color: yellow;
 	-fx-pref-width: 200;
 }
 
 #boxBag{
 	-fx-Min-width: 500;
-	-fx-border-color: green;
 	-fx-alignment: center;
 }
 #VBoxPokemon{
-	-fx-pref-width: 800px;
+	-fx-pref-width: 700px;
+	-fx-alignment: BOTTOM-CENTER;
+}
+#Bar1, #Bar2{
+	-fx-alignment: center;
 }
 
 #VBoxPokemon2{
-	-fx-border-color: red;
+	-fx-alignment: center;
 }
-
-#VBoxPokemon{
-	-fx-alignment: bottom-center;
-}
-
 
 #HboxTeam{
-	-fx-border-color: red;
 	-fx-pref-height: 125;
 	-fx-alignment: center;
 }
 
-#PokemonName, #HpPokemon, #PokemonName2, #HpPokemon2{
-	-fx-fill: red;
-	-fx-font-weight: bold;
+#PokemonName, #HpPokemon, #PokemonName2, #HpPokemon2 {
+    -fx-fill: white; /* Texte en blanc pour le contraste */
+    -fx-font-weight: bold;
+    -fx-font-size: 18px; /* Texte plus grand */
+    -fx-effect: dropshadow( gaussian , black , 3 , 0 , 2 , 2 ); /* Ombre portée */
 }
 
 #NameBar, #HpBar{
@@ -93,4 +88,161 @@
 }
 .bold-text {
     -fx-font-weight: bold;
+}
+
+#playerHealthBar, #enemyHealthBar {
+    -fx-pref-width: 300px;
+    -fx-pref-height: 20px;
+    -fx-background-color: black; /* Fond noir pour le contraste */
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+#playerHealthBar .bar,
+#enemyHealthBar .bar {
+    -fx-background-radius: 5px;
+    -fx-padding: 2px;
+}
+
+/* ✅ Couleurs dynamiques pour la barre de vie selon le % HP */
+#playerHealthBar .bar , #enemyHealthBar .bar{
+    -fx-background-color: linear-gradient(to right, limegreen, yellowgreen);
+}
+
+/* 🟢 Vert (HP élevés), 🟡 Jaune (HP moyens), 🔴 Rouge (HP critiques) */
+.low-hp .bar {
+    -fx-background-color: red;
+}
+
+.mid-hp .bar {
+    -fx-background-color: yellow;
+}
+
+.high-hp .bar {
+    -fx-background-color: limegreen;
+}
+#colRight {
+    -fx-background-color: black;
+	-fx-min-width: 300px; /* Largeur minimale garantie */
+	 -fx-pref-width: 300px; /* Largeur préférée */
+	 -fx-max-width: 300px; 
+    -fx-padding: 10px;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+#scrollPane {
+    -fx-background: transparent;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+#roundsContainer {
+    -fx-background-color: #2a2a2a;
+    -fx-padding: 10px;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+#statusText {
+    -fx-fill: yellow;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-font-family: "Press Start 2P", Arial, sans-serif;
+}
+
+#roundLabel {
+    -fx-background-color: darkblue;
+    -fx-text-fill: white;
+    -fx-padding: 8px;
+    -fx-font-size: 14px;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+#rowBottom {
+    -fx-background-color: black;
+    -fx-padding: 5px;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-alignment: center;
+}
+
+#HboxAtk {
+    -fx-background-color: darkblue;
+    -fx-padding: 5px;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-alignment: center;
+}
+
+#HboxAtk Button {
+    -fx-background-color: darkred;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-padding: 5px 10px;
+    -fx-border-color: white;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+}
+
+#HboxAtk Button:hover {
+    -fx-background-color: red;
+}
+
+#HboxTeam {
+    -fx-background-color: black;
+    -fx-padding: 5px;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-alignment: center;
+}
+
+#HboxTeam VBox {
+    -fx-spacing: 10px;
+    -fx-alignment: center;
+}
+
+#MiniHpBar1, #MiniHpBar2, #MiniHpBar3, #MiniHpBar4, #MiniHpBar5, #MiniHpBar6 {
+    -fx-background-color: darkgray;
+    -fx-padding: 2px;
+    -fx-border-color: white;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+}
+
+ProgressBar {
+    -fx-accent: green;
+    -fx-background-color: black;
+    -fx-border-color: white;
+    -fx-border-width: 1px;
+    -fx-pref-width: 60px;
+    -fx-pref-height: 5px;
+}
+
+#boxBag {
+    -fx-background-color: darkgray;
+    -fx-padding: 10px;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
 }

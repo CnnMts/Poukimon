@@ -71,18 +71,14 @@
 					<ComboBox fx:id="listItems" value="Items">
 	    				<items>
 	        				<FXCollections fx:factory="observableArrayList">
-					            <Text text="" />
-					            <Text text="mama" />
-					            <Text text="nana" />
+
 					        </FXCollections>
 					    </items>
 					</ComboBox>
 					<ComboBox fx:id="listAbilities" value="Abilitée">
 	    				<items>
 	        				<FXCollections fx:factory="observableArrayList">
-					            <Text text="lala" />
-					            <Text text="mama" />
-					            <Text text="nana" />
+
 					        </FXCollections>
 					    </items>
 					</ComboBox>
@@ -124,7 +120,7 @@
 				    				<Text text="Stats:"></Text>
 				    			</HBox>
 				    			<VBox fx:id ="Team">
-				    				<HBox fx:id="HP" spacing ="10">
+				    				<HBox fx:id="HP">
 				    					<VBox fx:id="VboxText">
 				    						<Text text="HP:" fx:id="TextStats"></Text>
 				    					</VBox>
@@ -132,7 +128,7 @@
 				    						<ProgressBar fx:id="HpBar" progress="0"/>
 				    					</VBox>
 				    				</HBox>
-				    				<HBox fx:id="Speed" spacing ="10">
+				    				<HBox fx:id="Speed">
 				    					<VBox fx:id="VboxText">
 				    						<Text text="Speed:" fx:id="TextStats"></Text>
 				    					</VBox>
@@ -140,7 +136,7 @@
 				    						<ProgressBar fx:id="SpeedBar" progress="0"/>
 				    					</VBox>
 				    				</HBox>
-				    				<HBox fx:id="Attack" spacing ="10">
+				    				<HBox fx:id="Attack">
 				    					<VBox fx:id="VboxText">
 				    						<Text text="Attaque:" fx:id="TextStats"></Text>
 				    					</VBox>
@@ -148,12 +144,29 @@
 				    						<ProgressBar fx:id="AttackBar" progress="0"/>
 				    					</VBox>
 				    				</HBox>
-				    				<HBox fx:id="Defends" spacing ="10">
+				    				<HBox fx:id="Defends">
 				    					<VBox fx:id="VboxText">
 				    						<Text text="Défense:" fx:id="TextStats"></Text>
 				    					</VBox>
 				    					<VBox fx:id="VboxProgress">
 				    						<ProgressBar fx:id="DefendsBar" progress="0"/>
+				    					</VBox>
+				    					
+				    				</HBox>
+				    				<HBox fx:id="AttackSpe">
+				    					<VBox fx:id="VboxText">
+				    						<Text text="Attaque Spe:" fx:id="TextStats"></Text>
+				    					</VBox>
+				    					<VBox fx:id="VboxProgress">
+				    						<ProgressBar fx:id="AttackSpeBar" progress="0"/>
+				    					</VBox>
+				    				</HBox>
+				    				<HBox fx:id="DefendsSpe">
+				    					<VBox fx:id="VboxText">
+				    						<Text text="Défense Spe:" fx:id="TextStats"></Text>
+				    					</VBox>
+				    					<VBox fx:id="VboxProgress">
+				    						<ProgressBar fx:id="DefendsSpeBar" progress="0"/>
 				    					</VBox>
 				    					
 				    				</HBox>

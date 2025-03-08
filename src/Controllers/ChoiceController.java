@@ -1,15 +1,11 @@
 package Controllers;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import Competences.Belier;
 import Competences.BouleElec;
 import Competences.MegaFouet;
@@ -19,10 +15,16 @@ import Competences.Tonnerre;
 import Competences.TranchHerbe;
 import Models.Attackable;
 import Models.Pokemon;
-import Pokemon.Bulbizarre;
-import Pokemon.Evoli;
+import Pokemon.Bulbasaur;
+import Pokemon.Evee;
+import Pokemon.Gengar;
+import Pokemon.Mewtow;
+import Pokemon.Onix;
 import Pokemon.Pikachu;
-import Pokemon.Salameche;
+import Pokemon.Snorlax;
+import Pokemon.Squirtle;
+import Pokemon.Suicune;
+import Pokemon.Charmander;
 import Views.BattleView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -35,33 +37,26 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 public class ChoiceController {
-  @FXML private HBox Pokemon1;
-  @FXML private HBox Pokemon2;
-  @FXML private HBox Pokemon3;
-  @FXML private HBox Pokemon4;
-  @FXML private HBox Pokemon5;
-  @FXML private HBox Pokemon6;
-  @FXML private ImageView ImgPokemon;
-  @FXML private ComboBox<String> listAtk;
-  @FXML private ComboBox<String> listAtk2;
-  @FXML private ComboBox<String> listPokemon;
-  @FXML private Text PokemonNameTitle; 
-  @FXML private ProgressBar HpBar;
-  @FXML private ProgressBar SpeedBar;
-  @FXML private Button Add;
-    
+    @FXML private HBox Pokemon1,Pokemon2,Pokemon3,Pokemon4,Pokemon5,Pokemon6;
+    @FXML private ImageView ImgPokemon;
+    @FXML private ComboBox<String> listAtk,listAtk2,listAtk3,listAtk4,listPokemon;
+    @FXML private Text PokemonNameTitle;
+    @FXML private ProgressBar HpBar,SpeedBar;
+    @FXML private Button Add;
 
     protected List<Pokemon> team = new ArrayList<>();
     private ObservableList<String> pokemonList;
     private String selectedAttack;
     private HBox[] pokemonBoxes;
     private HashMap<Pokemon, List<Attackable>> pokemonAttacks = new HashMap<>();
-
+    private HashMap<String, Pokemon> pokemonMap = new HashMap<>();
 
     @FXML
     private void initialize() {
+        initializePokemonMap();
         pokemonList = FXCollections.observableArrayList(
-            "Pikachu", "Bulbizarre", "Evoli", "Salameche"
+            "Pikachu", "Bulbizarre", "Evoli", "Salameche","Mewtwo","Ronflex",
+            "Ectoplasma","Onix","Carapuce","Suicune"
         );
         listPokemon.setItems(pokemonList);
         pokemonBoxes = new HBox[]{Pokemon1, Pokemon2, Pokemon3, Pokemon4, Pokemon5, Pokemon6};
@@ -71,85 +66,86 @@ public class ChoiceController {
         viewPokemon(pokemonData.get(0));
 
         selectionListener();
-        
+
         listAtk.setOnAction(event -> {
-            selectedAttack = listAtk.getValue();  
+            selectedAttack = listAtk.getValue();
         });
     }
 
+    private void initializePokemonMap() {
+        pokemonMap.put("Pikachu", new Pikachu());
+        pokemonMap.put("Bulbizarre", new Bulbasaur());
+        pokemonMap.put("Evoli", new Evee());
+        pokemonMap.put("Salameche", new Charmander());
+        pokemonMap.put("Mewtwo", new Mewtow());
+        pokemonMap.put("Ronflex", new Snorlax());
+        pokemonMap.put("Ectoplasma", new Gengar());
+        pokemonMap.put("Onix", new Onix());
+        pokemonMap.put("Carapuce", new Squirtle());
+        pokemonMap.put("Suicune", new Suicune());
+    }
 
     private void selectionListener() {
-      listPokemon.setOnAction(event -> {
-        if (listPokemon.getValue() != null) {
-            String selectedPokemonName = listPokemon.getValue();
-            List<Pokemon> currentPokemonData = (List<Pokemon>) 
-            		Pokemon1.getUserData();
-            Pokemon newPokemon = getPokemonByName(selectedPokemonName);
-            if (newPokemon != null) {
-             currentPokemonData.add(newPokemon);
-             Pokemon1.setUserData(currentPokemonData);
-             
-                }viewPokemon(newPokemon);
-            }});    
+        listPokemon.setOnAction(event -> {
+            if (listPokemon.getValue() != null) {
+                String selectedPokemonName = listPokemon.getValue();
+                List<Pokemon> currentPokemonData = (List<Pokemon>) Pokemon1.getUserData();
+                Pokemon newPokemon = getPokemonByName(selectedPokemonName);
+                if (newPokemon != null) {
+                    currentPokemonData.add(newPokemon);
+                    Pokemon1.setUserData(currentPokemonData);
+                }
+                viewPokemon(newPokemon);
+            }
+        });
     }
 
     private void viewPokemon(Pokemon pokemon) {
         if (pokemon != null) {
-        	getImgPokemon(pokemon);
+            getImgPokemon(pokemon);
             PokemonNameTitle.setText(pokemon.getName());
             listPokemon.setPromptText(pokemon.getName());
             String[] attackNamesArray = pokemon.getAttackNames();
-            List<String> attackNamesList = new ArrayList<>(Arrays.
-            		asList(attackNamesArray));
+            List<String> attackNamesList = new ArrayList<>(Arrays.asList(attackNamesArray));
             listAtk.getItems().setAll(attackNamesList);
             listAtk2.getItems().setAll(attackNamesList);
+            listAtk3.getItems().setAll(attackNamesList);
+            listAtk4.getItems().setAll(attackNamesList);
             getHpForProgress(pokemon);
             getSpeedPokemon(pokemon);
         }
     }
 
     private Pokemon getPokemonByName(String name) {
-        switch (name) {
-            case "Pikachu":
-                return new Pikachu();
-            case "Bulbizarre":
-                return new Bulbizarre();
-            case "Evoli":
-                return new Evoli();
-            case "Salameche":
-                return new Salameche();
-            default:
-                return null;
-        }
+        return pokemonMap.get(name);
     }
 
     @FXML
     public void switchBattleScene() throws IOException {
         String selectedAttackName1 = listAtk.getValue();
         String selectedAttackName2 = listAtk2.getValue();
-        
+        String selectedAttackName3 = listAtk3.getValue();
+        String selectedAttackName4 = listAtk4.getValue();
         if (selectedAttackName1 != null && selectedAttackName2 != null) {
             Attackable selectedAttack1 = getAttackByName(selectedAttackName1);
             Attackable selectedAttack2 = getAttackByName(selectedAttackName2);
-            
+            Attackable selectedAttack3 = getAttackByName(selectedAttackName3);
+            Attackable selectedAttack4 = getAttackByName(selectedAttackName4);
             Pokemon currentPokemon = team.get(team.size() - 1);
             List<Attackable> attacks = pokemonAttacks.getOrDefault(currentPokemon, new ArrayList<>());
             attacks.clear();
             attacks.add(selectedAttack1);
             attacks.add(selectedAttack2);
+            attacks.add(selectedAttack3);
+            attacks.add(selectedAttack4);
             pokemonAttacks.put(currentPokemon, attacks);
-            System.out.println("🔄 Pokémon ajouté : " + currentPokemon.getName() + " → " + pokemonAttacks.get(currentPokemon));
-
-
         }
-        BattleView.switchBattleScene("/Battle.fxml", team,  pokemonAttacks);
+        BattleView.switchBattleScene("/Battle.fxml", team, pokemonAttacks);
     }
-
 
     private Attackable getAttackByName(String attackName) {
         if (attackName == null) return null;
 
-       
         HashMap<String, Attackable> attacks = new HashMap<>();
         attacks.put("Boule Eleckt", new BouleElec());
         attacks.put("Toile Eleckt", new ToileEleck());
@@ -159,25 +155,21 @@ public class ChoiceController {
         attacks.put("Poudre Toxik", new PoudreToxik());
         attacks.put("Belier", new Belier());
 
-        
         return attacks.get(attackName);
     }
 
-
-    
     private void getImgPokemon(Pokemon pokemon) {
-    	 ImgPokemon.setImage(pokemon.getImage());
-    	 
+        ImgPokemon.setImage(pokemon.getImage());
     }
+
     private void getHpForProgress(Pokemon pokemon) {
         if (pokemon != null) {
-            int hp = pokemon.getHp(); 
+            int hp = pokemon.getHp();
             int maxHp = pokemon.getMaxHp();
             double progressValue = (double) hp / maxHp;
             HpBar.setProgress(progressValue);
         }
     }
-    
 
     @FXML
     public void addPokemonToTeam() {
@@ -186,16 +178,16 @@ public class ChoiceController {
         if (newPokemon != null && !team.contains(newPokemon)) {
             String selectedAttackName1 = listAtk.getValue();
             String selectedAttackName2 = listAtk2.getValue();
+            String selectedAttackName3 = listAtk3.getValue();
+            String selectedAttackName4 = listAtk4.getValue();
 
-            if (selectedAttackName1 != null && selectedAttackName2 != null) {
-                Attackable selectedAttack1 = getAttackByName(selectedAttackName1);
-                Attackable selectedAttack2 = getAttackByName(selectedAttackName2);
+            List<Attackable> attacks = new ArrayList<>();
+            if (selectedAttackName1 != null) attacks.add(getAttackByName(selectedAttackName1));
+            if (selectedAttackName2 != null) attacks.add(getAttackByName(selectedAttackName2));
+            if (selectedAttackName3 != null) attacks.add(getAttackByName(selectedAttackName3));
+            if (selectedAttackName4 != null) attacks.add(getAttackByName(selectedAttackName4));
 
-                List<Attackable> attacks = new ArrayList<>();
-                attacks.add(selectedAttack1);
-                attacks.add(selectedAttack2);
-                pokemonAttacks.put(newPokemon, attacks);
-            }
+            pokemonAttacks.put(newPokemon, attacks);
 
             team.add(newPokemon);
             int teamSize = team.size();
@@ -207,13 +199,12 @@ public class ChoiceController {
 
 
 
-    
     private void getSpeedPokemon(Pokemon pokemon) {
-    	if(pokemon != null) {
-    		SpeedBar.setProgress(pokemon.getSpeed());
-    	}
+        if (pokemon != null) {
+            SpeedBar.setProgress(pokemon.getSpeed());
+        }
     }
-    
+
     public void addPokemonToHBox(int index, Pokemon pokemon) {
         if (index < 0 || index >= pokemonBoxes.length) {
             return;
@@ -223,9 +214,7 @@ public class ChoiceController {
         pokemonImageView.setFitWidth(50);
         pokemonImageView.setFitHeight(50);
         Text pokemonNameText = new Text(pokemon.getName());
-        pokemonBox.getChildren().clear(); 
+        pokemonBox.getChildren().clear();
         pokemonBox.getChildren().addAll(pokemonImageView, pokemonNameText);
     }
-
-
 }

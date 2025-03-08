@@ -10,5 +10,5 @@ module Pokemon {
     exports Controllers;
     exports Models;
     exports Views;
-    exports Animation; // Ajoute cette ligne pour exporter le package Animation
+    exports Animation; 
 }

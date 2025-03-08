@@ -8,7 +8,7 @@ import Models.TypeTools;
 public class MegaFouet implements Attackable {
     private Type type = Type.PLANTE;
     private String name = "Mégafouet";
-    private double baseDamage = 20; 
+    private double baseDamage = 20;
     private double accuracy = 85;
     private int pp = 10;
 
@@ -46,5 +46,12 @@ public class MegaFouet implements Attackable {
 
     public int getPP() {
         return pp;
+    }
+
+    @Override
+    public double getDamage(Pokemon attacker, Pokemon target) {
+        double effectiveness = TypeTools.getEffectiveness(this.type, target.getDefensiveTypes());
+        double finalDamage = baseDamage * effectiveness;
+        return (int) finalDamage;
     }
 }

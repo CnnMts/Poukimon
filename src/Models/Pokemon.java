@@ -1,5 +1,8 @@
 package Models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 
@@ -13,6 +16,7 @@ public abstract class Pokemon {
     private boolean canAttack = true;
     private double attack;
     private double maxAttack;
+    private List<StatusEffect> statusEffects = new ArrayList<>();
 
     public Pokemon(String name, Type[] types, int hp, int speed,
                     Attackable[] attacks) {
@@ -119,8 +123,15 @@ public abstract class Pokemon {
         this.canAttack = canAttack;
     }
 
-    public void applyStatus(StatusEffect status) {
-        status.applyEffect(this);
+    public void addStatusEffect(StatusEffect effect) {
+        statusEffects.add(effect);
+        System.out.println(getName() + " a reçu l'effet de statut : " + effect.getName());
+    }
+
+    public void applyStatusEffects() {
+        for (StatusEffect effect : statusEffects) {
+            effect.applyEffect(this);
+        }
     }
 
     @Override

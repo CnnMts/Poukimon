@@ -11,27 +11,26 @@ public class TranchHerbe implements Attackable {
     private double baseDamage = 30;
     private double accuracy = 95;
     private int pp = 25;
-    private double criticalHitRate = 0.2; 
+    private double criticalHitRate = 0.2;
 
     @Override
     public void attack(Pokemon attacker, Pokemon target) {
         if (Math.random() * 100 <= accuracy) {
-            double effectiveness = TypeTools.getEffectiveness(this.type, target.getDefensiveTypes());
-            double finalDamage = baseDamage * effectiveness;
-
-            if (Math.random() <= criticalHitRate) {
-                finalDamage *= 2; 
-                System.out.println("Coup critique !");
-            }
-
-            target.takeDamage(finalDamage);
-
-            System.out.println(attacker.getName() + " utilise " + name + " et inflige " + finalDamage + " dégâts à " + target.getName() + " !");
+            double damage = getDamage(attacker, target); // Prend en compte le coup critique
+            target.takeDamage(damage);
+            System.out.println(attacker.getName() + " utilise " + name + " et inflige " + damage + " dégâts à " + target.getName() + " !");
         } else {
-            System.out.println(attacker.getName() + "'s " + name + " a raté !");
+            System.out.println(attacker.getName() + " a raté son attaque " + name + " !");
         }
     }
 
+    public double getDamage(Pokemon attacker, Pokemon target) {
+        double effectiveness = TypeTools.getEffectiveness(this.type, target.getDefensiveTypes());
+        double damage = baseDamage * effectiveness;
+
+        
+        return damage;
+    }
     @Override
     public Type getType() {
         return type;
@@ -53,4 +52,5 @@ public class TranchHerbe implements Attackable {
     public int getPP() {
         return pp;
     }
+
 }

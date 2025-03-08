@@ -14,7 +14,7 @@ public class PoudreToxik implements Attackable {
 
     @Override
     public void attack(Pokemon attacker, Pokemon target) {
-        if (Math.random() * 100 <= accuracy) { 
+        if (Math.random() * 100 <= accuracy) {
             target.applyStatus(poisonStatus);
             System.out.println(attacker.getName() + " utilise " + name + " et empoisonne " + target.getName() + " !");
         } else {
@@ -32,7 +32,7 @@ public class PoudreToxik implements Attackable {
         return name;
     }
 
-    public double getBaseDamage() {
+    public double getBaseDamage(Pokemon attacker, Pokemon target) {
         return baseDamage;
     }
 
@@ -40,4 +40,9 @@ public class PoudreToxik implements Attackable {
         return accuracy;
     }
 
+	@Override
+	public double getDamage(Pokemon attacker, Pokemon target) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

@@ -95,36 +95,25 @@
 							<ComboBox fx:id="listAtk" value="Attaque 1">
 			    				<items>
 			        				<FXCollections fx:factory="observableArrayList">
-							            <Text text="lala" />
-							            <Text text="mama" />
-							            <Text text="nana" />
 							        </FXCollections>
 							    </items>
 							</ComboBox>
 							<ComboBox fx:id="listAtk2" value="Attaque 2">
 			    				<items>
-			        				<FXCollections fx:factory="observableArrayList">
-							            <Text text="lala" />
-							            <Text text="mama" />
-							            <Text text="nana" />
+			        				<FXCollections fx:factory="observableArrayList">  
 							        </FXCollections>
 							    </items>
 							</ComboBox>
 							<ComboBox fx:id="listAtk3" value="Attaque 3">
 			    				<items>
 			        				<FXCollections fx:factory="observableArrayList">
-							            <Text text="lala" />
-							            <Text text="mama" />
-							            <Text text="nana" />
+							            
 							        </FXCollections>
 							    </items>
 							</ComboBox>
 							<ComboBox fx:id="listAtk4" promptText="Attaque 4">
 			    				<items>
 			        				<FXCollections fx:factory="observableArrayList">
-							            <Text text="lala" />
-							            <Text text="mama" />
-							            <Text text="nana" />
 							        </FXCollections>
 							    </items>
 							</ComboBox>

@@ -1,22 +1,21 @@
 package Pokemon;
 
  
-import Competences.BouleElec;
 import Models.Attackable;
 import Models.Pokemon;
 import Models.Type;
 import javafx.scene.image.Image;
 
-public class Evoli extends Pokemon {
+public class Mewtow extends Pokemon {
 
-    public Evoli() {
-        super("Evoli", new Type[]{Type.NORMAL}, 45, 45,
-              new Attackable[]{new BouleElec()});
+    public Mewtow() {
+        super("Mewtwo", new Type[]{Type.PSY}, 45, 45,
+              new Attackable[]{});
     }
 
     @Override
     public void useSpecialAbility() {
-        System.out.println("Evoli utilise Croissance !");
+        System.out.println("Bulbizarre utilise Croissance !");
     }
 
     public void useAttack(int attackIndex, Pokemon target) {
@@ -28,10 +27,10 @@ public class Evoli extends Pokemon {
         }
     }
     public Image getImage() {
-        return new Image(getClass().getResourceAsStream("/eevee_face.png"));
+        return new Image(getClass().getResourceAsStream("/mewtwo_face.png"));
     }
     
     public Image getImageReverse() {
-        return new Image(getClass().getResourceAsStream("/eevee_back.png"));
+        return new Image(getClass().getResourceAsStream("/mewtwo_back.png"));
     }
 }

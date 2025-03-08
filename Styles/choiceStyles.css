@@ -1,7 +1,14 @@
+
+
+.azert{
+	-fx-font-family: "Serif";
+	-fx-font-size: 30px;
+}
+
 #VBoxMain{
 	-fx-alignment: center;
-	-fx-background-image: url("fond_choix.jpeg");
-	-fx-background-size: cover;
+	-fx-background-image: url("fond_choice.png");
+	-fx-background-size: 100% 100%;
 }
 
 #HBoxMain{
@@ -10,10 +17,12 @@
 
 #BorderPaneMain{
 	-fx-border-color: black;
-	-fx-background-color: rgba(255, 255, 255, 0.9);
+	-fx-background-color: rgba(255, 255, 255, 0.5);
 	-fx-border-width: 5;
 	-fx-pref-height: 400;
 	-fx-pref-width: 1000;
+	-fx-border-radius: 20;
+	-fx-background-radius: 22;
 }
 
 #ImgPoke{
@@ -26,16 +35,14 @@
 	-fx-border-color: transparent transparent transparent black;
 	-fx-pref-width: 450;
 	-fx-pref-height: 400;
+	-fx-border-width: 2;
 }
 #Bot{
 	-fx-border-color: black transparent transparent transparent;
 	-fx-pref-width: 550;
 	-fx-pref-height: 100;
 	-fx-alignment: center;
-}
-
-#listBot, #listAtk, #listAtk2, #listAtk3, #listAtk4{
-	-fx-pref-width: 125;
+	-fx-border-width: 2;
 }
 
 #Atk, #Stats{
@@ -46,12 +53,15 @@
 
 #Stats{
 	-fx-border-color: transparent transparent transparent black;
+	-fx-border-width: 2;
 }
 
 #TeamPoke{
-	-fx-border-color: black transparent black black;
+	-fx-border-color: black;
+	-fx-border-radius: 20;
+	-fx-background-radius: 22;
 	-fx-border-width: 5;
-	-fx-background-color: rgba(255, 255, 255, 0.9);
+	-fx-background-color: rgba(255, 255, 255, 0.5);
 	-fx-pref-width: 175;
 	-fx-pref-height: 100;
 	-fx-alignment: center;
@@ -61,14 +71,21 @@
 	-fx-pref-width: 150
 }
 
-#NameTeam{
+#NameTeam, #PokeName{
 	-fx-pref-height: 50;
 	-fx-alignment: center;
+	-fx-background-color: linear-gradient(to bottom, #1a1f36, #2c3e50);
+	-fx-padding: 10px 20px;
+}
+#nameTeam, #PokemonNameTitle{
+	-fx-fill: #F8FCFF;
+	-fx-font-size: 14px;
+	-fx-font-weight: bold;
 }
 
 
-#Pokemon1, #Pokemon2, #Pokemon3, #Pokemon4, #Pokemon5, #Pokemon6 {
 
+#Pokemon1, #Pokemon2, #Pokemon3, #Pokemon4, #Pokemon5, #Pokemon6 {
 	-fx-pref-height: 50;
 }
 
@@ -85,14 +102,26 @@
 	-fx-alignment: center;
 }
 
+#Add, #PlayButton{
+	-fx-background-color: linear-gradient(to bottom, #1a1f36, #2c3e50);
+	-fx-text-fill: white;
+	-fx-font-size: 14px;
+	-fx-font-weight: bold;
+	-fx-padding: 10px 20px;
+	-fx-border-radius: 8px;
+	-fx-background-radius: 8px;
+	-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 8, 0, 0, 3);
+	-fx-cursor: hand;
+	-fx-transition: all 0.3s;
+	
+}
+
+
+
 #ImgPokeLeft{
 	-fx-pref-width: 400;
 }
 
-#PokeName{
-	-fx-alignment: center;
-	-fx-pref-height: 50;
-}
 
 #Img{
 	-fx-alignment: center;
@@ -100,8 +129,83 @@
 
 #ImgPokeRight{
 	-fx-border-color: transparent transparent transparent black;
+	-fx-border-width: 2;
 	-fx-alignment:center;
 	-fx-pref-width: 150;
+}
+
+/* Style amélioré pour la ComboBox dans JavaFX */
+.combo-box {
+    -fx-background-color: linear-gradient(to bottom, #ffffff, #e0e0e0);
+    -fx-border-color: #0056b3;
+    -fx-border-radius: 10px;
+    -fx-padding: 8px;
+    -fx-font-size: 16px;
+    -fx-text-fill: #222;
+    -fx-pref-width: 180px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 0);
+}
+
+.combo-box:hover {
+    -fx-background-color: linear-gradient(to bottom, #f0f0f0, #d6d6d6);
+    -fx-border-color: #003f7f;
+}
+
+.combo-box:focused {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 86, 179, 0.7), 6, 0, 0, 0);
+}
+
+.combo-box .list-cell {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #222;
+    -fx-padding: 6px;
+    -fx-font-size: 14px;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #0056b3;
+    -fx-text-fill: #fff;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #0056b3;
+    -fx-border-radius: 8px;
+}
+
+.combo-box {
+    -fx-background-color: linear-gradient(to bottom, #1a1f36, #2c3e50);
+    -fx-border-color: #0d1b2a;
+    -fx-border-radius: 10;
+    -fx-font-size: 16;
+    -fx-text-fill: #e0e0e0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 0);
+}
+
+.combo-box:hover {
+    -fx-background-color: linear-gradient(to bottom, #233554, #1b2838);
+    -fx-border-color: #102a43;
+}
+
+.combo-box:focused {
+    -fx-effect: dropshadow(three-pass-box, rgba(13, 27, 42, 0.8), 6, 0, 0, 0);
+}
+
+.combo-box .list-cell {
+    -fx-background-color: #1a1f36;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 14;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #102a43;
+    -fx-text-fill: #ffffff;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #1a1f36;
+    -fx-border-color: #0d1b2a;
+    -fx-border-radius: 8;
 }
 
 

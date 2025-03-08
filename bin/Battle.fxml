@@ -40,11 +40,11 @@
                     <VBox fx:id="attackTwo">
                         <Button fx:id="attackButton2"/>
                     </VBox>
-                    <VBox fx:id="defenseOne">
-                        <Button fx:id="defenseButton1"/>
+                    <VBox fx:id="attackThree">
+                        <Button fx:id="attackButton3"/>
                     </VBox>
-                    <VBox fx:id="defenseTwo">
-                        <Button fx:id="defenseButton2"/>
+                    <VBox fx:id="attackfour">
+                        <Button fx:id="attackButton4"/>
                     </VBox>
                 </HBox>
                 <HBox fx:id="HboxTeam" spacing="50">
@@ -120,11 +120,11 @@
                         <ProgressBar fx:id="enemyHealthBar" layoutX="400" layoutY="350"/>
                     </HBox>
                 </VBox>
-                <VBox fx:id="test" alignment="CENTER">
+                <StackPane fx:id="test" alignment="CENTER">
                     <ImageView fx:id="pokemon2" fitHeight="120" fitWidth="120"
                                pickOnBounds="true" preserveRatio="true">
                     </ImageView>
-                </VBox>
+                </StackPane>
             </VBox>
         </HBox>
     </left>

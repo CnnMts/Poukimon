@@ -6,10 +6,11 @@ import Models.Type;
 import Models.TypeTools;
 
 public class ToileEleck implements Attackable {
-	private Type type = Type.ELECTRIQUE;
+    private Type type = Type.ELECTRIQUE;
+    private double baseDamage = 15;
+
     @Override
     public void attack(Pokemon attacker, Pokemon target) {
-        double baseDamage = 15;
         double effectiveness = TypeTools.getEffectiveness(this.type, target.getDefensiveTypes());
         double finalDamage = baseDamage * effectiveness;
 
@@ -26,13 +27,20 @@ public class ToileEleck implements Attackable {
         }
     }
 
-	@Override
-	public Type getType() {
-		return type;
-	}
+    @Override
+    public Type getType() {
+        return type;
+    }
 
-	@Override
-	public String getName() {
-		return "Toile Eleckt";
-	}
+    @Override
+    public String getName() {
+        return "Toile Eleckt";
+    }
+
+    @Override
+    public double getDamage(Pokemon attacker, Pokemon target) {
+        double effectiveness = TypeTools.getEffectiveness(this.type, target.getDefensiveTypes());
+        double finalDamage = baseDamage * effectiveness;
+        return (int) finalDamage;
+    }
 }

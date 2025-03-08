@@ -86,3 +86,10 @@
 #PokemonInTeam1, #PokemonInTeam2, #PokemonInTeam3, #PokemonInTeam4, #PokemonInTeam5, #PokemonInTeam6, {
 	-fx-pref-height: 50;
 }
+
+#scrollPane{
+	-fx-min-height: 600;
+}
+.bold-text {
+    -fx-font-weight: bold;
+}

@@ -1,24 +1,22 @@
 package Pokemon;
 
  
-import Competences.MegaFouet;
-import Competences.PoudreToxik;
-import Competences.TranchHerbe;
+import Competences.BouleElec;
 import Models.Attackable;
 import Models.Pokemon;
 import Models.Type;
 import javafx.scene.image.Image;
 
-public class Bulbizarre extends Pokemon {
+public class Evee extends Pokemon {
 
-    public Bulbizarre() {
-        super("Bulbizarre", new Type[]{Type.PLANTE, Type.POISON}, 45, 45,
-              new Attackable[]{new MegaFouet(), new TranchHerbe(),new PoudreToxik()});
+    public Evee() {
+        super("Evoli", new Type[]{Type.NORMAL}, 45, 45,
+              new Attackable[]{new BouleElec()});
     }
 
     @Override
     public void useSpecialAbility() {
-        System.out.println("Bulbizarre utilise Croissance !");
+        System.out.println("Evoli utilise Croissance !");
     }
 
     public void useAttack(int attackIndex, Pokemon target) {
@@ -30,10 +28,10 @@ public class Bulbizarre extends Pokemon {
         }
     }
     public Image getImage() {
-        return new Image(getClass().getResourceAsStream("/bulbasaur_face.png"));
+        return new Image(getClass().getResourceAsStream("/eevee_face.png"));
     }
     
     public Image getImageReverse() {
-        return new Image(getClass().getResourceAsStream("/bulbasaur_back.png"));
+        return new Image(getClass().getResourceAsStream("/eevee_back.png"));
     }
 }

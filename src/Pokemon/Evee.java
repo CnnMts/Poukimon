@@ -1,7 +1,11 @@
 package Pokemon;
 
  
+import Competences.Belier;
 import Competences.BouleElec;
+import Competences.Flemme;
+import Competences.MitraPoing;
+import Competences.Plaquage;
 import Models.Attackable;
 import Models.Pokemon;
 import Models.Type;
@@ -10,8 +14,8 @@ import javafx.scene.image.Image;
 public class Evee extends Pokemon {
 
     public Evee() {
-        super("Evoli", new Type[]{Type.NORMAL}, 45, 45,
-              new Attackable[]{new BouleElec()});
+        super("Evoli", new Type[]{Type.NORMAL}, 55, 55,
+              new Attackable[]{new Belier(), new Plaquage(), new Flemme(), new MitraPoing()});
     }
 
     @Override

@@ -1,31 +1,5 @@
 package Controllers;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-
-import Competences.Belier;
-import Competences.BouleElec;
-import Competences.MegaFouet;
-import Competences.PoudreToxik;
-import Competences.ToileEleck;
-import Competences.Tonnerre;
-import Competences.TranchHerbe;
-import Models.Attackable;
-import Models.Pokemon;
-import Pokemon.Bulbasaur;
-import Pokemon.Evee;
-import Pokemon.Gengar;
-import Pokemon.Mewtow;
-import Pokemon.Onix;
-import Pokemon.Pikachu;
-import Pokemon.Snorlax;
-import Pokemon.Squirtle;
-import Pokemon.Suicune;
-import Pokemon.Charmander;
-import Views.BattleView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -35,13 +9,50 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import Items.BaieStatus;
+import Items.Potion;
+import Models.Attackable;
+import Models.Pokemon;
+import Pokemon.Bulbasaur;
+import Pokemon.Charmander;
+import Pokemon.Evee;
+import Pokemon.Gengar;
+import Pokemon.Mewtow;
+import Pokemon.Onix;
+import Pokemon.Pikachu;
+import Pokemon.Snorlax;
+import Pokemon.Squirtle;
+import Pokemon.Suicune;
+import Views.BattleView;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+
+import Competences.Belier;
+import Competences.BouleElec;
+import Competences.Dé20;
+import Competences.ExtensionTerritoire;
+import Competences.Flemme;
+import Competences.HydroCanon;
+import Competences.LanceFlamme;
+import Competences.MegaFouet;
+import Competences.MitraPoing;
+import Competences.Plaquage;
+import Competences.PoudreToxik;
+import Competences.SpaceCake;
+import Competences.ToileEleck;
+import Competences.Tonnerre;
+import Competences.TranchHerbe;
 
 public class ChoiceController {
-    @FXML private HBox Pokemon1,Pokemon2,Pokemon3,Pokemon4,Pokemon5,Pokemon6;
+    @FXML private HBox Pokemon1, Pokemon2, Pokemon3, Pokemon4, Pokemon5, Pokemon6;
     @FXML private ImageView ImgPokemon;
-    @FXML private ComboBox<String> listAtk,listAtk2,listAtk3,listAtk4,listPokemon;
+    @FXML private ComboBox<String> listAtk, listAtk2, listAtk3, listAtk4, listPokemon, listItems;
     @FXML private Text PokemonNameTitle;
-    @FXML private ProgressBar HpBar,SpeedBar;
+    @FXML private ProgressBar HpBar, SpeedBar;
     @FXML private Button Add;
 
     protected List<Pokemon> team = new ArrayList<>();
@@ -50,13 +61,14 @@ public class ChoiceController {
     private HBox[] pokemonBoxes;
     private HashMap<Pokemon, List<Attackable>> pokemonAttacks = new HashMap<>();
     private HashMap<String, Pokemon> pokemonMap = new HashMap<>();
+    private ArrayList<Object> listItemsArray = new ArrayList<>();
 
     @FXML
     private void initialize() {
         initializePokemonMap();
         pokemonList = FXCollections.observableArrayList(
-            "Pikachu", "Bulbizarre", "Evoli", "Salameche","Mewtwo","Ronflex",
-            "Ectoplasma","Onix","Carapuce","Suicune"
+            "Pikachu", "Bulbizarre", "Evoli", "Salameche", "Mewtwo", "Ronflex",
+            "Ectoplasma", "Onix", "Carapuce", "Suicune"
         );
         listPokemon.setItems(pokemonList);
         pokemonBoxes = new HBox[]{Pokemon1, Pokemon2, Pokemon3, Pokemon4, Pokemon5, Pokemon6};
@@ -70,6 +82,8 @@ public class ChoiceController {
         listAtk.setOnAction(event -> {
             selectedAttack = listAtk.getValue();
         });
+
+        initializeItems();
     }
 
     private void initializePokemonMap() {
@@ -136,12 +150,17 @@ public class ChoiceController {
             attacks.clear();
             attacks.add(selectedAttack1);
             attacks.add(selectedAttack2);
-            attacks.add(selectedAttack3);
-            attacks.add(selectedAttack4);
+            attacks.add(selectedAttackName3 != null ? selectedAttack3 : null);
+            attacks.add(selectedAttackName4 != null ? selectedAttack4 : null);
             pokemonAttacks.put(currentPokemon, attacks);
         }
-        BattleView.switchBattleScene("/Battle.fxml", team, pokemonAttacks);
+
+        BaieStatus baie = getBaieByName("Baie");
+        Potion potion = getPotionByName("Potion");
+
+        BattleView.switchBattleScene("/Battle.fxml", team, pokemonAttacks, baie, potion);
     }
+
 
     private Attackable getAttackByName(String attackName) {
         if (attackName == null) return null;
@@ -153,9 +172,30 @@ public class ChoiceController {
         attacks.put("Mégafouet", new MegaFouet());
         attacks.put("Tranch’Herbe", new TranchHerbe());
         attacks.put("Poudre Toxik", new PoudreToxik());
+        attacks.put("Dé20", new Dé20());
+        attacks.put("Extension du Territoire", new ExtensionTerritoire());
+        attacks.put("Flemme", new Flemme());
+        attacks.put("Hydro Canon", new HydroCanon());
+        attacks.put("LanceFlamme", new LanceFlamme());
+        attacks.put("Mitra Poing", new MitraPoing());
+        attacks.put("Plaquage", new Plaquage());
+        attacks.put("SpaceCake", new SpaceCake());
         attacks.put("Belier", new Belier());
-
         return attacks.get(attackName);
+    }
+
+    private BaieStatus getBaieByName(String name) {
+        if ("Baie".equalsIgnoreCase(name)) {
+            return new BaieStatus();
+        }
+        return null;
+    }
+
+    private Potion getPotionByName(String name) {
+        if ("Potion".equalsIgnoreCase(name)) {
+            return new Potion();
+        }
+        return null;
     }
 
     private void getImgPokemon(Pokemon pokemon) {
@@ -165,8 +205,7 @@ public class ChoiceController {
     private void getHpForProgress(Pokemon pokemon) {
         if (pokemon != null) {
             int hp = pokemon.getHp();
-            int maxHp = pokemon.getMaxHp();
-            double progressValue = (double) hp / maxHp;
+            double progressValue = (double) hp / 200.0;
             HpBar.setProgress(progressValue);
         }
     }
@@ -197,11 +236,10 @@ public class ChoiceController {
         }
     }
 
-
-
     private void getSpeedPokemon(Pokemon pokemon) {
         if (pokemon != null) {
-            SpeedBar.setProgress(pokemon.getSpeed());
+            double progressValue = pokemon.getSpeed() / 200.0;
+            SpeedBar.setProgress(progressValue);
         }
     }
 
@@ -216,5 +254,41 @@ public class ChoiceController {
         Text pokemonNameText = new Text(pokemon.getName());
         pokemonBox.getChildren().clear();
         pokemonBox.getChildren().addAll(pokemonImageView, pokemonNameText);
+    }
+
+    private void initializeItems() {
+        ObservableList<String> itemList = FXCollections.observableArrayList("Baie", "Potion");
+        listItems.setItems(itemList);
+        listItemsArray.add(getBaieByName("Baie"));
+        listItemsArray.add(getPotionByName("Potion"));
+        listItems.setOnAction(event -> {
+            String selectedItem = listItems.getValue();
+            if (selectedItem != null) {
+                useItem(selectedItem);
+            }
+        });
+    }
+
+    private void useItem(String itemName) {
+        Pokemon currentPokemon = team.isEmpty() ? null : team.get(team.size() - 1);
+        if (currentPokemon != null) {
+            if ("Baie".equalsIgnoreCase(itemName)) {
+                BaieStatus baie = (BaieStatus) listItemsArray.stream()
+                        .filter(item -> item instanceof BaieStatus)
+                        .findFirst()
+                        .orElse(null);
+                if (baie != null) {
+                    baie.use(currentPokemon);
+                }
+            } else if ("Potion".equalsIgnoreCase(itemName)) {
+                Potion potion = (Potion) listItemsArray.stream()
+                        .filter(item -> item instanceof Potion)
+                        .findFirst()
+                        .orElse(null);
+                if (potion != null) {
+                    potion.usePotion(currentPokemon);
+                }
+            }
+        }
     }
 }

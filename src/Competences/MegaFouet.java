@@ -19,10 +19,7 @@ public class MegaFouet implements Attackable {
             double finalDamage = baseDamage * effectiveness;
 
             target.takeDamage(finalDamage);
-
-            System.out.println(attacker.getName() + " utilise " + name + " et inflige " + finalDamage + " dégâts à " + target.getName() + " !");
         } else {
-            System.out.println(attacker.getName() + "'s " + name + " a raté !");
         }
     }
 

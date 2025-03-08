@@ -2,16 +2,19 @@ package Items;
 
 import Models.Pokemon;
 
-public class BaieStatus{
-	
-	private Boolean baie ;
-	
-	public BaieStatus() {
-		this.baie = true;
-	}
-	
-	public void use(Pokemon pokemon) {
-		pokemon.setCanAttack(baie);
-	}
+public class BaieStatus {
 
+    private Integer baie;
+
+    public BaieStatus() {
+        this.baie = 20;
+    }
+
+    public void use(Pokemon pokemon) {
+        pokemon.addHp(baie);
+    }
+
+    public String getName() {
+        return "Baie";
+    }
 }

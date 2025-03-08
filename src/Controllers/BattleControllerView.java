@@ -1,12 +1,17 @@
 package Controllers;
+
 import Animation.ParalysieAnimation;
 import Animation.PokemonAnimation;
 import Competences.BouleElec;
+import Items.BaieStatus;
+import Items.Potion;
 import Models.TypeTools;
 import Pokemon.Charmander;
 import Pokemon.Evee;
 import Pokemon.Gengar;
+import Pokemon.Mewtow;
 import Pokemon.Pikachu;
+import Pokemon.Snorlax;
 import Models.Pokemon;
 import Models.Round;
 import Models.Attackable;
@@ -14,6 +19,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -31,12 +37,11 @@ import java.util.List;
 import java.util.Random;
 
 public class BattleControllerView {
-    @FXML private Button attackButton1, attackButton2, attackButton3, attackButton4;
+    @FXML private Button attackButton1, attackButton2, attackButton3, attackButton4, Object1, Object2;
     @FXML private ImageView pokemon, pokemon2;
     @FXML private ProgressBar playerHealthBar, enemyHealthBar;
     @FXML private Text PokemonName, PokemonName2, statusText, HpPokemon, HpPokemon2;
-    @FXML private StackPane PokemonInTeam1, PokemonInTeam2, PokemonInTeam3,
-    	PokemonInTeam4, PokemonInTeam5, PokemonInTeam6, test;
+    @FXML private StackPane PokemonInTeam1, PokemonInTeam2, PokemonInTeam3, PokemonInTeam4, PokemonInTeam5, PokemonInTeam6, test;
     @FXML private Label roundLabel;
     @FXML private VBox roundsContainer;
     @FXML private ScrollPane scrollPane;
@@ -50,6 +55,8 @@ public class BattleControllerView {
     private List<Round> roundHistory = new ArrayList<>();
     private Round currentRound;
     private int currentRoundNumber = 1;
+    private BaieStatus baie;
+    private Potion potion;
 
     public void setPlayerTeam(List<Pokemon> team) {
         this.playerTeam = new ArrayList<>(team);
@@ -63,10 +70,12 @@ public class BattleControllerView {
     }
 
     public void setEnemyTeam() {
-    	addPokemonToEnemyTeam(new Pikachu());
+        addPokemonToEnemyTeam(new Pikachu());
         addPokemonToEnemyTeam(new Evee());
         addPokemonToEnemyTeam(new Gengar());
         addPokemonToEnemyTeam(new Charmander());
+        addPokemonToEnemyTeam(new Mewtow());
+        addPokemonToEnemyTeam(new Snorlax());
     }
 
     public void addPokemonToEnemyTeam(Pokemon pokemon) {
@@ -93,8 +102,6 @@ public class BattleControllerView {
         attackButton4.setText(selectedAttack4 != null ? selectedAttack4.getName() : "None");
     }
 
-
-    
     public void setPokemonAttacks(HashMap<Pokemon, List<Attackable>> pokemonAttacks) {
         this.pokemonAttacksMap = pokemonAttacks;
         for (Pokemon p : pokemonAttacksMap.keySet()) {
@@ -105,16 +112,19 @@ public class BattleControllerView {
         }
     }
 
-
-
     public void initialize() {
         TypeTools.initializeTypeRelations();
         setEnemyTeam();
         configureAttackButtons();
         currentRound = new Round();
- 
+        if (baie != null) {
+            Object1.setText(baie.getName());
+        }
+        if (potion != null) {
+            Object2.setText(potion.getName());
+        }
     }
-    
+
     private void showTeamOnBattle() {
         HashMap<Integer, StackPane> teamPositions = new HashMap<>();
         teamPositions.put(0, PokemonInTeam1);
@@ -144,7 +154,6 @@ public class BattleControllerView {
         determineFirstTurn();
     }
 
-
     private void switchPokemon(Pokemon newPokemon) {
         if (newPokemon != playerPokemon) {
             playerPokemon = newPokemon;
@@ -156,7 +165,6 @@ public class BattleControllerView {
         }
     }
 
-    
     private void determineFirstTurn() {
         if (playerPokemon.getSpeed() >= enemyPokemon.getSpeed()) {
             playerTurn = true;
@@ -166,18 +174,17 @@ public class BattleControllerView {
         }
     }
 
-
     private void configureAttackButtons() {
         attackButton1.setOnAction(event -> { if (playerTurn) executeAttack(selectedAttack1); });
         attackButton2.setOnAction(event -> { if (playerTurn) executeAttack(selectedAttack2); });
         attackButton3.setOnAction(event -> { if (playerTurn) executeAttack(selectedAttack3); });
         attackButton4.setOnAction(event -> { if (playerTurn) executeAttack(selectedAttack4); });
     }
-    
+
     private void animationParalysie(Attackable attack) {
-            if (attack instanceof BouleElec) {
-            	pokemonParalysie.start(pokemon2,test);
-            }
+        if (attack instanceof BouleElec) {
+            pokemonParalysie.start(pokemon2, test);
+        }
     }
 
     private void executeAttack(Attackable attack) {
@@ -216,7 +223,7 @@ public class BattleControllerView {
                     handlePlayerVictory();
                 } else {
                     switchEnemyPokemon();
-                    startEnemyTurnTimer(); 
+                    startEnemyTurnTimer();
                     playerTurn = true;
                 }
             }
@@ -226,21 +233,21 @@ public class BattleControllerView {
     private boolean isEnemyTeamDefeated() {
         for (Pokemon pokemon : enemyTeam) {
             if (pokemon.getHp() > 0) {
-                return false; 
+                return false;
             }
         }
         return true;
     }
 
     private void handlePlayerVictory() {
-    	 Label victory = new Label("Player a gagné");
-    	roundsContainer.getChildren().add(victory);
-
+        Label victory = new Label("Player a gagné");
+        roundsContainer.getChildren().add(victory);
     }
 
     private void startEnemyTurnTimer() {
         new Timeline(new KeyFrame(Duration.millis(500), event -> enemyAction())).play();
     }
+
     private Attackable chooseBestAttack() {
         Attackable bestAttack = null;
         double maxDamage = 0;
@@ -255,7 +262,6 @@ public class BattleControllerView {
         return bestAttack != null ? bestAttack : enemyPokemon.getAttacks()[0];
     }
 
-
     private void enemyAction() {
         if (enemyPokemon.getHp() <= 0) {
             switchEnemyPokemon();
@@ -265,6 +271,20 @@ public class BattleControllerView {
             }
             return;
         }
+
+        if (enemyPokemon.getHp() < enemyPokemon.getMaxHp() / 2 && (baie != null || potion != null)) {
+            if (baie != null && new Random().nextBoolean()) {
+                baie.use(enemyPokemon);
+                addToRoundHistory(enemyPokemon, baie.getName(), playerPokemon, 0);
+            } else if (potion != null) {
+                potion.usePotion(enemyPokemon);
+                addToRoundHistory(enemyPokemon, potion.getName(), playerPokemon, 0);
+            }
+            updateHealthBar(enemyHealthBar, enemyPokemon, HpPokemon2);
+            nextTurn();
+            return;
+        }
+
         Attackable bestAttack = chooseBestAttack();
         if (bestAttack != null) {
             double damage = bestAttack.getDamage(enemyPokemon, playerPokemon);
@@ -296,7 +316,7 @@ public class BattleControllerView {
         }
         return null;
     }
-    
+
     private void addToRoundHistory(Pokemon attacker, Attackable attack, Pokemon defender, double damage) {
         String roundInfo = attacker.getName() + " utilise " + attack.getName() +
                            " et inflige " + String.format("%.2f", damage) + " dégâts à " + defender.getName() + ".";
@@ -313,17 +333,68 @@ public class BattleControllerView {
         displayRoundHistory();
     }
 
+    private void addToRoundHistory(Pokemon user, String itemName, Pokemon target, double healing) {
+        String roundInfo = user.getName() + " utilise " + itemName +
+                           " et récupère " + String.format("%.0f", healing) + " PV.";
+
+        if (currentRound == null) {
+            currentRound = new Round();
+        }
+        currentRound.addAction(roundInfo);
+        if (currentRound.getActions().size() == 2) {
+            roundHistory.add(currentRound);
+            currentRound = new Round();
+            currentRoundNumber++;
+        }
+        displayRoundHistory();
+    }
+
+
     private void displayRoundHistory() {
         roundsContainer.getChildren().clear();
         for (int i = 0; i < roundHistory.size(); i++) {
             Label roundLabel = new Label("Round " + (i + 1));
-            roundLabel.setStyle("-fx-font-weight: bold;"); 
+            roundLabel.setStyle("-fx-font-weight: bold;");
             roundsContainer.getChildren().add(roundLabel);
 
             for (String action : roundHistory.get(i).getActions()) {
                 Label actionLabel = new Label(action);
                 roundsContainer.getChildren().add(actionLabel);
             }
+        }
+    }
+
+    public void setBaie(BaieStatus baie) {
+        this.baie = baie;
+        if (Object1 != null) {
+            Object1.setText(baie.getName());
+        }
+    }
+
+    public void setPotion(Potion potion) {
+        this.potion = potion;
+        if (Object2 != null) {
+            Object2.setText(potion.getName());
+        }
+    }
+
+    public void handleUseBaie(ActionEvent event) {
+        if (baie != null) {
+            int hpBeforeHeal = playerPokemon.getHp();
+            baie.use(playerPokemon);
+            int hpHealed = playerPokemon.getHp() - hpBeforeHeal;
+            addToRoundHistory(playerPokemon, baie.getName(), enemyPokemon, hpHealed);
+            updateHealthBar(playerHealthBar, playerPokemon, HpPokemon);
+        }
+    }
+
+    public void handleUsePotion(ActionEvent event) {
+        if (potion != null) {
+            int hpBeforeHeal = playerPokemon.getHp();
+            potion.usePotion(playerPokemon);
+            int hpHealed = playerPokemon.getHp() - hpBeforeHeal;
+            addToRoundHistory(playerPokemon, potion.getName(), enemyPokemon, hpHealed);
+            updateHealthBar(playerHealthBar, playerPokemon, HpPokemon);
         }
     }
 

@@ -22,9 +22,7 @@ public class TypeTools {
         		getOrDefault(attacker, new HashMap<>());
         double typeEffectiveness = relations.getOrDefault(defender, 1.0);
         totalEffectiveness *= typeEffectiveness;
-            System.out.println("Efficacité contre " + defender + ": " + typeEffectiveness);
         }
-        System.out.println("Efficacité totale: " + totalEffectiveness);
         return totalEffectiveness;
     }
 

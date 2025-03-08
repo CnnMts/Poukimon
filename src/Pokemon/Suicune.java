@@ -1,6 +1,10 @@
 package Pokemon;
 
  
+import Competences.Belier;
+import Competences.HydroCanon;
+import Competences.Plaquage;
+import Competences.TranchHerbe;
 import Models.Attackable;
 import Models.Pokemon;
 import Models.Type;
@@ -9,13 +13,13 @@ import javafx.scene.image.Image;
 public class Suicune extends Pokemon {
 
     public Suicune () {
-        super("Suicune ", new Type[]{Type.EAU}, 45, 45,
-              new Attackable[]{});
+        super("Suicune ", new Type[]{Type.EAU}, 100, 85,
+              new Attackable[]{new HydroCanon(), new Belier(), new TranchHerbe(), new Plaquage()});
     }
 
     @Override
     public void useSpecialAbility() {
-        System.out.println("Bulbizarre utilise Croissance !");
+
     }
 
     public void useAttack(int attackIndex, Pokemon target) {

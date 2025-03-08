@@ -1,6 +1,10 @@
 package Pokemon;
 
  
+import Competences.Belier;
+import Competences.ExtensionTerritoire;
+import Competences.MitraPoing;
+import Competences.Plaquage;
 import Models.Attackable;
 import Models.Pokemon;
 import Models.Type;
@@ -9,13 +13,13 @@ import javafx.scene.image.Image;
 public class Mewtow extends Pokemon {
 
     public Mewtow() {
-        super("Mewtwo", new Type[]{Type.PSY}, 45, 45,
-              new Attackable[]{});
+        super("Mewtwo", new Type[]{Type.PSY}, 106, 130,
+              new Attackable[]{new ExtensionTerritoire(), new Belier(),new MitraPoing(), new Plaquage()});
     }
 
     @Override
     public void useSpecialAbility() {
-        System.out.println("Bulbizarre utilise Croissance !");
+       
     }
 
     public void useAttack(int attackIndex, Pokemon target) {

@@ -1,6 +1,11 @@
 package Pokemon;
 
  
+import Competences.Belier;
+import Competences.BouleElec;
+import Competences.Flemme;
+import Competences.Plaquage;
+import Competences.SpaceCake;
 import Models.Attackable;
 import Models.Pokemon;
 import Models.Type;
@@ -9,13 +14,13 @@ import javafx.scene.image.Image;
 public class Snorlax extends Pokemon {
 
     public Snorlax() {
-        super("Ronflex", new Type[]{Type.NORMAL}, 45, 45,
-              new Attackable[]{});
+        super("Ronflex", new Type[]{Type.NORMAL}, 160, 30,
+              new Attackable[]{new SpaceCake(), new Plaquage(), new BouleElec(), new Flemme()});
     }
 
     @Override
     public void useSpecialAbility() {
-        System.out.println("Bulbizarre utilise Croissance !");
+      
     }
 
     public void useAttack(int attackIndex, Pokemon target) {

@@ -1,13 +1,13 @@
 #colRight {
 
-    -fx-pref-width: 300px; /* Largeur historique */
-    -fx-border-color: transparent transparent black transparent; /* haut, droite, bas, gauche */
-    -fx-border-width: 0 0 2px 0; /* haut, droite, bas, gauche */
+    -fx-pref-width: 300px;
+    -fx-border-color: transparent transparent black transparent;
+    -fx-border-width: 0 0 2px 0;
 
 }
 
 #rowBottom {
-    -fx-pref-height: 200px; /* Garde la hauteur */
+    -fx-pref-height: 200px;
 	-fx-alignment: center;
 }
 
@@ -25,7 +25,8 @@
 	-fx-Min-width: 1000;
 }
 
-#attackButton1, #attackButton2, #defenseButton1, #defenseButton2{
+#attackButton1, #attackButton2, #defenseButton1, #defenseButton2, #Object1, 
+ #Object2 {
 	-fx-pref-width: 100;
 	-fx-pref-height: 35;
 }
@@ -59,10 +60,10 @@
 }
 
 #PokemonName, #HpPokemon, #PokemonName2, #HpPokemon2 {
-    -fx-fill: white; /* Texte en blanc pour le contraste */
+    -fx-fill: white;
     -fx-font-weight: bold;
-    -fx-font-size: 18px; /* Texte plus grand */
-    -fx-effect: dropshadow( gaussian , black , 3 , 0 , 2 , 2 ); /* Ombre portée */
+    -fx-font-size: 18px; 
+    -fx-effect: dropshadow( gaussian , black , 3 , 0 , 2 , 2 );
 }
 
 #NameBar, #HpBar{
@@ -79,7 +80,8 @@
 	-fx-pref-height: 20;
 }
 
-#PokemonInTeam1, #PokemonInTeam2, #PokemonInTeam3, #PokemonInTeam4, #PokemonInTeam5, #PokemonInTeam6, {
+#PokemonInTeam1, #PokemonInTeam2, #PokemonInTeam3, #PokemonInTeam4, 
+#PokemonInTeam5, #PokemonInTeam6, {
 	-fx-pref-height: 50;
 }
 
@@ -93,7 +95,7 @@
 #playerHealthBar, #enemyHealthBar {
     -fx-pref-width: 300px;
     -fx-pref-height: 20px;
-    -fx-background-color: black; /* Fond noir pour le contraste */
+    -fx-background-color: black;
     -fx-border-color: white;
     -fx-border-width: 2px;
     -fx-border-radius: 5px;
@@ -106,12 +108,11 @@
     -fx-padding: 2px;
 }
 
-/* ✅ Couleurs dynamiques pour la barre de vie selon le % HP */
+
 #playerHealthBar .bar , #enemyHealthBar .bar{
     -fx-background-color: linear-gradient(to right, limegreen, yellowgreen);
 }
 
-/* 🟢 Vert (HP élevés), 🟡 Jaune (HP moyens), 🔴 Rouge (HP critiques) */
 .low-hp .bar {
     -fx-background-color: red;
 }
@@ -125,8 +126,8 @@
 }
 #colRight {
     -fx-background-color: black;
-	-fx-min-width: 300px; /* Largeur minimale garantie */
-	 -fx-pref-width: 300px; /* Largeur préférée */
+	-fx-min-width: 300px; 
+	 -fx-pref-width: 300px;
 	 -fx-max-width: 300px; 
     -fx-padding: 10px;
     -fx-border-color: white;
@@ -179,7 +180,7 @@
     -fx-alignment: center;
 }
 
-#HboxAtk {
+#HboxAtk, #HboxUseObject1, #HboxUseObject2 {
     -fx-background-color: darkblue;
     -fx-padding: 5px;
     -fx-border-color: white;
@@ -189,7 +190,7 @@
     -fx-alignment: center;
 }
 
-#HboxAtk Button {
+#HboxAtk Button , #HboxUseObject1 Button , #HboxUseObject2 Button {
     -fx-background-color: darkred;
     -fx-text-fill: white;
     -fx-font-weight: bold;
@@ -201,7 +202,8 @@
     -fx-background-radius: 3px;
 }
 
-#HboxAtk Button:hover {
+#HboxAtk Button:hover, #HboxUseObject1 Button:hover ,
+ #HboxUseObject2 Button:hover {
     -fx-background-color: red;
 }
 

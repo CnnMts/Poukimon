@@ -15,7 +15,7 @@
 	    <HBox fx:id="TeamPoke">
     		<VBox fx:id= "VBoxTeam">
     			<HBox fx:id ="NameTeam">
-    				<Text text="Équipe:"></Text>
+    				<Text fx:id="textBlanc" text="Équipe:"></Text>
     			</HBox>
     			<VBox fx:id ="Team" spacing ="5">
     				<HBox fx:id="Pokemon1" spacing ="20">
@@ -53,11 +53,8 @@
 						</HBox>
 					</VBox>
 					<VBox fx:id="ImgPokeRight" spacing="30">
-						<HBox fx:id="Types">
-							<Text text="Types"></Text>
-						</HBox>
 						<HBox fx:id="ButtonAdd">
-							<Button fx:id="Add" text="Ajouter le pokemon" onAction="#addPokemonToTeam"/>
+							<Button fx:id="Add" text="Ajouter" onAction="#addPokemonToTeam"/>
 						</HBox>
 					</VBox>
 				</HBox>
@@ -117,7 +114,7 @@
 						<VBox fx:id="Stats">   
 				    		<VBox fx:id= "VBoxTeam">
 				    			<HBox fx:id ="NameTeam">
-				    				<Text text="Stats:"></Text>
+				    				<Text fx:id="textBlanc" text="Stats:"></Text>
 				    			</HBox>
 				    			<VBox fx:id ="Team">
 				    				<HBox fx:id="HP">

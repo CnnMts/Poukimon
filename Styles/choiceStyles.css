@@ -77,12 +77,11 @@
 	-fx-background-color: linear-gradient(to bottom, #1a1f36, #2c3e50);
 	-fx-padding: 10px 20px;
 }
-#nameTeam, #PokemonNameTitle{
+#textBlanc, #PokemonNameTitle{
 	-fx-fill: #F8FCFF;
 	-fx-font-size: 14px;
 	-fx-font-weight: bold;
 }
-
 
 
 #Pokemon1, #Pokemon2, #Pokemon3, #Pokemon4, #Pokemon5, #Pokemon6 {

@@ -88,6 +88,12 @@
 	                </HBox>
 	            </VBox>
 	            <VBox fx:id="boxBag">
+	            		<HBox fx:id="HboxUseObject1">
+							<Button fx:id="Object1" text="Objet 1" />
+						</HBox>
+						<HBox fx:id="HboxUseObject2">
+							<Button fx:id="Objetc2" text="Objet 2"/>
+						</HBox>
 	                <!-- Add content for the bag here -->
 	            </VBox>
 	        </HBox>

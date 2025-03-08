@@ -30,68 +30,68 @@
     </right>
 
     <!-- Barre du bas avec compétence et sac -->
-    <bottom>
-        <HBox fx:id="rowBottom">
-            <VBox fx:id="boxAttackAndPoke">
-                <HBox fx:id="HboxAtk" spacing="30">
-                    <VBox fx:id="attackOne">
-                        <Button fx:id="attackButton1"/>
-                    </VBox>
-                    <VBox fx:id="attackTwo">
-                        <Button fx:id="attackButton2"/>
-                    </VBox>
-                    <VBox fx:id="attackThree">
-                        <Button fx:id="attackButton3"/>
-                    </VBox>
-                    <VBox fx:id="attackfour">
-                        <Button fx:id="attackButton4"/>
-                    </VBox>
-                </HBox>
-                <HBox fx:id="HboxTeam" spacing="50">
-                    <VBox >
-                    	<StackPane fx:id="PokemonInTeam1"></StackPane>
-                    	<VBox fx:id="MiniHpBar1">
-                    		<ProgressBar fx:id="HpBar1" progress="1"/>
-                    	</VBox>
-                    </VBox>
-                    <VBox>
-                    	<StackPane fx:id="PokemonInTeam2"></StackPane>
-                    	<VBox fx:id="MiniHpBar2">
-                    		<ProgressBar fx:id="HpBar2" progress="1"/>
-                    	</VBox>
-                    </VBox>
-                    <VBox >
-                    	<StackPane fx:id="PokemonInTeam3"></StackPane>
-                    	<VBox fx:id="MiniHpBar3">
-                    		<ProgressBar fx:id="HpBar3" progress="1"/>
-                    	</VBox>
-
-                    </VBox>
-                    <VBox >
-                    	<StackPane fx:id="PokemonInTeam4"></StackPane>
-                    	<VBox fx:id="MiniHpBar4">
-                    		<ProgressBar fx:id="HpBar4" progress="1"/>
-                    	</VBox>
-                    </VBox>
-                    <VBox >
-                    	<StackPane fx:id="PokemonInTeam5"></StackPane>
-                    	<VBox fx:id="MiniHpBar5">
-                    		<ProgressBar fx:id="HpBar5" progress="1"/>
-                    	</VBox>
-                    </VBox>
-                    <VBox >
-                    	<StackPane fx:id="PokemonInTeam6"></StackPane>
-                    	<VBox fx:id="MiniHpBar6">
-                    		<ProgressBar fx:id="HpBar6" progress="1"/>
-                    	</VBox>
-                    </VBox>
-                </HBox>
-            </VBox>
-            <VBox fx:id="boxBag">
-                <!-- Add content for the bag here -->
-            </VBox>
-        </HBox>
-    </bottom>
+	    <bottom>
+	        <HBox fx:id="rowBottom">
+	            <VBox fx:id="boxAttackAndPoke">
+	                <HBox fx:id="HboxAtk" spacing="30">
+	                    <VBox fx:id="attackOne">
+	                        <Button fx:id="attackButton1"/>
+	                    </VBox>
+	                    <VBox fx:id="attackTwo">
+	                        <Button fx:id="attackButton2"/>
+	                    </VBox>
+	                    <VBox fx:id="attackThree">
+	                        <Button fx:id="attackButton3"/>
+	                    </VBox>
+	                    <VBox fx:id="attackfour">
+	                        <Button fx:id="attackButton4"/>
+	                    </VBox>
+	                </HBox>
+	                <HBox fx:id="HboxTeam" spacing="50">
+	                    <VBox >
+	                    	<StackPane fx:id="PokemonInTeam1"></StackPane>
+	                    	<VBox fx:id="MiniHpBar1">
+	                    		<ProgressBar fx:id="HpBar1" progress="1"/>
+	                    	</VBox>
+	                    </VBox>
+	                    <VBox>
+	                    	<StackPane fx:id="PokemonInTeam2"></StackPane>
+	                    	<VBox fx:id="MiniHpBar2">
+	                    		<ProgressBar fx:id="HpBar2" progress="1"/>
+	                    	</VBox>
+	                    </VBox>
+	                    <VBox >
+	                    	<StackPane fx:id="PokemonInTeam3"></StackPane>
+	                    	<VBox fx:id="MiniHpBar3">
+	                    		<ProgressBar fx:id="HpBar3" progress="1"/>
+	                    	</VBox>
+	
+	                    </VBox>
+	                    <VBox >
+	                    	<StackPane fx:id="PokemonInTeam4"></StackPane>
+	                    	<VBox fx:id="MiniHpBar4">
+	                    		<ProgressBar fx:id="HpBar4" progress="1"/>
+	                    	</VBox>
+	                    </VBox>
+	                    <VBox >
+	                    	<StackPane fx:id="PokemonInTeam5"></StackPane>
+	                    	<VBox fx:id="MiniHpBar5">
+	                    		<ProgressBar fx:id="HpBar5" progress="1"/>
+	                    	</VBox>
+	                    </VBox>
+	                    <VBox >
+	                    	<StackPane fx:id="PokemonInTeam6"></StackPane>
+	                    	<VBox fx:id="MiniHpBar6">
+	                    		<ProgressBar fx:id="HpBar6" progress="1"/>
+	                    	</VBox>
+	                    </VBox>
+	                </HBox>
+	            </VBox>
+	            <VBox fx:id="boxBag">
+	                <!-- Add content for the bag here -->
+	            </VBox>
+	        </HBox>
+	    </bottom>
 
     <!-- Image combat affichage Pokémon et des Pokéballs -->
     <left>

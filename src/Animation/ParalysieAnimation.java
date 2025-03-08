@@ -85,4 +85,5 @@ public class ParalysieAnimation {
         moveTransition.play();
         fadeTransition.play();
     }
+
 }

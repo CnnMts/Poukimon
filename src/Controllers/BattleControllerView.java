@@ -1,5 +1,4 @@
 package Controllers;
-
 import Animation.ParalysieAnimation;
 import Animation.PokemonAnimation;
 import Competences.BouleElec;
@@ -41,7 +40,6 @@ public class BattleControllerView {
     @FXML private Label roundLabel;
     @FXML private VBox roundsContainer;
     @FXML private ScrollPane scrollPane;
-
     private List<Pokemon> playerTeam = new ArrayList<>(), enemyTeam = new ArrayList<>();
     private HashMap<Pokemon, List<Attackable>> pokemonAttacksMap = new HashMap<>();
     private Pokemon playerPokemon, enemyPokemon;
@@ -114,7 +112,7 @@ public class BattleControllerView {
         setEnemyTeam();
         configureAttackButtons();
         currentRound = new Round();
-  
+ 
     }
     
     private void showTeamOnBattle() {

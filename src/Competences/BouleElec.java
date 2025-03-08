@@ -1,5 +1,5 @@
 package Competences;
-
+import Animation.BrulureAnimation;
 import Models.Attackable;
 import Models.Pokemon;
 import Models.Type;

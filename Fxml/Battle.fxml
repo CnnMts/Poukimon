@@ -154,7 +154,9 @@
                         <ProgressBar fx:id="enemyHealthBar" layoutX="400" layoutY="350"/>
                     </HBox>
                 </VBox>
+
                 <StackPane fx:id="test" alignment="CENTER">
+
                     <ImageView fx:id="pokemon2" fitHeight="120" fitWidth="120"
                                pickOnBounds="true" preserveRatio="true">
                     </ImageView>

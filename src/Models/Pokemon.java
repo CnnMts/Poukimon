@@ -114,6 +114,14 @@ public abstract class Pokemon {
     public void reduceAttack(double factor) {
         this.attack = this.maxAttack * factor;
     }
+    
+    public void addAttack(int value) {
+    	this.attack += value;
+    }
+    
+    public void addHp(int value) {
+    	this.hp += value;
+    }
 
     public void resetAttack() {
         this.attack = this.maxAttack;

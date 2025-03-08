@@ -22,4 +22,9 @@ public class Flemme implements Attackable {
 	public String getName() {
 		return name;
 	}
+	
+	@Override
+	public double getDamage(Pokemon attacker, Pokemon target ) {
+		return 0 ;
+	}
 }

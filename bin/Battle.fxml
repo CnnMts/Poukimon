@@ -104,11 +104,11 @@
                 <HBox fx:id="Bar2">
                     <ProgressBar fx:id="playerHealthBar"/>
                 </HBox>
-                <VBox fx:id="VboxImgPokemon">
+                <StackPane fx:id="VboxImgPokemon">
                     <ImageView fx:id="pokemon" fitHeight="250" fitWidth="250"
                                pickOnBounds="true" preserveRatio="true">
                     </ImageView>
-                </VBox>
+                </StackPane>
             </VBox>
             <VBox fx:id="VBoxPokemon2" spacing="20">
                 <VBox>

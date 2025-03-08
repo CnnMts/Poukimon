@@ -20,15 +20,12 @@ public class SpaceCake implements Attackable {
         switch((int)(Math.random()*3+1 )) {
         case 1:
         	target.applyStatus(poisonStatus);
-            System.out.println(target.getName() + " a été empoissonée");
             break;
         case 2:
         	target.applyStatus(brulureStatus);
-        	System.out.println(target.getName() + " a été brulé");
             break;
         case 3:
         	attacker.applyStatus(poisonStatus);
-        	System.out.println(attacker.getName() + " a été empoissonée");
             break;
         }
     }
@@ -43,15 +40,9 @@ public class SpaceCake implements Attackable {
         return name;
     }
 
-    public double getBaseDamage() {
-        return baseDamage;
+    @Override
+    public double getDamage(Pokemon attacker, Pokemon target) {
+        double effectiveness = TypeTools.getEffectiveness(this.type, target.getDefensiveTypes());
+        return baseDamage * effectiveness;
     }
-
-    public double getAccuracy() {
-        return accuracy;
-    }
-
-    public int getPP() {
-        return pp;
-    }
- }
+}

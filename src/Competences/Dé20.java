@@ -23,6 +23,11 @@ public class Dé20 implements Attackable {
     		target.takeDamage(400);
     	}
     }
+    @Override 
+    public double getDamage(Pokemon attacker, Pokemon target){
+    	return 400;
+    
+    }
 
 	@Override
 	public String getName() {

@@ -18,7 +18,6 @@ public class MitraPoing implements Attackable {
     public void attack(Pokemon attacker, Pokemon target) {
         double damage = getDamage(attacker, target);
         target.takeDamage(damage);
-        System.out.println(attacker.getName() + " utilise " + name + " et inflige " + damage + " dégâts à " + target.getName() + " !");
     }
 
     @Override

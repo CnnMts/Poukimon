@@ -12,9 +12,7 @@ public class Belier implements Attackable {
     @Override
     public void attack(Pokemon attacker, Pokemon target) {
         target.takeDamage(damage);
-        System.out.println(target);
         attacker.takeDamage(damage - 8);
-        System.out.println(attacker);
     }
 
     @Override

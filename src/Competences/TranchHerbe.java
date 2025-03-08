@@ -16,11 +16,9 @@ public class TranchHerbe implements Attackable {
     @Override
     public void attack(Pokemon attacker, Pokemon target) {
         if (Math.random() * 100 <= accuracy) {
-            double damage = getDamage(attacker, target); // Prend en compte le coup critique
+            double damage = getDamage(attacker, target); 
             target.takeDamage(damage);
-            System.out.println(attacker.getName() + " utilise " + name + " et inflige " + damage + " dégâts à " + target.getName() + " !");
         } else {
-            System.out.println(attacker.getName() + " a raté son attaque " + name + " !");
         }
     }
 

@@ -13,10 +13,6 @@ public class ExtensionTerritoire implements Attackable {
     public void attack(Pokemon attacker, Pokemon target) {
         	attacker.addAttack(10);
         	target.reduceAttack(1);
-
-            System.out.println(attacker.getName() + " utilise " + name + 
-            		" et gagne 10 points d'attaque et enlève 1 point a " + 
-            		target.getName());
     }
     
     @Override

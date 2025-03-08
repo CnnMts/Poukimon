@@ -14,4 +14,7 @@ public class Potion {
 		pokemon.addHp(potion);
 	}
 
+	public String getName() {
+		return "Potion";
+	}
 }

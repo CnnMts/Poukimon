@@ -15,7 +15,7 @@ public class Flemme implements Attackable {
 
     @Override
     public void attack(Pokemon attacker, Pokemon target) {
-        System.out.println(attacker.getName() + " a la Flemme");
+       
     }
 
 	@Override

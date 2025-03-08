@@ -23,8 +23,6 @@ public class BouleElec implements Attackable {
     public void attack(Pokemon attacker, Pokemon target) {
         double damage = getDamage(attacker, target);
         target.takeDamage(damage);
-
-        // Appliquer l'effet de paralysie
         applyParalysis(target);
     }
 
@@ -49,10 +47,9 @@ public class BouleElec implements Attackable {
     }
 
     private void applyParalysis(Pokemon target) {
-        if (Math.random() <= 0.3) { // 30% de chance d'appliquer la paralysie
+        if (Math.random() <= 0.3) {
             StatusEffect paralysie = new Paralysie();
             target.addStatusEffect(paralysie);
-            System.out.println(target.getName() + " a été paralysé par Boule Eleckt !");
         }
     }
 }

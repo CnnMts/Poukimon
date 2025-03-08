@@ -17,7 +17,6 @@ public class Tonnerre implements Attackable {
     public void attack(Pokemon attacker, Pokemon target) {
         double damage = getDamage(attacker, target);
         target.takeDamage(damage);
-        System.out.println(attacker.getName() + " utilise Tonnerre et inflige " + damage + " dégâts à " + target.getName() + " !");
     }
 
     public double getDamage(Pokemon attacker, Pokemon target) {

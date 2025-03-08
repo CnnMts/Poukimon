@@ -117,8 +117,6 @@ public class BattleControllerView {
         setEnemyTeam();
         configureAttackButtons();
         currentRound = new Round();
-
-        // Configurer les boutons pour Baie et Potion
         if (baie != null) {
             Object1.setText(baie.getName());
         }
@@ -337,7 +335,7 @@ public class BattleControllerView {
 
     private void addToRoundHistory(Pokemon user, String itemName, Pokemon target, double healing) {
         String roundInfo = user.getName() + " utilise " + itemName +
-                           " et récupère " + String.format("%.2f", healing) + " PV.";
+                           " et récupère " + String.format("%.0f", healing) + " PV.";
 
         if (currentRound == null) {
             currentRound = new Round();
@@ -350,6 +348,7 @@ public class BattleControllerView {
         }
         displayRoundHistory();
     }
+
 
     private void displayRoundHistory() {
         roundsContainer.getChildren().clear();
@@ -381,18 +380,23 @@ public class BattleControllerView {
 
     public void handleUseBaie(ActionEvent event) {
         if (baie != null) {
+            int hpBeforeHeal = playerPokemon.getHp();
             baie.use(playerPokemon);
-            addToRoundHistory(playerPokemon, baie.getName(), enemyPokemon, 0);
+            int hpHealed = playerPokemon.getHp() - hpBeforeHeal;
+            addToRoundHistory(playerPokemon, baie.getName(), enemyPokemon, hpHealed);
             updateHealthBar(playerHealthBar, playerPokemon, HpPokemon);
         }
     }
 
     public void handleUsePotion(ActionEvent event) {
         if (potion != null) {
+            int hpBeforeHeal = playerPokemon.getHp();
             potion.usePotion(playerPokemon);
-            addToRoundHistory(playerPokemon, potion.getName(), enemyPokemon, 0);
+            int hpHealed = playerPokemon.getHp() - hpBeforeHeal;
+            addToRoundHistory(playerPokemon, potion.getName(), enemyPokemon, hpHealed);
             updateHealthBar(playerHealthBar, playerPokemon, HpPokemon);
         }
     }
+
 
 }

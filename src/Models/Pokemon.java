@@ -3,6 +3,7 @@ package Models;
 import java.util.ArrayList;
 import java.util.List;
 
+import Status.Paralysie;
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 
@@ -114,6 +115,14 @@ public abstract class Pokemon {
     public void reduceAttack(double factor) {
         this.attack = this.maxAttack * factor;
     }
+    
+    public void addAttack(int value) {
+    	this.attack += value;
+    }
+    
+    public void addHp(int value) {
+    	this.hp += value;
+    }
 
     public void resetAttack() {
         this.attack = this.maxAttack;
@@ -125,7 +134,6 @@ public abstract class Pokemon {
 
     public void addStatusEffect(StatusEffect effect) {
         statusEffects.add(effect);
-        System.out.println(getName() + " a reçu l'effet de statut : " + effect.getName());
     }
 
     public void applyStatusEffects() {
@@ -137,5 +145,9 @@ public abstract class Pokemon {
     @Override
     public String toString() {
         return name + " (" + hp + " HP, Types: " + java.util.Arrays.toString(types) + ")";
+    }
+
+    public void applyStatus(StatusEffect status) {
+        addStatusEffect(status);
     }
 }

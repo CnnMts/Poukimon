@@ -165,11 +165,12 @@ public class ChoiceController {
     private void getHpForProgress(Pokemon pokemon) {
         if (pokemon != null) {
             int hp = pokemon.getHp();
-            int maxHp = pokemon.getMaxHp();
-            double progressValue = (double) hp / maxHp;
+            double progressValue = (double) hp / 200.0;
             HpBar.setProgress(progressValue);
         }
     }
+
+
 
     @FXML
     public void addPokemonToTeam() {
@@ -201,7 +202,8 @@ public class ChoiceController {
 
     private void getSpeedPokemon(Pokemon pokemon) {
         if (pokemon != null) {
-            SpeedBar.setProgress(pokemon.getSpeed());
+            double progressValue = pokemon.getSpeed() / 200.0;
+            SpeedBar.setProgress(progressValue);
         }
     }
 

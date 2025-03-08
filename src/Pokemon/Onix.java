@@ -1,6 +1,10 @@
 package Pokemon;
 
  
+import Competences.Belier;
+import Competences.Dé20;
+import Competences.Plaquage;
+import Competences.SpaceCake;
 import Models.Attackable;
 import Models.Pokemon;
 import Models.Type;
@@ -9,13 +13,13 @@ import javafx.scene.image.Image;
 public class Onix extends Pokemon {
 
     public Onix () {
-        super("Onix ", new Type[]{Type.ROCHE, Type.SOL}, 45, 45,
-              new Attackable[]{});
+        super("Onix ", new Type[]{Type.ROCHE, Type.SOL}, 35, 70,
+              new Attackable[]{new Dé20(),new Belier(),new Plaquage(), new SpaceCake()});
     }
 
     @Override
     public void useSpecialAbility() {
-        System.out.println("Bulbizarre utilise Croissance !");
+        
     }
 
     public void useAttack(int attackIndex, Pokemon target) {

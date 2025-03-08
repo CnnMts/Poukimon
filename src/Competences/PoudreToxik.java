@@ -42,7 +42,6 @@ public class PoudreToxik implements Attackable {
 
 	@Override
 	public double getDamage(Pokemon attacker, Pokemon target) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 }

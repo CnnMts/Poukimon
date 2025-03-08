@@ -1,6 +1,10 @@
 package Pokemon;
 
+import Competences.Belier;
 import Competences.BouleElec;
+import Competences.Dé20;
+import Competences.Flemme;
+import Competences.LanceFlamme;
 import Competences.ToileEleck;
 import Models.Attackable;
 import Models.Pokemon;
@@ -10,8 +14,8 @@ import javafx.scene.image.Image;
 public class Charmander extends Pokemon {
 
     public Charmander() {
-        super("Charmander", new Type[]{Type.FEU}, 35, 90,
-              new Attackable[]{new BouleElec(), new ToileEleck()});
+        super("Charmander", new Type[]{Type.FEU}, 39,65,
+              new Attackable[]{new LanceFlamme(), new Flemme(), new Dé20(), new Belier()});
     }
 
     @Override

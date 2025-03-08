@@ -1,6 +1,10 @@
 package Pokemon;
 
  
+import Competences.Belier;
+import Competences.ExtensionTerritoire;
+import Competences.PoudreToxik;
+import Competences.SpaceCake;
 import Models.Attackable;
 import Models.Pokemon;
 import Models.Type;
@@ -9,13 +13,13 @@ import javafx.scene.image.Image;
 public class Gengar extends Pokemon {
 
     public Gengar() {
-        super("Gengar", new Type[]{Type.SPECTRE, Type.POISON}, 45, 45,
-              new Attackable[]{});
+        super("Gengar", new Type[]{Type.SPECTRE, Type.POISON}, 60, 110,
+              new Attackable[]{new Belier(),new SpaceCake(), new ExtensionTerritoire(), new PoudreToxik()});
     }
 
     @Override
     public void useSpecialAbility() {
-        System.out.println("Bulbizarre utilise Croissance !");
+        
     }
 
     public void useAttack(int attackIndex, Pokemon target) {

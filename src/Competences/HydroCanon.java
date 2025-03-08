@@ -8,7 +8,7 @@ import Status.Brulure;
 
 public class HydroCanon implements Attackable {
     private Type type = Type.EAU;
-    private String name = "LanceFlamme";
+    private String name = "Hydro Canon";
   
 
     @Override
@@ -18,21 +18,19 @@ public class HydroCanon implements Attackable {
 
     @Override
     public void attack(Pokemon attacker, Pokemon target) {
-        double speed = attacker.getSpeed();
-        double baseDamage = 25 * (speed / 100) + 25;
-        double effectiveness = TypeTools.getEffectiveness(this.type, 
-        		target.getDefensiveTypes());
-        System.out.println(effectiveness);
-        double finalDamage = baseDamage * effectiveness;
-        target.takeDamage(finalDamage);
-        System.out.println(attacker.getName() + " utilise " + name 
-        		+ " et inflige " + finalDamage + " dégâts à " 
-        		+ target.getName() + " !");
+        double damage = getDamage(attacker, target);
+        target.takeDamage(damage);
+    }
 
+    public double getDamage(Pokemon attacker, Pokemon target) {
+        double speed = attacker.getSpeed();
+        double baseDamage = 30 * (speed / 100) + 15;
+        double effectiveness = TypeTools.getEffectiveness(this.type, target.getDefensiveTypes());
+        return baseDamage * effectiveness;
     }
 
 	@Override
 	public String getName() {
 		return name ;
-	}
+		}
 }
